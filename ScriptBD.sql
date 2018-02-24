@@ -1,6 +1,7 @@
-/* Versao 2.1 */
+/* Versao 3.0 */
 
 /* Tabelas do Escopo do Negocio */
+
 CREATE TABLE Usuario (
   Email VARCHAR(25),
   Nome VARCHAR(50) NOT NULL,
@@ -125,6 +126,32 @@ CREATE TABLE Rating (
   CONSTRAINT Rating_Nota_Valida CHECK (Nota >= 0 AND Nota <=10),
   CONSTRAINT Rating_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email),
   CONSTRAINT Rating_PK_EmailPassageiro_Usuario FOREIGN KEY (EmailPassageiro) REFERENCES Usuario(Email)
-)
+);
 
+CREATE TABLE Publication (
+  Id SERIAL,
+  EmailUsuario VARCHAR(25) NOT NULL,
+  IdLocal INTEGER NOT NULL,
+  Mensagem VARCHAR,
+  CONSTRAINT Publication_PK_Id PRIMARY KEY (Id),
+  CONSTRAINT Publication_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  CONSTRAINT Publication_FK_IdLocal_Lugar FOREIGN KEY (IdLocal) REFERENCES Lugar(Id)
+);
 
+CREATE TABLE RequestFollow (
+  EmailSeguidor VARCHAR(25) NOT NULL,
+  EmailSeguindo VARCHAR(25) NOT NULL,
+  CONSTRAINT RequestFollow_PK_EmailSeguidor_EmailSeguindo PRIMARY KEY (EmailSeguidor, EmailSeguindo),
+  CONSTRAINT RequestFollow_Emails_Diferentes CHECK ((EmailSeguidor ILIKE EmailSeguindo) IS FALSE),
+  CONSTRAINT RequestFollow_FK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email),
+  CONSTRAINT RequestFollow_PK_EmailSeguindo_Usuario FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
+);
+
+CREATE TABLE RequestFrindship (
+  EmailUsuario VARCHAR(25) NOT NULL,
+  EmailAmigo VARCHAR(25) NOT NULL,
+  CONSTRAINT RequestFrindship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
+  CONSTRAINT RequestFrindship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
+  CONSTRAINT RequestFrindship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  CONSTRAINT RequestFrindship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
+);
