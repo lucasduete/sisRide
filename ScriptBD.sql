@@ -1,4 +1,4 @@
-/* Versao 2.0 */
+/* Versao 2.1 */
 
 /* Tabelas do Escopo do Negocio */
 CREATE TABLE Usuario (
@@ -36,8 +36,10 @@ CREATE TABLE Lugar (
   Nome VARCHAR(50) NOT NULL,
   Lat FLOAT NOT NULL,
   Lng FLOAT NOT NULL,
-  CONSTRAINT Lugar_Pk_PlaceId PRIMARY KEY (Place_id),
-  CONSTRAINT Lugar_Unico_LatLng UNIQUE (Lat, Lng)
+  EmailUsuario VARCHAR(25) NOT NULL,
+  CONSTRAINT Lugar_PK_PlaceId PRIMARY KEY (Place_id),
+  CONSTRAINT Lugar_Unico_LatLng UNIQUE (Lat, Lng),
+  CONSTRAINT Lugar_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Viagem (
@@ -91,7 +93,7 @@ CREATE TABLE Follow (
   CONSTRAINT Follow_PK_EmailSeguidor_EmailSeguindo PRIMARY KEY (EmailSeguidor, EmailSeguindo),
   CONSTRAINT Follow_Emails_Diferentes CHECK ((EmailSeguidor ILIKE EmailSeguindo) IS FALSE),
   CONSTRAINT Follow_FK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email),
-  CONSTRAINT Follow_PK_EmailSeguindo_EmailSeguindo FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
+  CONSTRAINT Follow_PK_EmailSeguindo_Usuario FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Frindship (
@@ -100,7 +102,7 @@ CREATE TABLE Frindship (
   CONSTRAINT Frindship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
   CONSTRAINT Frindship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
   CONSTRAINT Frindship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT Frindship_PK_EmailAmigo_EmailSeguindo FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
+  CONSTRAINT Frindship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Message (
@@ -111,7 +113,18 @@ CREATE TABLE Message (
   CONSTRAINT Message_PK_Id PRIMARY KEY (Id),
   CONSTRAINT Message_Emails_Diferentes CHECK ((EmailSeguidor ILIKE EmailSeguindo) IS FALSE),
   CONSTRAINT Message_FK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email),
-  CONSTRAINT Message_PK_EmailSeguindo_EmailSeguindo FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
+  CONSTRAINT Message_PK_EmailSeguindo_Usuario FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
 );
+
+CREATE TABLE Rating (
+  EmailMotorista VARCHAR(25) NOT NULL,
+  EmailPassageiro VARCHAR(25) NOT NULL,
+  Nota NUMERIC(4,2) DEFAULT 0,
+  CONSTRAINT Rating_PK_EmailMotorista_EmailPassageiro PRIMARY KEY (EmailMotorista, EmailPassageiro),
+  CONSTRAINT Rating_Emails_Diferentes CHECK ((EmailMotorista ILIKE EmailPassageiro) IS FALSE),
+  CONSTRAINT Rating_Nota_Valida CHECK (Nota >= 0 AND Nota <=10),
+  CONSTRAINT Rating_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email),
+  CONSTRAINT Rating_PK_EmailPassageiro_Usuario FOREIGN KEY (EmailPassageiro) REFERENCES Usuario(Email)
+)
 
 
