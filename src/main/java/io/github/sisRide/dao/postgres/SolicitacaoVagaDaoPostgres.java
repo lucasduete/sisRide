@@ -68,4 +68,35 @@ public class SolicitacaoVagaDaoPostgres {
 
         return solicitacoes;
     }
+
+    /* CONCIDERADO DESNECESSARIO
+        E desnecessario pois uma soliciatacao possui apenas o email do passageiro
+        e o id da viagem, se eles forem modificados o proprio banco deve atualizar essa
+        tabela.
+    public boolean atualizar() {}
+    */
+
+    public boolean deletar(SolicitacaoVaga solicitacao) {
+        String sql = "DELETE FROM SolicitacaoVaga WHERE EmailPassageiro ILIKE ? " +
+                "AND IdViagem = ?;";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, solicitacao.getEmailPassageiro());
+            stmt.setInt(2, solicitacao.getIdViagem());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
 }
