@@ -1,14 +1,17 @@
-import interfaces.Command;
+package io.github.sisRide.servlets;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 @MultipartConfig
 public class FrontController extends HttpServlet {
 
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /*try {
             request.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException ex) {

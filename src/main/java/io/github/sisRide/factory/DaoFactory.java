@@ -1,17 +1,10 @@
+package io.github.sisRide.factory;
+
 public class DaoFactory {
-    
-    public static DaoFactoryIF createFactory(){
-        return new DaoFactoryDB();
+
+    public static DaoFactoryPostgres criarFabricaPostgres() {
+        return new DaoFactoryPostgres();
     }
     
 }
 
-/*public class DaoFactory {
-    
-    public DaoFactory(){}
-    
-    public DaoFactoryIF getDaoFactory(){
-        return DaoFactoryDB.getInstance();
-    }
-    
-}*/

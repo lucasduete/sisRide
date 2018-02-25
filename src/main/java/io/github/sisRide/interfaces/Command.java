@@ -1,3 +1,5 @@
+package io.github.sisRide.interfaces;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
