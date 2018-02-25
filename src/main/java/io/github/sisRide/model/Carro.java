@@ -45,7 +45,7 @@ public class Carro {
         this.modelo = modelo;
     }
 
-    public boolean isArCondicionado() {
+    public boolean getArCondicionado() {
         return arCondicionado;
     }
 
@@ -75,7 +75,7 @@ public class Carro {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Carro carro = (Carro) o;
-        return isArCondicionado() == carro.isArCondicionado() &&
+        return getArCondicionado() == carro.getArCondicionado() &&
                 Objects.equals(getPlaca(), carro.getPlaca()) &&
                 Objects.equals(getModelo(), carro.getModelo()) &&
                 Objects.equals(getAno(), carro.getAno()) &&
@@ -85,7 +85,7 @@ public class Carro {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getPlaca(), getModelo(), isArCondicionado(), getAno(), getEmailAdministrador());
+        return Objects.hash(getPlaca(), getModelo(), getArCondicionado(), getAno(), getEmailAdministrador());
     }
 
     @Override
