@@ -89,7 +89,7 @@ public class Viagem {
         this.horario = horario;
     }
 
-    public boolean isTransporteAnimal() {
+    public boolean getTransporteAnimal() {
         return transporteAnimal;
     }
 
@@ -105,7 +105,7 @@ public class Viagem {
         this.nivelConversa = nivelConversa;
     }
 
-    public boolean isPodeFumar() {
+    public boolean getPodeFumar() {
         return podeFumar;
     }
 
@@ -154,9 +154,9 @@ public class Viagem {
         return getId() == viagem.getId() &&
                 Float.compare(viagem.getValor(), getValor()) == 0 &&
                 getVagas() == viagem.getVagas() &&
-                isTransporteAnimal() == viagem.isTransporteAnimal() &&
+                getTransporteAnimal() == viagem.getTransporteAnimal() &&
                 getNivelConversa() == viagem.getNivelConversa() &&
-                isPodeFumar() == viagem.isPodeFumar() &&
+                getPodeFumar() == viagem.getPodeFumar() &&
                 getIdLocalSaida() == viagem.getIdLocalSaida() &&
                 getIdLocalDestino() == viagem.getIdLocalDestino() &&
                 Objects.equals(getData(), viagem.getData()) &&
@@ -168,7 +168,7 @@ public class Viagem {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getId(), getData(), getValor(), getVagas(), getHorario(), isTransporteAnimal(), getNivelConversa(), isPodeFumar(), getEmailMotorista(), getPlacaCarro(), getIdLocalSaida(), getIdLocalDestino());
+        return Objects.hash(getId(), getData(), getValor(), getVagas(), getHorario(), getTransporteAnimal(), getNivelConversa(), getPodeFumar(), getEmailMotorista(), getPlacaCarro(), getIdLocalSaida(), getIdLocalDestino());
     }
 
     @Override
