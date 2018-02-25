@@ -15,19 +15,19 @@ public class FrontController extends HttpServlet {
         /*try {
             request.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Frontal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         response.setCharacterEncoding("UTF-8");
-        String ex = request.getParameter("ex");
+        String ex = request.getParameter("action");
         
         try {
             Command com = (Command) Class.forName("Controladores." + ex + "Controller").newInstance();
             com.execute(request, response);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex1) {
-            Logger.getLogger(Frontal.class.getName()).log(Level.SEVERE, null, ex1);
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex1);
         } catch (SQLException ex1) {
-            Logger.getLogger(Frontal.class.getName()).log(Level.SEVERE, null, ex1);
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex1);
         }*/
     }
 
