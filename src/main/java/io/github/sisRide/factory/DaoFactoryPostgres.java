@@ -1,8 +1,18 @@
 package io.github.sisRide.factory;
 
+import java.sql.SQLException;
+import io.github.sisRide.dao.interfaces.UsuarioDaoInterface;
+import io.github.sisRide.dao.postgres.UsuarioDaoPostgres;
 import io.github.sisRide.interfaces.DaoFactoryInterface;
 
 public class DaoFactoryPostgres implements DaoFactoryInterface {
 
+    private DaoFactoryPostgres instance;
+
+    public DaoFactoryPostgres(){}
+
+    public UsuarioDaoInterface criaDaoUsuario() throws SQLException, ClassNotFoundException{
+        return new UsuarioDaoPostgres();
+    }
 
 }
