@@ -96,7 +96,7 @@ public class Lugar {
     @Override
     public String toString() {
 
-        return "Lugar{" +
+        return "LugarDaoPostgres{" +
                 "place_id=" + place_id +
                 ", descricao='" + descricao + '\'' +
                 ", nome='" + nome + '\'' +
