@@ -4,17 +4,25 @@ import java.util.Objects;
 
 public class Follow {
 
+    private String emailUsuario;
     private String emailSeguidor;
-    private String emailSeguindo;
 
     public Follow() {
 
     }
 
-    public Follow(String emailSeguidor, String emailSeguindo) {
+    public Follow(String emailUsuario, String emailSeguidor) {
 
+        this.emailUsuario = emailUsuario;
         this.emailSeguidor = emailSeguidor;
-        this.emailSeguindo = emailSeguindo;
+    }
+
+    public String getEmailUsuario() {
+        return emailUsuario;
+    }
+
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
     }
 
     public String getEmailSeguidor() {
@@ -25,35 +33,28 @@ public class Follow {
         this.emailSeguidor = emailSeguidor;
     }
 
-    public String getEmailSeguindo() {
-        return emailSeguindo;
-    }
-
-    public void setEmailSeguindo(String emailSeguindo) {
-        this.emailSeguindo = emailSeguindo;
-    }
-
     @Override
     public boolean equals(Object o) {
 
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Follow follow = (Follow) o;
-        return Objects.equals(getEmailSeguidor(), follow.getEmailSeguidor()) &&
-                Objects.equals(getEmailSeguindo(), follow.getEmailSeguindo());
+        return Objects.equals(getEmailUsuario(), follow.getEmailUsuario()) &&
+                Objects.equals(getEmailSeguidor(), follow.getEmailSeguidor());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getEmailSeguidor(), getEmailSeguindo());
+        return Objects.hash(getEmailUsuario(), getEmailSeguidor());
     }
 
     @Override
     public String toString() {
+
         return "Follow{" +
-                "emailSeguidor='" + emailSeguidor + '\'' +
-                ", emailSeguindo='" + emailSeguindo + '\'' +
+                "emailUsuario='" + emailUsuario + '\'' +
+                ", emailSeguidor='" + emailSeguidor + '\'' +
                 '}';
     }
 }
