@@ -71,4 +71,81 @@ public class PublicationDaoPostgres {
 
         return publications;
     }
+
+    public boolean atualizar(Publication publication) {
+        String sql = "UPDATE Publication SET Message = ?, IdLocal = ? WHERE Id = ?;";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, publication.getMensagem());
+            stmt.setInt(2, publication.getIdLocal());
+            stmt.setInt(3, publication.getId());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean deletar(Publication publication) {
+        String sql = "DELETE FROM Publication WHERE Id = ?";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, publication.getId());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    public List<Publication> getPublicationsByUsuario(String emailUsuario) {
+        String sql = "SELECT Id, idLocal, Mensagem FROM Publication WHERE emailUsuario ILIKE ?;";
+        List<Publication> publications = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, emailUsuario);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                Publication publication = new Publication(
+                        rs.getInt("Id"),
+                        emailUsuario,
+                        rs.getInt("IdLocal"),
+                        rs.getString("Mensagem")
+                );
+
+                publications.add(publication);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return publications;
+    }
+
 }
