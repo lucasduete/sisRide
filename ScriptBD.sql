@@ -1,4 +1,4 @@
-/* Versao 3.0 */
+/* Versao 3.1 */
 
 /* Tabelas do Escopo do Negocio */
 
@@ -89,12 +89,12 @@ CREATE TABLE ReservaVaga (
 /* Tabelas Referentes a Rede Social */
 
 CREATE TABLE Follow (
+  EmailUsuario VARCHAR(25) NOT NULL,
   EmailSeguidor VARCHAR(25) NOT NULL,
-  EmailSeguindo VARCHAR(25) NOT NULL,
-  CONSTRAINT Follow_PK_EmailSeguidor_EmailSeguindo PRIMARY KEY (EmailSeguidor, EmailSeguindo),
-  CONSTRAINT Follow_Emails_Diferentes CHECK ((EmailSeguidor ILIKE EmailSeguindo) IS FALSE),
-  CONSTRAINT Follow_FK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email),
-  CONSTRAINT Follow_PK_EmailSeguindo_Usuario FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
+  CONSTRAINT Follow_PK_EmailUsuario_EmailSeguidor PRIMARY KEY (EmailUsuario, EmailSeguidor),
+  CONSTRAINT Follow_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailSeguidor) IS FALSE),
+  CONSTRAINT Follow_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  CONSTRAINT Follow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Frindship (
