@@ -6,7 +6,10 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
 		<!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">     
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">   
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
@@ -23,15 +26,15 @@
             <div class="row center-align">
                 <h2 class="light-green-text text-accent-4">Login</h2>
             </div>
-            <form class="col s12" method="post" action="front">
+            <form class="col s12 l4" method="post" action="front">
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 l4">
                         <input id="email" name="email" type="email" class="validate">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 l4">
                         <input id="password" name="senha" type="password" class="validate">
                         <label for="password">Senha</label>
                     </div>
@@ -52,12 +55,8 @@
         <script type="text/javascript">
             var erro = "${param.error}";
             if(erro == "1"){
-                sweetAlert("Oops...", "Não foi encontrado nenhum usuário com esse email", "error");
-            }
-            if(erro == "2"){
-                sweetAlert("Oops...", "Sua senha está incorreta", "error");
-            }
-              
+                swal("Oops...", "Não foi possivel logar", "error");
+            } 
         </script>
     </body>
 </html>

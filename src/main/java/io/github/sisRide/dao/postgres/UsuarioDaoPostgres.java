@@ -20,6 +20,7 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Usuario usuario) {
         String sql = "INSERT INTO Usuario(Email, Nome, Senha, Nota, FotoPerfil, Sexo, " +
                 "DataNasc, Profissao, Cidade, Tipo) VALUES (?,?,?,?,?,?,?,?,?,?);";
@@ -50,6 +51,7 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
         return true;
     }
 
+    @Override
     public List<Usuario> listar() {
         String sql = "SELECT * FROM Usuario;";
         List<Usuario> usuarios = new ArrayList<>();
@@ -91,6 +93,7 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
         return usuarios;
     }
 
+    @Override
     public boolean atualizar(Usuario usuario) {
 
         String sql = "UPDATE Usuario SET Email = ?, Nome = ?, Senha = ?, Nota = ?, fotoPerfil = ?, " +
@@ -124,6 +127,7 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
         return true;
     }
 
+    @Override
     public boolean deletar(Usuario usuario) {
 
         String sql = "DELETE FROM Carro WHERE EmailMotorista = ?;" +
@@ -178,6 +182,7 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
         return true;
     }
 
+    @Override
     public boolean login(String email, String senha) {
 
         String sql = "SELECT Senha FROM Usuario WHERE Email ILIKE ?";
@@ -207,6 +212,7 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
         return true;
     }
 
+    @Override
     public Usuario getUsuarioByEmail(String email) {
         String sql = "SELECT * FROM Usuario WHERE Email ILIKE ?;";
         Usuario usuario = null;
