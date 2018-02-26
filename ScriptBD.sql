@@ -118,14 +118,14 @@ CREATE TABLE Message (
 );
 
 CREATE TABLE Rating (
-  EmailMotorista VARCHAR(25) NOT NULL,
-  EmailPassageiro VARCHAR(25) NOT NULL,
+  EmailUsuario VARCHAR(25) NOT NULL,
+  EmailAvaliado VARCHAR(25) NOT NULL,
   Nota NUMERIC(4,2) DEFAULT 0,
-  CONSTRAINT Rating_PK_EmailMotorista_EmailPassageiro PRIMARY KEY (EmailMotorista, EmailPassageiro),
-  CONSTRAINT Rating_Emails_Diferentes CHECK ((EmailMotorista ILIKE EmailPassageiro) IS FALSE),
+  CONSTRAINT Rating_PK_EmailUsuaro_EmailAvaliado PRIMARY KEY (EmailUsuario, EmailAvaliado),
+  CONSTRAINT Rating_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAvaliado) IS FALSE),
   CONSTRAINT Rating_Nota_Valida CHECK (Nota >= 0 AND Nota <=10),
-  CONSTRAINT Rating_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email),
-  CONSTRAINT Rating_PK_EmailPassageiro_Usuario FOREIGN KEY (EmailPassageiro) REFERENCES Usuario(Email)
+  CONSTRAINT Rating_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  CONSTRAINT Rating_PK_EmailAvaliado_Usuario FOREIGN KEY (EmailAvaliado) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Publication (
