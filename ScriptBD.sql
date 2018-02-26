@@ -1,4 +1,4 @@
-/* Versao 3.3 */
+/* Versao 3.4 */
 
 /* Tabelas do Escopo do Negocio */
 
@@ -147,11 +147,11 @@ CREATE TABLE RequestFollow (
   CONSTRAINT RequestFollow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
 );
 
-CREATE TABLE RequestFrindship (
+CREATE TABLE RequestFriendship (
   EmailUsuario VARCHAR(25) NOT NULL,
   EmailAmigo VARCHAR(25) NOT NULL,
-  CONSTRAINT RequestFrindship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
-  CONSTRAINT RequestFrindship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
-  CONSTRAINT RequestFrindship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT RequestFrindship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
+  CONSTRAINT RequestFriendship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
+  CONSTRAINT RequestFriendship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
+  CONSTRAINT RequestFriendship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  CONSTRAINT RequestFriendship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
 );
