@@ -68,4 +68,33 @@ public class RequestFollowDaoPostgres {
 
         return requests;
     }
+
+    /* CONCIDERADO DESNECESSARIO
+        E desnecessario pois uma soliciatacao possui apenas o email do seguidor
+        e o email do usuario seguido, se eles forem modificados o proprio banco deve atualizar essa
+        tabela.
+    public boolean atualizar() {}
+    */
+
+    public boolean deletar(RequestFollow request) {
+        String sql = "DELETE FROM RequestFollow WHERE emailUsuario ILIKE ? AND emailSeguidor ILIKE ?;";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, request.getEmailUsuario());
+            stmt.setString(2, request.getEmailSeguidor());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
 }
