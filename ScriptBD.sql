@@ -1,4 +1,4 @@
-/* Versao 3.2 */
+/* Versao 3.3 */
 
 /* Tabelas do Escopo do Negocio */
 
@@ -27,7 +27,7 @@ CREATE TABLE Carro (
   Ano DATE,
   EmailMotorista VARCHAR(25) NOT NULL,
   CONSTRAINT Carro_PK_Placa PRIMARY KEY (Placa),
-  CONSTRAINT Carro_Modelo_Valido CHECK (Modelo.length >= 5),
+  CONSTRAINT Carro_Modelo_Valido CHECK (length(Modelo) >= 5),
   CONSTRAINT Carro_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email)
 );
 
@@ -112,9 +112,9 @@ CREATE TABLE Message (
   EmailDestinatario VARCHAR(25) NOT NULL,
   Mensagem VARCHAR NOT NULL,
   CONSTRAINT Message_PK_Id PRIMARY KEY (Id),
-  CONSTRAINT Message_Emails_Diferentes CHECK ((EmailSeguidor ILIKE EmailSeguindo) IS FALSE),
-  CONSTRAINT Message_FK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email),
-  CONSTRAINT Message_PK_EmailSeguindo_Usuario FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
+  CONSTRAINT Message_Emails_Diferentes CHECK ((EmailEmissor ILIKE EmailDestinatario) IS FALSE),
+  CONSTRAINT Message_FK_EmailEmissor_Usuario FOREIGN KEY (EmailEmissor) REFERENCES Usuario(Email),
+  CONSTRAINT Message_PK_EmailDestinatario_Usuario FOREIGN KEY (EmailDestinatario) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Rating (
@@ -135,7 +135,7 @@ CREATE TABLE Publication (
   Mensagem VARCHAR,
   CONSTRAINT Publication_PK_Id PRIMARY KEY (Id),
   CONSTRAINT Publication_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT Publication_FK_IdLocal_Lugar FOREIGN KEY (IdLocal) REFERENCES Lugar(Id)
+  CONSTRAINT Publication_FK_IdLocal_Lugar FOREIGN KEY (IdLocal) REFERENCES Lugar(Place_Id)
 );
 
 CREATE TABLE RequestFollow (
