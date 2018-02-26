@@ -20,13 +20,13 @@ public class FollowDaoPostgres {
     }
 
     public boolean salvar(Follow follow) {
-        String sql = "INSERT INTO Follow(EmailSeguidor, EmailSeguindo) VALUES (?,?);";
+        String sql = "INSERT INTO Follow(EmailUsuario, EmailSeguidor) VALUES (?,?);";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, follow.getEmailSeguidor());
-            stmt.setString(2, follow.getEmailSeguindo());
+            stmt.setString(1, follow.getEmailUsuario());
+            stmt.setString(2, follow.getEmailSeguidor());
 
             stmt.executeUpdate();
 
@@ -51,8 +51,8 @@ public class FollowDaoPostgres {
 
             while (rs.next()) {
                 Follow follow = new Follow(
-                        rs.getString("EmailSeguidor"),
-                        rs.getString("EmailSeguindo")
+                        rs.getString("EmailUsuario"),
+                        rs.getString("EmailSeguidor")
                 );
 
                 follows.add(follow);
@@ -68,4 +68,65 @@ public class FollowDaoPostgres {
 
         return follows;
     }
+
+    /* CONCIDERADO DESNECESSARIO
+        E desnecessario pois uma soliciatacao possui apenas o email do seguidor
+        e o email do usuario seguido, se eles forem modificados o proprio banco deve atualizar essa
+        tabela.
+    public boolean atualizar() {}
+    */
+
+    public boolean deletar(Follow follow) {
+        String sql = "DELETE FROM Follow WHERE EmailUsuario ILIKE ? AND EmailSeguidor ILIKE ?";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, follow.getEmailUsuario());
+            stmt.setString(2, follow.getEmailSeguidor());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    public List<Follow> getFollowersByUsuario(String emailUsuario) {
+        String sql = "SELECT EmailSeguidor FROM Follow WHERE EmailUsuario ILIKE ?;";
+        List<Follow> followers = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, emailUsuario);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Follow follower = new Follow(
+                        emailUsuario,
+                        rs.getString("EmailSeguidor")
+                );
+
+                followers.add(follower);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return followers;
+    }
+
 }
