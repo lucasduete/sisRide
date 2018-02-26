@@ -52,7 +52,7 @@ public class RequestFollow {
     @Override
     public String toString() {
 
-        return "RequestFollow{" +
+        return "RequestFollowDaoPostgres{" +
                 "emailUsuario='" + emailUsuario + '\'' +
                 ", emailSeguidor='" + emailSeguidor + '\'' +
                 '}';
