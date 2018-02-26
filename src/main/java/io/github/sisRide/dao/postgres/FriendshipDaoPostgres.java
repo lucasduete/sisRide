@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.FriendshipDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Friendship;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
-public class FriendshipDaoPostgres {
+public class FriendshipDaoPostgres implements FriendshipDaoInterface{
 
     private final Connection conn;
 
@@ -20,6 +21,7 @@ public class FriendshipDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Friendship friendship) {
         String sql = "INSERT INTO Friendship(EmailUsuario, EmailAmigo) VALUES (?,?)";
 
@@ -42,6 +44,7 @@ public class FriendshipDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Friendship> listar() {
         String sql = "SELECT * FROM Friendship;";
         List<Friendship> friendships = new ArrayList<>();
@@ -77,6 +80,7 @@ public class FriendshipDaoPostgres {
     public boolean atualizar() {}
     */
 
+    @Override
     public boolean deletar(Friendship friendship) {
         String sql = "DELETE FROM Friendship WHERE EmailUsuario ILIKE ? AND EmailAmigo ILIKE ?";
 
@@ -99,6 +103,7 @@ public class FriendshipDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Friendship> getAmigosByUsuario(String emailUsuario) {
         String sql = "SELECT EmailAmigo FROM Friendship WHERE EmailUsuario ILIKE ?;";
         List<Friendship> friends = new ArrayList<>();

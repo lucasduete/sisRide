@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.RequestFriendshipDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.socialRequest.RequestFriendship;
 
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestFriendshipDaoPostgres {
+public class RequestFriendshipDaoPostgres implements RequestFriendshipDaoInterface{
 
     private final Connection conn;
 
@@ -18,6 +19,7 @@ public class RequestFriendshipDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(RequestFriendship request) {
         String sql = "INSERT INTO RequestFriendship(EmailUsuario, EmailAmigo) VALUES (?,?);";
 
@@ -40,6 +42,7 @@ public class RequestFriendshipDaoPostgres {
         return true;
     }
 
+    @Override
     public List<RequestFriendship> listar() {
         String sql = "SELECT * FROM RequestFriendship;";
         List<RequestFriendship> requests = new ArrayList<>();
@@ -75,6 +78,7 @@ public class RequestFriendshipDaoPostgres {
     public boolean atualizar() {}
     */
 
+    @Override
     public boolean deletar(RequestFriendship request) {
         String sql = "DELETE FROM RequestFriendship WHERE EmailUsuario ILIKE ? AND EmailUsuario ILIKE ?;";
 

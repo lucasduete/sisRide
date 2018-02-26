@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.SolicitacaoVagaDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.vaga.SolicitacaoVaga;
 
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SolicitacaoVagaDaoPostgres {
+public class SolicitacaoVagaDaoPostgres implements SolicitacaoVagaDaoInterface{
 
     private final Connection conn;
 
@@ -19,6 +20,7 @@ public class SolicitacaoVagaDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(SolicitacaoVaga solicitacaoVaga) {
         String sql = "INSERT INTO SolicatacaoVaga(EmailPassageiro, IdViagem) VALUES (?,?)";
 
@@ -41,6 +43,7 @@ public class SolicitacaoVagaDaoPostgres {
         return true;
     }
 
+    @Override
     public List<SolicitacaoVaga> listar() {
         String sql = "SELECT * FROM SolicitacaoVaga;";
         List<SolicitacaoVaga> solicitacoes = new ArrayList<>();
@@ -76,6 +79,7 @@ public class SolicitacaoVagaDaoPostgres {
     public boolean atualizar() {}
     */
 
+    @Override
     public boolean deletar(SolicitacaoVaga solicitacao) {
         String sql = "DELETE FROM SolicitacaoVaga WHERE EmailPassageiro ILIKE ? " +
                 "AND IdViagem = ?;";

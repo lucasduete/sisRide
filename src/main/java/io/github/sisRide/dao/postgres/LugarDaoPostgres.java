@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.LugarDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Lugar;
 
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LugarDaoPostgres {
+public class LugarDaoPostgres implements LugarDaoInterface{
 
     private final Connection conn;
 
@@ -21,6 +22,7 @@ public class LugarDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Lugar lugar) {
         String sql = "INSERT INTO Lugar(Descricao, Nome, Lat, Lng, EmailUsuario) VALUES (?,?,?,?,?);";
 
@@ -46,6 +48,7 @@ public class LugarDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Lugar> listar() {
         String sql = "SELECT * FROM Lugar;";
         List<Lugar> lugares = new ArrayList<>();
@@ -79,6 +82,7 @@ public class LugarDaoPostgres {
         return lugares;
     }
 
+    @Override
     public boolean atualizar(Lugar lugar) {
         String sql = "UPDATE Lugar SET Descricao = ?, Nome = ?, Lat = ?, Lng = ?, EmailUsuario = ? " +
                 "WHERE Place_Id = ?";
@@ -105,6 +109,7 @@ public class LugarDaoPostgres {
         return true;
     }
 
+    @Override
     public boolean deletar(Lugar lugar) {
         String sql = "DELETE FROM Lugar WHERE Place_ID = ?";
 
@@ -126,6 +131,7 @@ public class LugarDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Lugar> getLugaresByUsuario(String emailUsuario) {
         String sql = "SELECT Place_Id, Descricao, Nome, Lat, Lgn FROM Lugar WHERE EmailUsuario ILIKE ?;";
         List<Lugar> lugares = new ArrayList<>();

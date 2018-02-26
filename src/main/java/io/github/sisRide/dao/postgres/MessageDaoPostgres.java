@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.MessageDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Message;
 
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageDaoPostgres {
+public class MessageDaoPostgres implements MessageDaoInterface{
 
     private final Connection conn;
 
@@ -18,6 +19,7 @@ public class MessageDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Message message) {
         String sql = "INSERT INTO Message(EmailEmissor, EmailDestinatario, Mensagem) VALUES (?,?,?);";
 
@@ -41,6 +43,7 @@ public class MessageDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Message> listar() {
         String sql = "SELECT * FROM Message;";
         List<Message> messages = new ArrayList<>();
@@ -78,6 +81,7 @@ public class MessageDaoPostgres {
     public boolean atualizar() {}
     */
 
+    @Override
     public boolean deletar(Message message) {
         String sql = "DELETE FROM Message WHERE Id = ?;";
 

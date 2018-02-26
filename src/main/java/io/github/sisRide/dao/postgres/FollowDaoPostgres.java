@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.FollowDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Follow;
 
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FollowDaoPostgres {
+public class FollowDaoPostgres implements FollowDaoInterface{
 
     private final Connection conn;
 
@@ -19,6 +20,7 @@ public class FollowDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Follow follow) {
         String sql = "INSERT INTO Follow(EmailUsuario, EmailSeguidor) VALUES (?,?);";
 
@@ -41,6 +43,7 @@ public class FollowDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Follow> listar() {
         String sql = "SELECT * FROM Follow;";
         List<Follow> follows = new ArrayList<>();
@@ -76,6 +79,7 @@ public class FollowDaoPostgres {
     public boolean atualizar() {}
     */
 
+    @Override
     public boolean deletar(Follow follow) {
         String sql = "DELETE FROM Follow WHERE EmailUsuario ILIKE ? AND EmailSeguidor ILIKE ?";
 
@@ -98,6 +102,7 @@ public class FollowDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Follow> getFollowersByUsuario(String emailUsuario) {
         String sql = "SELECT EmailSeguidor FROM Follow WHERE EmailUsuario ILIKE ?;";
         List<Follow> followers = new ArrayList<>();

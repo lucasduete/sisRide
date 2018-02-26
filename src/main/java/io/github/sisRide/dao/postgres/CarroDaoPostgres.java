@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.CarroDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Carro;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CarroDaoPostgres {
+public class CarroDaoPostgres implements CarroDaoInterface{
 
     private final Connection conn;
 
@@ -20,6 +21,7 @@ public class CarroDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Carro carro) {
         String sql = "INSERT INTO Carro(Placa, Modelo, ArCondicionado, Ano, EmailMotorista) " +
                 "VALUES (?,?,?,?,?);";
@@ -46,6 +48,7 @@ public class CarroDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Carro> listar() {
 
         String sql = "SELECT * FROM Carro;";
@@ -82,6 +85,7 @@ public class CarroDaoPostgres {
         return carros;
     }
 
+    @Override
     public boolean atualizar(Carro carro) {
 
         String sql = "UPDATE Carro SET Placa = ?, Modelo = ?, ArCondicionado = ?, Ano = ?, " +
@@ -110,6 +114,7 @@ public class CarroDaoPostgres {
         return true;
     }
 
+    @Override
     public boolean deletar(Carro carro) {
         String sql = "DELETE FROM Carro WHERE Placa = ?";
 
@@ -131,6 +136,7 @@ public class CarroDaoPostgres {
         return true;
     }
 
+    @Override
     public Carro getCarroByPlaca(String placa) {
 
         String sql = "SELECT * FROM Carro WHERE Placa = ?;";
@@ -166,6 +172,7 @@ public class CarroDaoPostgres {
         return carro;
     }
 
+    @Override
     public List<Carro> getCarrosByMotorista(String emailMotorista) {
         String sql = "SELECT Placa, Modelo, ArCondicionado, Ano FROM Carro " +
                 "WHERE EmailMotorista = ?;";

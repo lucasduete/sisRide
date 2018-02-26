@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.ViagemDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Viagem;
 
@@ -11,7 +12,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViagemDaoPostgres {
+public class ViagemDaoPostgres implements ViagemDaoInterface{
 
     private final Connection conn;
 
@@ -19,6 +20,7 @@ public class ViagemDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Viagem viagem) {
         String sql = "INSERT INTO Viagem Data, Valor, Vagas, Horario, TransportarAnimal, NivelConversa, " +
                 "PodeFumar, EmailMotorista, PlacaCarro, IdLocalSaida, IdLocalDestino " +
@@ -52,6 +54,7 @@ public class ViagemDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Viagem> listar() {
         String sql = "SELECT * FROM Viagem;";
         List<Viagem> viagens = new ArrayList<>();
@@ -94,6 +97,7 @@ public class ViagemDaoPostgres {
         return viagens;
     }
 
+    @Override
     public boolean atualizar(Viagem viagem) {
         String sql = "UPDATE Viagem SET Data = ?, Valor = ?, Vagas = ?, Horario = ?, TransportarAnimal = ?, " +
                 "NivelConversa = ?, PodeFumar = ?, EmailMotorista = ?, PlacaCarro = ?, IdLocalSaida = ?, " +
@@ -128,6 +132,7 @@ public class ViagemDaoPostgres {
         return true;
     }
 
+    @Override
     public boolean deletar(Viagem viagem) {
         String sql = "DELETE FROM SolicitacaoReserva WHERE IdViagem = ?;" +
                 "DELETE FROM ReservaVaga WHERE IdViagem = ?;" +
@@ -153,6 +158,7 @@ public class ViagemDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Viagem> getViagemByMotorista(String emailMotorista) {
         String sql = "SELECT Id, Data, Valor, Vagas, Horario, TransportarAnimal, NivelConversa, PodeFumar, " +
                 "PlacaCarro, IdLocalSaida, IdLocalDestino FROM Viagem WHERE EmailMotorista ILIKE ?;";

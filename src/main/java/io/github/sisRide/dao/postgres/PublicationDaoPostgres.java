@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.PublicationDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Publication;
 
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PublicationDaoPostgres {
+public class PublicationDaoPostgres implements PublicationDaoInterface{
 
     private final Connection conn;
 
@@ -19,6 +20,7 @@ public class PublicationDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(Publication publication) {
         String sql = "INSERT INTO Publication(EmailUsuario, IdLocal, Mensagem) VALUES(?,?,?);";
 
@@ -42,6 +44,7 @@ public class PublicationDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Publication> listar() {
         String sql = "SELECT * FROM Publication;";
         List<Publication> publications = new ArrayList<>();
@@ -72,6 +75,7 @@ public class PublicationDaoPostgres {
         return publications;
     }
 
+    @Override
     public boolean atualizar(Publication publication) {
         String sql = "UPDATE Publication SET Message = ?, IdLocal = ? WHERE Id = ?;";
 
@@ -94,6 +98,7 @@ public class PublicationDaoPostgres {
         return true;
     }
 
+    @Override
     public boolean deletar(Publication publication) {
         String sql = "DELETE FROM Publication WHERE Id = ?";
 
@@ -115,6 +120,7 @@ public class PublicationDaoPostgres {
         return true;
     }
 
+    @Override
     public List<Publication> getPublicationsByUsuario(String emailUsuario) {
         String sql = "SELECT Id, idLocal, Mensagem FROM Publication WHERE emailUsuario ILIKE ?;";
         List<Publication> publications = new ArrayList<>();

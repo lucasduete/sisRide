@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.ReservaVagaDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.vaga.ReservaVaga;
 
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReservaVagaDaoPostgres {
+public class ReservaVagaDaoPostgres implements ReservaVagaDaoInterface{
 
     private final Connection conn;
 
@@ -18,6 +19,7 @@ public class ReservaVagaDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(ReservaVaga reservaVaga) {
         String sql = "INSERT INTO ReservaVaga(EmailPassageiro, IdViagem) VALUES (?,?)";
 
@@ -40,6 +42,7 @@ public class ReservaVagaDaoPostgres {
         return true;
     }
 
+    @Override
     public List<ReservaVaga> listar() {
         String sql = "SELECT * FROM ReservaVaga;";
         List<ReservaVaga> reservas = new ArrayList<>();
@@ -75,6 +78,7 @@ public class ReservaVagaDaoPostgres {
     public boolean atualizar() {}
     */
 
+    @Override
     public boolean deletar(ReservaVaga reserva) {
         String sql = "DELETE FROM ReservaVaga WHERE EmailPassageiro ILIKE ? " +
                 "AND IdViagem = ?;";

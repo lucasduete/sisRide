@@ -1,5 +1,6 @@
 package io.github.sisRide.dao.postgres;
 
+import io.github.sisRide.dao.interfaces.RequestFollowDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.socialRequest.RequestFollow;
 
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestFollowDaoPostgres {
+public class RequestFollowDaoPostgres implements RequestFollowDaoInterface{
 
     private final Connection conn;
 
@@ -19,6 +20,7 @@ public class RequestFollowDaoPostgres {
         conn = Conexao.getConnection();
     }
 
+    @Override
     public boolean salvar(RequestFollow requestFollow) {
         String sql = "INSERT INTO RequestFollow(emailUsuario, emailSeguidor) VALUES (?,?);";
 
@@ -41,6 +43,7 @@ public class RequestFollowDaoPostgres {
         return true;
     }
 
+    @Override
     public List<RequestFollow> listar() {
         String sql = "SELECT * FROM RequestFollow;";
         List<RequestFollow> requests = new ArrayList<>();
@@ -76,6 +79,7 @@ public class RequestFollowDaoPostgres {
     public boolean atualizar() {}
     */
 
+    @Override
     public boolean deletar(RequestFollow request) {
         String sql = "DELETE FROM RequestFollow WHERE emailUsuario ILIKE ? AND emailSeguidor ILIKE ?;";
 
