@@ -1,4 +1,4 @@
-/* Versao 3.1 */
+/* Versao 3.2 */
 
 /* Tabelas do Escopo do Negocio */
 
@@ -97,13 +97,13 @@ CREATE TABLE Follow (
   CONSTRAINT Follow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
 );
 
-CREATE TABLE Frindship (
+CREATE TABLE Friendship (
   EmailUsuario VARCHAR(25) NOT NULL,
   EmailAmigo VARCHAR(25) NOT NULL,
-  CONSTRAINT Frindship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
-  CONSTRAINT Frindship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
-  CONSTRAINT Frindship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT Frindship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
+  CONSTRAINT Friendship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
+  CONSTRAINT Friendship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
+  CONSTRAINT Friendship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  CONSTRAINT Friendship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Message (
@@ -139,12 +139,12 @@ CREATE TABLE Publication (
 );
 
 CREATE TABLE RequestFollow (
+  EmailUsuario VARCHAR(25) NOT NULL,
   EmailSeguidor VARCHAR(25) NOT NULL,
-  EmailSeguindo VARCHAR(25) NOT NULL,
-  CONSTRAINT RequestFollow_PK_EmailSeguidor_EmailSeguindo PRIMARY KEY (EmailSeguidor, EmailSeguindo),
-  CONSTRAINT RequestFollow_Emails_Diferentes CHECK ((EmailSeguidor ILIKE EmailSeguindo) IS FALSE),
-  CONSTRAINT RequestFollow_FK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email),
-  CONSTRAINT RequestFollow_PK_EmailSeguindo_Usuario FOREIGN KEY (EmailSeguindo) REFERENCES Usuario(Email)
+  CONSTRAINT RequestFollow_PK_EmailUsuario_EmailSeguidor PRIMARY KEY (EmailUsuario, EmailSeguidor),
+  CONSTRAINT RequestFollow_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailSeguidor) IS FALSE),
+  CONSTRAINT RequestFollow_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  CONSTRAINT RequestFollow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE RequestFrindship (
