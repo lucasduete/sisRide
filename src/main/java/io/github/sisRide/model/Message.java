@@ -7,18 +7,18 @@ public class Message {
     private int id;
     private String emailEmissor;
     private String emailDestinatario;
-    private String menssagem;
+    private String mensagem;
 
     public Message() {
 
     }
 
-    public Message(int id, String emailEmissor, String emailDestinatario, String menssagem) {
+    public Message(int id, String emailEmissor, String emailDestinatario, String mensagem) {
 
         this.id = id;
         this.emailEmissor = emailEmissor;
         this.emailDestinatario = emailDestinatario;
-        this.menssagem = menssagem;
+        this.mensagem = mensagem;
     }
 
     public int getId() {
@@ -45,12 +45,12 @@ public class Message {
         this.emailDestinatario = emailDestinatario;
     }
 
-    public String getMenssagem() {
-        return menssagem;
+    public String getMensagem() {
+        return mensagem;
     }
 
-    public void setMenssagem(String menssagem) {
-        this.menssagem = menssagem;
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     @Override
@@ -62,23 +62,23 @@ public class Message {
         return getId() == message.getId() &&
                 Objects.equals(getEmailEmissor(), message.getEmailEmissor()) &&
                 Objects.equals(getEmailDestinatario(), message.getEmailDestinatario()) &&
-                Objects.equals(getMenssagem(), message.getMenssagem());
+                Objects.equals(getMensagem(), message.getMensagem());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getId(), getEmailEmissor(), getEmailDestinatario(), getMenssagem());
+        return Objects.hash(getId(), getEmailEmissor(), getEmailDestinatario(), getMensagem());
     }
 
     @Override
     public String toString() {
-        
+
         return "Message{" +
                 "id=" + id +
                 ", emailEmissor='" + emailEmissor + '\'' +
                 ", emailDestinatario='" + emailDestinatario + '\'' +
-                ", menssagem='" + menssagem + '\'' +
+                ", mensagem='" + mensagem + '\'' +
                 '}';
     }
 }
