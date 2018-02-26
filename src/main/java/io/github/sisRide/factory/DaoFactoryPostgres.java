@@ -7,6 +7,7 @@ import io.github.sisRide.interfaces.DaoFactoryInterface;
 
 public class DaoFactoryPostgres implements DaoFactoryInterface {
 
+    @Override
     public UsuarioDaoInterface criaDaoUsuario() throws SQLException, ClassNotFoundException {
         return new UsuarioDaoPostgres();
     }
