@@ -6,9 +6,9 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
 		<!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">   
+        <link rel="stylesheet" href="assets/css/materialize.min.css">
         
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="assets/js/sweetalert.min.js"></script>
 
 
 		<!--Let browser know website is optimized for mobile-->
@@ -17,8 +17,8 @@
     <body class="grey lighten-3">
         <div class="navbar-fixed">
             <nav>
-                <div class="nav-wrapper light-green accent-4 col s12" style="overflow: scroll">
-                     <a class="brand-logo center">Bem-vindo ao SisRide</a>
+                <div class="nav-wrapper light-green accent-4">
+                    <a class="brand-logo center">SisRide</a>
                 </div>
             </nav>
         </div>
@@ -52,9 +52,9 @@
         </div>
         
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
         <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="assets/js/materialize.min.js"></script>
         <script type="text/javascript">
             var erro = "${param.error}";
             if(erro == "1"){
