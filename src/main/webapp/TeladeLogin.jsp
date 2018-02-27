@@ -22,32 +22,44 @@
                 </div>
             </nav>
         </div>
-        <div class="container">
+        <div class="container" style="margin-top: 3%">
             <div class="row">
-                <div class="col s12 center-align">
-                    <h2 class="light-green-text text-accent-4">Login</h2>
-                </div>
-            </div>
-            <form class="col s12 l4" method="post" action="front">
-                <div class="row">
-                    <div class="input-field col s12 l4 offset-l4">
-                        <input id="email" name="email" type="email" class="validate">
-                        <label for="email">Email</label>
+                <div class="col s6 m6 l6 offset-m3 offset-l3">
+                    <form class="login-form">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">
+	                                <h2 class="light-green-text center text-accent-4">Login</h2>
+	                            </span>
+
+                                <div class="input-field">
+                                    <input class="validate" id="email" type="email" required>
+                                    <label for="email">Email</label>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <div class="input-field">
+                                            <input id="password" type="password" required>
+                                            <label for="password">Senha</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <div class="center-align">
+                                    <button class="btn waves-effect waves-light btn light-green accent-4"><i class="material-icons left">vpn_key</i>Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="row center-align">
+                            E novo?<a href="teladeCadastroUsuario.jsp"> Crie uma conta.</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12 l4 offset-l4">
-                        <input id="password" name="senha" type="password" class="validate">
-                        <label for="password">Senha</label>
-                    </div>
-                </div>
-                <div class="row center-align">
-                    <input class="waves-effect waves-light btn light-green accent-4" type="submit" value="Entrar">
-                </div>
-                <input type="hidden" name="action" value="Login"/>
-            </form>
-            <div class="row center-align">
-                E novo?<a href="teladeCadastroUsuario.jsp"> Crie uma conta.</a>
             </div>
         </div>
         
