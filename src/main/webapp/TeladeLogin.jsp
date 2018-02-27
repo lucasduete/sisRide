@@ -25,7 +25,7 @@
         <div class="container" style="margin-top: 3%">
             <div class="row">
                 <div class="col s6 m6 l6 offset-m3 offset-l3">
-                    <form class="login-form" action="/servlet">
+                    <form class="login-form" action="front" method="post">
                         <div class="card">
                             <div class="card-image">
                                 <img src="assets/img/login.png">
@@ -38,7 +38,7 @@
                                     <input class="validate" id="email" type="email" required>
                                     <label for="email">Email</label>
                                 </div>
-
+                                <input type="hidden" name="action" value="Login"/>
                                 <div class="row">
                                     <div class="col s12 m12 l12">
                                         <div class="input-field">
