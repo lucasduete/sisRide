@@ -27,11 +27,13 @@
                 <div class="col s6 m6 l6 offset-m3 offset-l3">
                     <form class="login-form">
                         <div class="card">
-                            <div class="card-content">
+                            <div class="card-image">
+                                <img src="assets/img/login.png">
                                 <span class="card-title">
-	                                <h2 class="light-green-text center text-accent-4">Login</h2>
+	                                <h2 class="light-green-text text-accent-4">Login</h2>
 	                            </span>
-
+                            </div>
+                            <div class="card-content">
                                 <div class="input-field">
                                     <input class="validate" id="email" type="email" required>
                                     <label for="email">Email</label>
@@ -48,6 +50,7 @@
                             </div>
                             <div class="card-action">
                                 <div class="center-align">
+                                    <!-- POR COR INDIGO? -->
                                     <button class="btn waves-effect waves-light btn light-green accent-4"><i class="material-icons left">vpn_key</i>Login</button>
                                 </div>
                             </div>
