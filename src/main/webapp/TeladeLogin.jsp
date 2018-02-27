@@ -25,7 +25,7 @@
         <div class="container" style="margin-top: 3%">
             <div class="row">
                 <div class="col s6 m6 l6 offset-m3 offset-l3">
-                    <form class="login-form">
+                    <form class="login-form" action="/servlet">
                         <div class="card">
                             <div class="card-image">
                                 <img src="assets/img/login.png">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>f
         
 
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
