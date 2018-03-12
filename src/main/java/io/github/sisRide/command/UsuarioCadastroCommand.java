@@ -1,13 +1,15 @@
 package io.github.sisRide.command;
 
-import io.github.sisRide.dao.interfaces.UsuarioDaoInterface;
-import io.github.sisRide.factory.DaoFactory;
+import java.util.Base64;
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
 import io.github.sisRide.interfaces.Command;
 import io.github.sisRide.model.Usuario;
+import java.io.File;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +19,7 @@ public class UsuarioCadastroCommand implements Command {
 
     private GerenciadorUsuario gerusu;
     
-    public LoginCommand(){
+    public UsuarioCadastroCommand(){
         this.gerusu = new GerenciadorUsuario();
     }
 
@@ -29,21 +31,32 @@ public class UsuarioCadastroCommand implements Command {
         String email = request.getParameter("email");
 
         if(gerusu.getUsuarioByEmail(email) == null) {
-            String nome = requisicao.getParameter("nome");
-            String senha = requisicao.getParameter("password");
-            String sexo = requisicao.getParameter("group1");
-            String tipo = requisicao.getParameter("group2");
-            LocalDate dataNasc = LocalDate.parse(requisicao.getParameter("dataNasc"));
-            String fotoPerfil = 
+            String nome = request.getParameter("nome");
+            String senha = request.getParameter("password");
+            String sexo = request.getParameter("group1");
+            String tipo = request.getParameter("group2");
+            LocalDate dataNasc = LocalDate.parse(request.getParameter("dataNasc"));
+            String fotoPerfil = request.getParameter("foto");
+            
+            File file = new File(fotoPerfil);
+            byte[] readAllBytes = Files.readAllBytes(file.toPath());
+            usuario.setFotoPerfil(Base64.getEncoder().encodeToString(readAllBytes));
+            
+            usuario.setEmail(email);
+            usuario.setDataNasc(dataNasc);
+            usuario.setNome(nome);
+            usuario.setTipo(tipo);
+            usuario.setSexo(sexo);
+            usuario.setSenha(senha);
 
             if(gerusu.salvar(usuario)){
-                resposta.sendRedirect("TeladeLogin.jsp");
+                response.sendRedirect("TeladeLogin.jsp");
             }else{
-                resposta.sendRedirect("TeladeCadastroUsuario.jsp?error=1");
+                response.sendRedirect("TeladeCadastroUsuario.jsp?error=1");
             }
 
         }else{
-            resposta.sendRedirect("TeladeCadastroUsuario.jsp?error=2");
+            response.sendRedirect("TeladeCadastroUsuario.jsp?error=2");
         }
     }
 
