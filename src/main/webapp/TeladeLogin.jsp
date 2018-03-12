@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,7 +24,7 @@
         </div>
         <div class="container" style="margin-top: 3%">
             <div class="row">
-                <div class="col s6 m6 l6 offset-m3 offset-l3">
+                <div class="col s12 m6 l6 offset-m3 offset-l3">
                     <form class="login-form" action="front" method="post">
                         <div class="card">
                             <div class="card-image">
@@ -39,14 +39,14 @@
                                     <label for="email">Email</label>
                                 </div>
                                 <input type="hidden" name="action" value="Login"/>
-                                <div class="row">
-                                    <div class="col s12 m12 l12">
+                                <!--<div class="row">
+                                    <div class="col s12 m12 l12">-->
                                         <div class="input-field">
                                             <input id="password" type="password" required>
                                             <label for="password">Senha</label>
                                         </div>
-                                    </div>
-                                </div>
+                                    <!--</div>
+                                </div>-->
                             </div>
                             <div class="card-action">
                                 <div class="center-align">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-        </div>f
+        </div>
         
 
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
