@@ -21,7 +21,8 @@ public class LoginCommand implements Command {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
 
         //UsuarioDaoInterface usuarioDao = DaoFactory.criarFabricaPostgres().criaDaoUsuario();
 
