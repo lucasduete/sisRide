@@ -33,10 +33,11 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
             stmt.setString(3, usuario.getSenha());
             stmt.setFloat(4, usuario.getNota());
             stmt.setString(5, usuario.getFotoPerfil());
-            stmt.setDate(6, Date.valueOf(usuario.getDataNasc()));
-            stmt.setString(7, usuario.getProfissao());
-            stmt.setString(8, usuario.getCidade());
-            stmt.setString(9, usuario.getTipo());
+            stmt.setString(6, usuario.getSexo());
+            stmt.setDate(7, Date.valueOf(usuario.getDataNasc()));
+            stmt.setString(8, usuario.getProfissao());
+            stmt.setString(9, usuario.getCidade());
+            stmt.setString(10, usuario.getTipo());
 
             stmt.executeUpdate();
 

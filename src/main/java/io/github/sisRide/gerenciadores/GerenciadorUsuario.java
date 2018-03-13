@@ -6,8 +6,6 @@ import io.github.sisRide.dao.interfaces.UsuarioDaoInterface;
 import io.github.sisRide.model.Usuario;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GerenciadorUsuario {
     
@@ -20,7 +18,7 @@ public class GerenciadorUsuario {
             //usuDao = fabrica.criaDaoUsuario();
             usuarioDao = fabrica.criaDaoUsuario();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(GerenciadorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 
@@ -45,6 +43,13 @@ public class GerenciadorUsuario {
     }
     
     public Usuario getUsuarioByEmail(String email) {
+        UsuarioDaoInterface usuarioDao = null;
+        try {
+            usuarioDao = fabrica.criaDaoUsuario();
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+            return null;
+        }
         return usuarioDao.getUsuarioByEmail(email);
     }
 }
