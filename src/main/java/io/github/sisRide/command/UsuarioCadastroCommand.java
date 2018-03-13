@@ -1,28 +1,32 @@
 package io.github.sisRide.command;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
+import io.github.sisRide.infraSecurity.FileManagement;
 import io.github.sisRide.interfaces.Command;
 import io.github.sisRide.model.Usuario;
-import java.io.File;
 
-import java.io.IOException;
 import java.nio.file.Files;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 public class UsuarioCadastroCommand implements Command {
 
     private GerenciadorUsuario gerusu;
     
-    public UsuarioCadastroCommand(){
+    public UsuarioCadastroCommand() {
+
         this.gerusu = new GerenciadorUsuario();
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
 
         Usuario usuario = new Usuario();
 
@@ -37,11 +41,45 @@ public class UsuarioCadastroCommand implements Command {
             LocalDate dataNasc = LocalDate.parse(
                     request.getParameter("dataNasc"), formatter
             );
-            String fotoPerfil = request.getParameter("foto");
-            
-            File file = new File(fotoPerfil);
-            byte[] readAllBytes = Files.readAllBytes(file.toPath());
-            usuario.setFotoPerfil(Base64.getEncoder().encodeToString(readAllBytes));
+
+            final Part fotoPerfil = request.getPart("foto");
+
+            OutputStream out = null;
+            InputStream filecontent = null;
+            final PrintWriter writer = response.getWriter();
+
+            try {
+                out = new FileOutputStream(new File("./" + File.separator
+                        + fotoPerfil.hashCode()));
+                filecontent = fotoPerfil.getInputStream();
+
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+
+                while ((read = filecontent.read(bytes)) != -1) {
+                    out.write(bytes, 0, read);
+                }
+
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+                if (filecontent != null) {
+                    filecontent.close();
+                }
+                if (writer != null) {
+                    writer.close();
+                }
+            }
+
+            File foto = new File("./" + File.separator
+                    + fotoPerfil.hashCode());
+
+            String fotoBase64 = FileManagement.encodeFile(foto);
+            usuario.setFotoPerfil(fotoBase64);
             
             usuario.setEmail(email);
             usuario.setDataNasc(dataNasc);
@@ -50,13 +88,13 @@ public class UsuarioCadastroCommand implements Command {
             usuario.setSexo(sexo);
             usuario.setSenha(senha);
 
-            if(gerusu.salvar(usuario)){
+            if(gerusu.salvar(usuario)) {
                 response.sendRedirect("TeladeLogin.jsp");
-            }else{
+            } else {
                 response.sendRedirect("TeladeCadastroUsuario.jsp?error=1");
             }
 
-        }else{
+        } else {
             response.sendRedirect("TeladeCadastroUsuario.jsp?error=2");
         }
     }
