@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8">
 		<!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
@@ -44,8 +46,8 @@
                                     <label for="nome">Nome</label>
                                 </div>
                                 <div class="input-field">
-                                    <input name="dataNasc" type="text" class="datepicker">
-                                    <label for="Data">Data de Nascimento</label>
+                                    <input id="dataNasc" name="dataNasc" type="text" class="datepicker">
+                                    <label for="dataNasc">Data de Nascimento</label>
                                 </div>
                                 <div class="row">
                                     <div class="col m3 l3 offset-m2 offset-l2">
