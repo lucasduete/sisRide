@@ -25,7 +25,7 @@ public class FrontController extends HttpServlet {
             Command command = (Command) Class.forName("io.github.sisRide.command." + action + "Command").newInstance();
             command.execute(request, response);
 
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException | ServletException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException ex) {
             ex.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
