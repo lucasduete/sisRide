@@ -1,5 +1,7 @@
 package io.github.sisRide.command;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
 import io.github.sisRide.interfaces.Command;
@@ -9,11 +11,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 public class UsuarioCadastroCommand implements Command {
 
@@ -24,7 +25,8 @@ public class UsuarioCadastroCommand implements Command {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ClassNotFoundException, IOException, ServletException {
 
         Usuario usuario = new Usuario();
 
@@ -35,7 +37,10 @@ public class UsuarioCadastroCommand implements Command {
             String senha = request.getParameter("password");
             String sexo = request.getParameter("group1");
             String tipo = request.getParameter("group2");
-            LocalDate dataNasc = LocalDate.parse(request.getParameter("dataNasc"));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate dataNasc = LocalDate.parse(
+                    request.getParameter("dataNasc"), formatter
+            );
             String fotoPerfil = request.getParameter("foto");
             
             File file = new File(fotoPerfil);
