@@ -27,7 +27,7 @@
         <div class="container" style="margin-top: 3%">
             <div class="row">
                 <div class="col s12 m6 l6 offset-m3 offset-l3">
-                    <form class="login-form" action="front" method="post">
+                    <form class="login-form" action="front" method="post" enctype="multipart/form-data">
                         <div class="card">
                             <div class="card-image">
                                <img src="assets/img/cadastro.png">    
@@ -72,7 +72,7 @@
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span>Foto</span>
-                                        <input type="file">
+                                        <input id="foto" name="foto" type="file">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
