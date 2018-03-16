@@ -35,8 +35,8 @@ public class UsuarioCadastroCommand implements Command {
         if(gerusu.getUsuarioByEmail(email) == null) {
             String nome = request.getParameter("nome");
             String senha = request.getParameter("password");
-            String sexo = request.getParameter("group1");
-            String tipo = request.getParameter("group2");
+            String sexo = request.getParameter("sexo");
+            String tipo = request.getParameter("tipo");
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate dataNasc = LocalDate.parse(
                     request.getParameter("dataNasc"), formatter
