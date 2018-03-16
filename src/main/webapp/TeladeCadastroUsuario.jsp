@@ -34,15 +34,15 @@
                             </div>
                             <div class="card-content">
                                 <div class="input-field">
-                                    <input class="validate" id="email" type="email" required>
+                                    <input class="validate" id="email" name="email" type="email" required>
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="password" type="password" required>
+                                    <input id="password" name="password" type="password" required>
                                     <label for="password">Senha</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="nome" type="text" required>
+                                    <input id="nome" name="nome" type="text" required>
                                     <label for="nome">Nome</label>
                                 </div>
                                 <div class="input-field">
@@ -51,21 +51,21 @@
                                 </div>
                                 <div class="row">
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="group1" type="radio" id="masculino" />
+                                        <input name="sexo" type="radio" id="masculino" />
                                         <label for="masculino">Masculino</label>
                                     </div>
                                     <div class="col m1 l1 offset-m1 offset-l1">
-                                        <input name="group1" type="radio" id="feminino" />
+                                        <input name="sexo" type="radio" id="feminino" />
                                         <label for="feminino">Feminino</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="group2" type="radio" id="motorista" />
+                                        <input name="tipo" type="radio" id="motorista" />
                                         <label for="motorista">Motorista</label>
                                     </div>
                                     <div class="col m1 l1 offset-m1 offset-l1">
-                                        <input name="group2" type="radio" id="passageiro" />
+                                        <input name="tipo" type="radio" id="passageiro" />
                                         <label for="passageiro">Passageiro</label>
                                     </div>
                                 </div>
