@@ -29,7 +29,6 @@ public class UsuarioCadastroCommand implements Command {
             throws IOException, ServletException {
 
         Usuario usuario = new Usuario();
-
         String email = request.getParameter("email");
 
         if(gerusu.getUsuarioByEmail(email) == null) {

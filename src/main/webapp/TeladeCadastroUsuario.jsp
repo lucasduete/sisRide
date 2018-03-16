@@ -51,21 +51,21 @@
                                 </div>
                                 <div class="row">
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="sexo" type="radio" id="masculino" />
+                                        <input name="sexo" type="radio" id="masculino" value="masculino" />
                                         <label for="masculino">Masculino</label>
                                     </div>
                                     <div class="col m1 l1 offset-m1 offset-l1">
-                                        <input name="sexo" type="radio" id="feminino" />
+                                        <input name="sexo" type="radio" id="feminino" value="feminino" />
                                         <label for="feminino">Feminino</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="tipo" type="radio" id="motorista" />
+                                        <input name="tipo" type="radio" id="motorista" value="motorista" />
                                         <label for="motorista">Motorista</label>
                                     </div>
                                     <div class="col m1 l1 offset-m1 offset-l1">
-                                        <input name="tipo" type="radio" id="passageiro" />
+                                        <input name="tipo" type="radio" id="passageiro" value="passageiro" />
                                         <label for="passageiro">Passageiro</label>
                                     </div>
                                 </div>
