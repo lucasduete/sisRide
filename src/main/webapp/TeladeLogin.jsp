@@ -59,7 +59,7 @@
 
                     <div class="row">
                         <div class="row center-align">
-                            E novo?<a href="teladeCadastroUsuario.jsp"> Crie uma conta.</a>
+                            E novo?<a href="TeladeCadastroUsuario.jsp"> Crie uma conta.</a>
                         </div>
                     </div>
                 </div>
