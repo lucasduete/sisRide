@@ -1,3 +1,4 @@
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -113,10 +114,10 @@
         <script type="text/javascript">
             var erro = "${param.error}";
             if(erro == "1"){
-                swal("Oops...", "Não foi possivel cadastra", "error");
+                swal("Oops...", "Não foi possivel cadastrar", "error");
             }
             if(erro == "2"){
-                swal("Oops...", "Não foi possivel cadastra, Já existe um usuario com esse email", "error");
+                swal("Oops...", "Não foi possivel cadastrar, Já existe um usuario com esse email", "error");
             }
         </script>
     </body>
