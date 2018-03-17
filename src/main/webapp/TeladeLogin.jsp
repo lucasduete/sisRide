@@ -35,14 +35,14 @@
                             </div>
                             <div class="card-content">
                                 <div class="input-field">
-                                    <input class="validate" id="email" type="email" required>
+                                    <input class="validate" id="email" name="email" type="email" required>
                                     <label for="email">Email</label>
                                 </div>
                                 <input type="hidden" name="action" value="Login"/>
                                 <!--<div class="row">
                                     <div class="col s12 m12 l12">-->
                                         <div class="input-field">
-                                            <input id="password" type="password" required>
+                                            <input id="password" name="senha" type="password" required>
                                             <label for="password">Senha</label>
                                         </div>
                                     <!--</div>
