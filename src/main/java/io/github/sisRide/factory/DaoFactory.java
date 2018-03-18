@@ -7,6 +7,10 @@ public class DaoFactory {
     public static DaoFactoryInterface criarFabricaPostgres() {
         return new DaoFactoryPostgres();
     }
-    
+
+    public static DaoFactoryInterface criarFabricaNeo4j() {
+        return new DaoFactoryNeo4j();
+    }
+
 }
 
