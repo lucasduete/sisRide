@@ -13,7 +13,7 @@ public class Conexao {
     private static final String usuario = "postgres";
     private static final String senha = "postgres";
 
-    private static final File BANCONEO4J = new File("sisRide.db");
+    protected static final File BANCONEO4J = new File("sisRide.db");
     
     public static Connection getConnection() throws SQLException, ClassNotFoundException{
         Class.forName("org.postgresql.Driver");
