@@ -22,18 +22,19 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
 
     @Override
     public boolean salvar(Usuario usuario) {
+        String sql = String.format("CREATE (u:%s{Email: $Email, Nome: $Nome, " +
+                "Senha: $Senha, Nota: $Nota, FotoPerfil: $FotoPerfil, Sexo: $Sexo, " +
+                "DataNasc: $DataNasc, Profissao: $Profissao, Cidade: $Cidade, " +
+                "Tipo: $Tipo}) RETURN u.Email", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
+             StatementResult stmt = session.run(sql, Values.parameters("Email", usuario.getEmail(),
+                     "Nome", usuario.getNome(), "Senha", usuario.getSenha(), "Nota", usuario.getNota(),
+                     "FotoPerfil", usuario.getFotoPerfil(), "Sexo", usuario.getSexo(), "DataNasc",
+                     usuario.getDataNasc().toString(), "Profissao", usuario.getProfissao(),
+                     "Cidade", usuario.getCidade(), "Tipo", usuario.getTipo()));
 
-             StatementResult stmt = session.run("CREATE (u:$Usuario{Email: $Email, Nome: $Nome, " +
-                    "Senha: $Senha, Nota: $Nota, FotoPerfil: $FotoPerfil, Sexo: $Sexo, " +
-                    "DataNasc: $DataNasc, Profissao: $Profissao, Cidade: $Cidade, " +
-                    "Tipo: $Tipo} RETURN u.Email)", Values.parameters(Nodes.USUARIO,
-                    usuario.getEmail(), usuario.getNome(), usuario.getSenha(), usuario.getNota(),
-                    usuario.getFotoPerfil(), usuario.getSexo(), usuario.getDataNasc(),
-                    usuario.getProfissao(), usuario.getCidade(), usuario.getTipo()));
-
-            if (stmt.hasNext())
+            if (!stmt.hasNext())
                 return false;
 
         } finally {
@@ -46,11 +47,11 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public List<Usuario> listar() {
         List<Usuario> usuarios = new ArrayList<>();
+        String sql = String.format("MATCH (entity:%s) RETURN entity", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
 
-            StatementResult stmt = session.run("MATCH (entity:$Entity) RETURN entity",
-                    Values.parameters(Nodes.USUARIO));
+            StatementResult stmt = session.run(sql);
 
             while (stmt.hasNext()) {
                 Record record = stmt.next();
@@ -62,7 +63,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
                 user.setNota(record.get("Nota").asFloat());
                 user.setFotoPerfil(record.get("FotoPerfil").asString());
                 user.setSexo(record.get("Sexo").asString());
-                user.setDataNasc((LocalDate) record.get("DataNasc").asObject());
+                user.setDataNasc(LocalDate.parse(record.get("DataNasc").asString()));
                 user.setProfissao(record.get("Profissao").asString());
                 user.setCidade(record.get("Cidade").asString());
                 user.setTipo(record.get("Tipo").asString());
@@ -79,16 +80,18 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
 
     @Override
     public boolean atualizar(Usuario usuario) {
+        String sql = String.format("MATCH (u:%s{Email: $Email}) u.Nome = $Nome, " +
+                "u.Senha = $Senha, u.Nota = $Nota, u.FotoPerfil = $FotoPerfil, u.Sexo = $Sexo, " +
+                "u.DataNasc = $DataNasc, u.Profissao = $Profissao, u.Cidade = $Cidade, " +
+                "u.Tipo = $Tipo RETURN u.Email)", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
 
-            StatementResult stmt = session.run("MATCH (u:$Usuario{Email: $Email}) u.Nome = $Nome, " +
-                    "u.Senha = $Senha, u.Nota = $Nota, u.FotoPerfil = $FotoPerfil, u.Sexo = $Sexo, " +
-                    "u.DataNasc = $DataNasc, u.Profissao = $Profissao, u.Cidade = $Cidade, " +
-                    "u.Tipo = $Tipo RETURN u.Email)", Values.parameters(Nodes.USUARIO,
-                    usuario.getEmail(), usuario.getNome(), usuario.getSenha(), usuario.getNota(),
-                    usuario.getFotoPerfil(), usuario.getSexo(), usuario.getDataNasc(),
-                    usuario.getProfissao(), usuario.getCidade(), usuario.getTipo()));
+            StatementResult stmt = session.run(sql, Values.parameters("Email", usuario.getEmail(),
+                    "Nome", usuario.getNome(), "Senha", usuario.getSenha(), "Nota", usuario.getNota(),
+                    "FotoPerfil", usuario.getFotoPerfil(), "Sexo", usuario.getSexo(), "DataNasc",
+                    usuario.getDataNasc().toString(), "Profissao", usuario.getProfissao(),
+                    "Cidade", usuario.getCidade(), "Tipo", usuario.getTipo()));
 
             if (stmt.hasNext())
                 return false;
@@ -102,10 +105,11 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
 
     @Override
     public boolean deletar(Usuario usuario) {
+        String sql = String.format("MATCH (entity:%s{Email: $Value}) DELETE entity", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
-            StatementResult stmt = session.run("MATCH (entity:$Entity{Email: $Value}) DELETE entity",
-                    Values.parameters(Nodes.USUARIO, usuario.getEmail()));
+            StatementResult stmt = session.run(sql,
+                    Values.parameters("Value", usuario.getEmail()));
         } finally {
             conn.close();
         }
@@ -115,11 +119,11 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
 
     @Override
     public boolean login(String email, String senha) {
+        String sql = String.format("MATCH (entity:%s{Email: $Value}) " +
+                "RETURN entity.Email, entity.Senha", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
-            StatementResult stmt = session.run("MATCH (entity:$Entity{Email: $Value}) " +
-                    "RETURN entity.Email, entity.Senha", Values.parameters(Nodes.USUARIO,
-                    email));
+            StatementResult stmt = session.run(sql, Values.parameters("Email", email));
 
             if (!stmt.hasNext())
                 throw new CredenciaisInvalidasException("Email Nao Encontrado.");
@@ -143,10 +147,12 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public Usuario getUsuarioByEmail(String email) {
         Usuario user = null;
+        String sql = String.format("MATCH (entity:%s{Email: $Value}) " +
+                "RETURN entity", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
-            StatementResult stmt = session.run("MATCH (entity:$Entity{Email: $Value}) " +
-                            "RETURN entity", Values.parameters(Nodes.USUARIO, email));
+            StatementResult stmt = session.run(sql,
+                    Values.parameters("Value", email));
 
             if (stmt.hasNext()) {
                 Record record = stmt.next();
@@ -158,7 +164,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
                 user.setNota(record.get("Nota").asFloat());
                 user.setFotoPerfil(record.get("FotoPerfil").asString());
                 user.setSexo(record.get("Sexo").asString());
-                user.setDataNasc((LocalDate) record.get("DataNasc").asObject());
+                user.setDataNasc(LocalDate.parse(record.get("DataNasc").asString()));
                 user.setProfissao(record.get("Profissao").asString());
                 user.setCidade(record.get("Cidade").asString());
                 user.setTipo(record.get("Tipo").asString());
