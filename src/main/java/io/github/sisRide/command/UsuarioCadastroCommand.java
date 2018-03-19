@@ -45,7 +45,6 @@ public class UsuarioCadastroCommand implements Command {
 
             OutputStream out = null;
             InputStream filecontent = null;
-            final PrintWriter writer = response.getWriter();
 
             try {
                 out = new FileOutputStream(new File("./" + File.separator
@@ -69,9 +68,6 @@ public class UsuarioCadastroCommand implements Command {
                 if (filecontent != null) {
                     filecontent.close();
                 }
-                if (writer != null) {
-                    writer.close();
-                }
             }
 
             File foto = new File("./" + File.separator
@@ -79,7 +75,7 @@ public class UsuarioCadastroCommand implements Command {
 
             String fotoBase64 = FileManagement.encodeFile(foto);
             usuario.setFotoPerfil(fotoBase64);
-            
+
             usuario.setEmail(email);
             usuario.setDataNasc(dataNasc);
             usuario.setNome(nome);
