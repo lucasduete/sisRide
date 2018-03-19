@@ -13,7 +13,7 @@ public class GerenciadorUsuario {
     private UsuarioDaoInterface usuarioDao = null;
 
     public GerenciadorUsuario() {
-        fabrica = DaoFactory.criarFabricaPostgres();
+        fabrica = DaoFactory.criarFabricaNeo4j();
         try {
             //usuDao = fabrica.criaDaoUsuario();
             usuarioDao = fabrica.criaDaoUsuario();
