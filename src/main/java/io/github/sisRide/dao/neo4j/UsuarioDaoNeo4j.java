@@ -5,18 +5,16 @@ import io.github.sisRide.enums.Nodes;
 import io.github.sisRide.exceptions.CredenciaisInvalidasException;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Usuario;
-import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.ResourceIterator;
-import org.neo4j.graphdb.Transaction;
+import org.neo4j.driver.v1.*;
 
+import javax.ejb.Local;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
 
-    private final GraphDatabaseService conn;
+    private final Driver conn;
 
     public UsuarioDaoNeo4j() {
         conn = Conexao.getConnectionNeo4j();
@@ -25,24 +23,21 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public boolean salvar(Usuario usuario) {
 
-        try(Transaction tx = conn.beginTx()) {
+        try(Session session = conn.session()) {
 
-            Node node = conn.createNode(Nodes.USUARIO);
+             StatementResult stmt = session.run("CREATE (u:$Usuario{Email: $Email, Nome: $Nome, " +
+                    "Senha: $Senha, Nota: $Nota, FotoPerfil: $FotoPerfil, Sexo: $Sexo, " +
+                    "DataNasc: $DataNasc, Profissao: $Profissao, Cidade: $Cidade, " +
+                    "Tipo: $Tipo} RETURN u.Email)", Values.parameters(Nodes.USUARIO,
+                    usuario.getEmail(), usuario.getNome(), usuario.getSenha(), usuario.getNota(),
+                    usuario.getFotoPerfil(), usuario.getSexo(), usuario.getDataNasc(),
+                    usuario.getProfissao(), usuario.getCidade(), usuario.getTipo()));
 
-            node.setProperty("Email", usuario.getEmail());
-            node.setProperty("Nome", usuario.getNome());
-            node.setProperty("Senha", usuario.getSenha());
-            node.setProperty("Nota", usuario.getNota());
-            node.setProperty("FotoPerfil", usuario.getFotoPerfil());
-            node.setProperty("Sexo", usuario.getSexo());
-            node.setProperty("dataNasc", usuario.getDataNasc());
-            node.setProperty("Profissao", usuario.getProfissao());
-            node.setProperty("Cidade", usuario.getCidade());
-            node.setProperty("Tipo", usuario.getTipo());
+            if (stmt.hasNext())
+                return false;
 
-            tx.success();
         } finally {
-            conn.shutdown();
+            conn.close();
         }
 
         return true;
@@ -52,31 +47,31 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     public List<Usuario> listar() {
         List<Usuario> usuarios = new ArrayList<>();
 
-        try(Transaction tx = conn.beginTx()) {
+        try(Session session = conn.session()) {
 
-            ResourceIterator<Node> iterator = conn.findNodes(Nodes.USUARIO);
+            StatementResult stmt = session.run("MATCH (entity:$Entity) RETURN entity",
+                    Values.parameters(Nodes.USUARIO));
 
-            while (iterator.hasNext()) {
-                Node node = iterator.next();
+            while (stmt.hasNext()) {
+                Record record = stmt.next();
 
                 Usuario user = new Usuario();
-                user.setEmail((String) node.getProperty("Email"));
-                user.setNome((String) node.getProperty("Nome"));
-                user.setSenha((String) node.getProperty("Senha"));
-                user.setNota((int) node.getProperty("Nota"));
-                user.setFotoPerfil((String) node.getProperty("FotoPerfil"));
-                user.setSexo((String) node.getProperty("Sexo"));
-                user.setDataNasc((LocalDate) node.getProperty("DataNasc"));
-                user.setProfissao((String) node.getProperty("Profissao"));
-                user.setCidade((String) node.getProperty("Cidade"));
-                user.setTipo((String) node.getProperty("Tipo"));
+                user.setEmail(record.get("Email").asString());
+                user.setNome(record.get("Nome").asString());
+                user.setSenha(record.get("Senha").asString());
+                user.setNota(record.get("Nota").asFloat());
+                user.setFotoPerfil(record.get("FotoPerfil").asString());
+                user.setSexo(record.get("Sexo").asString());
+                user.setDataNasc((LocalDate) record.get("DataNasc").asObject());
+                user.setProfissao(record.get("Profissao").asString());
+                user.setCidade(record.get("Cidade").asString());
+                user.setTipo(record.get("Tipo").asString());
 
                 usuarios.add(user);
             }
 
-            tx.success();
         } finally {
-            conn.shutdown();
+            conn.close();
         }
 
         return usuarios;
@@ -85,23 +80,21 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public boolean atualizar(Usuario usuario) {
 
-        try(Transaction tx = conn.beginTx()) {
+        try(Session session = conn.session()) {
 
-            Node node = conn.findNode(Nodes.USUARIO, "Email", usuario.getEmail());
+            StatementResult stmt = session.run("MATCH (u:$Usuario{Email: $Email}) u.Nome = $Nome, " +
+                    "u.Senha = $Senha, u.Nota = $Nota, u.FotoPerfil = $FotoPerfil, u.Sexo = $Sexo, " +
+                    "u.DataNasc = $DataNasc, u.Profissao = $Profissao, u.Cidade = $Cidade, " +
+                    "u.Tipo = $Tipo RETURN u.Email)", Values.parameters(Nodes.USUARIO,
+                    usuario.getEmail(), usuario.getNome(), usuario.getSenha(), usuario.getNota(),
+                    usuario.getFotoPerfil(), usuario.getSexo(), usuario.getDataNasc(),
+                    usuario.getProfissao(), usuario.getCidade(), usuario.getTipo()));
 
-            node.setProperty("Nome", usuario.getNome());
-            node.setProperty("Senha", usuario.getSenha());
-            node.setProperty("Nota", usuario.getNota());
-            node.setProperty("FotoPerfil", usuario.getFotoPerfil());
-            node.setProperty("Sexo", usuario.getSexo());
-            node.setProperty("dataNasc", usuario.getDataNasc());
-            node.setProperty("Profissao", usuario.getProfissao());
-            node.setProperty("Cidade", usuario.getCidade());
-            node.setProperty("Tipo", usuario.getTipo());
+            if (stmt.hasNext())
+                return false;
 
-            tx.success();
         } finally {
-            conn.shutdown();
+            conn.close();
         }
 
         return true;
@@ -110,14 +103,11 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public boolean deletar(Usuario usuario) {
 
-        try(Transaction tx = conn.beginTx()) {
-
-            Node node = conn.findNode(Nodes.USUARIO, "Email", usuario.getEmail());
-            node.delete();
-
-            tx.success();
+        try(Session session = conn.session()) {
+            StatementResult stmt = session.run("MATCH (entity:$Entity{Email: $Value}) DELETE entity",
+                    Values.parameters(Nodes.USUARIO, usuario.getEmail()));
         } finally {
-            conn.shutdown();
+            conn.close();
         }
 
         return true;
@@ -126,24 +116,25 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public boolean login(String email, String senha) {
 
-        String sql = "SELECT Senha FROM Usuario WHERE Email ILIKE ?";
+        try(Session session = conn.session()) {
+            StatementResult stmt = session.run("MATCH (entity:$Entity{Email: $Value}) " +
+                    "RETURN entity.Email, entity.Senha", Values.parameters(Nodes.USUARIO,
+                    email));
 
-        try(Transaction tx = conn.beginTx()) {
-            Node node = conn.findNode(Nodes.USUARIO, "Email", email);
-
-            tx.success();
-
-            if (node == null)
+            if (!stmt.hasNext())
                 throw new CredenciaisInvalidasException("Email Nao Encontrado.");
 
-            if (!(senha.equals(node.getProperty("Senha"))))
+            Record record = stmt.next();
+
+            if (!(senha.equals(record.get("Senha").asString())))
                 throw new CredenciaisInvalidasException("Senha Incorreta.");
 
         } catch (CredenciaisInvalidasException ex) {
             ex.printStackTrace();
             return false;
+
         } finally {
-            conn.shutdown();
+            conn.close();
         }
 
         return true;
@@ -153,28 +144,28 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     public Usuario getUsuarioByEmail(String email) {
         Usuario user = null;
 
-        try(Transaction tx = conn.beginTx()) {
+        try(Session session = conn.session()) {
+            StatementResult stmt = session.run("MATCH (entity:$Entity{Email: $Value}) " +
+                            "RETURN entity", Values.parameters(Nodes.USUARIO, email));
 
-            Node node = conn.findNode(Nodes.USUARIO, "Email", email);
+            if (stmt.hasNext()) {
+                Record record = stmt.next();
 
-            if (node != null) {
                 user = new Usuario();
-
-                user.setEmail((String) node.getProperty("Email"));
-                user.setNome((String) node.getProperty("Nome"));
-                user.setSenha((String) node.getProperty("Senha"));
-                user.setNota((int) node.getProperty("Nota"));
-                user.setFotoPerfil((String) node.getProperty("FotoPerfil"));
-                user.setSexo((String) node.getProperty("Sexo"));
-                user.setDataNasc((LocalDate) node.getProperty("DataNasc"));
-                user.setProfissao((String) node.getProperty("Profissao"));
-                user.setCidade((String) node.getProperty("Cidade"));
-                user.setTipo((String) node.getProperty("Tipo"));
+                user.setEmail(record.get("Email").asString());
+                user.setNome(record.get("Nome").asString());
+                user.setSenha(record.get("Senha").asString());
+                user.setNota(record.get("Nota").asFloat());
+                user.setFotoPerfil(record.get("FotoPerfil").asString());
+                user.setSexo(record.get("Sexo").asString());
+                user.setDataNasc((LocalDate) record.get("DataNasc").asObject());
+                user.setProfissao(record.get("Profissao").asString());
+                user.setCidade(record.get("Cidade").asString());
+                user.setTipo(record.get("Tipo").asString());
             }
 
-            tx.success();
         } finally {
-            conn.shutdown();
+            conn.close();
         }
 
         return user;
