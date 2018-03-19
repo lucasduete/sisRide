@@ -60,7 +60,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
                 user.setEmail(record.get("Email").asString());
                 user.setNome(record.get("Nome").asString());
                 user.setSenha(record.get("Senha").asString());
-                user.setNota(record.get("Nota").asFloat());
+                //user.setNota(record.get("Nota").asFloat());
                 user.setFotoPerfil(record.get("FotoPerfil").asString());
                 user.setSexo(record.get("Sexo").asString());
                 user.setDataNasc(LocalDate.parse(record.get("DataNasc").asString()));
@@ -120,7 +120,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public boolean login(String email, String senha) {
         String sql = String.format("MATCH (entity:%s{Email: $Value}) " +
-                "RETURN entity.Email, entity.Senha", Nodes.USUARIO);
+                "RETURN entity.Email AS Email, entity.Senha AS Senha", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
             StatementResult stmt = session.run(sql, Values.parameters("Value", email));
@@ -161,10 +161,10 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
                 user.setEmail(record.get("Email").asString());
                 user.setNome(record.get("Nome").asString());
                 user.setSenha(record.get("Senha").asString());
-                user.setNota(record.get("Nota").asFloat());
+                //user.setNota(record.get("Nota").asFloat());
                 user.setFotoPerfil(record.get("FotoPerfil").asString());
                 user.setSexo(record.get("Sexo").asString());
-                user.setDataNasc(LocalDate.parse(record.get("DataNasc").asString()));
+                //user.setDataNasc(LocalDate.parse(record.get("DataNasc").asString()));
                 user.setProfissao(record.get("Profissao").asString());
                 user.setCidade(record.get("Cidade").asString());
                 user.setTipo(record.get("Tipo").asString());
