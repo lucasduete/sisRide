@@ -123,7 +123,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
                 "RETURN entity.Email, entity.Senha", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
-            StatementResult stmt = session.run(sql, Values.parameters("Email", email));
+            StatementResult stmt = session.run(sql, Values.parameters("Value", email));
 
             if (!stmt.hasNext())
                 throw new CredenciaisInvalidasException("Email Nao Encontrado.");
