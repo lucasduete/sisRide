@@ -3,13 +3,11 @@ package io.github.sisRide.command;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
 import io.github.sisRide.infraSecurity.FileManagement;
 import io.github.sisRide.interfaces.Command;
 import io.github.sisRide.model.Usuario;
 
-import java.nio.file.Files;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
