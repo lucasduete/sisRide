@@ -1,7 +1,8 @@
 package io.github.sisRide.factory;
 
-import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.graphdb.factory.GraphDatabaseFactory;
+import org.neo4j.driver.v1.AuthTokens;
+import org.neo4j.driver.v1.Driver;
+import org.neo4j.driver.v1.GraphDatabase;
 
 import java.io.File;
 import java.sql.Connection;
@@ -20,9 +21,11 @@ public class Conexao {
         return DriverManager.getConnection(url, usuario, senha);
     }
 
-    public static GraphDatabaseService getConnectionNeo4j() {
-        GraphDatabaseService graphDB = new GraphDatabaseFactory().newEmbeddedDatabase(BANCONEO4J);
-        return graphDB;
+    public static Driver getConnectionNeo4j() {
+        Driver driver = GraphDatabase.driver("bolt://localhost:7687",
+                AuthTokens.basic("neo4j", "neo4jSenha"));
+
+        return driver;
     }
 
 }

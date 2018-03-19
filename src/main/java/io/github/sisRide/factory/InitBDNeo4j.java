@@ -1,33 +1,27 @@
 package io.github.sisRide.factory;
 
 import io.github.sisRide.enums.Nodes;
-import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.graphdb.Label;
-import org.neo4j.graphdb.Transaction;
-
-import java.io.File;
+import org.neo4j.driver.v1.*;
 
 public class InitBDNeo4j {
 
     public static void start() {
-        File banco = Conexao.BANCONEO4J;
-
-        if (!banco.exists())
-            initalization();
+        initalization();
     }
 
     private static void initalization() {
-        GraphDatabaseService conn = Conexao.getConnectionNeo4j();
+        Driver conn = Conexao.getConnectionNeo4j();
 
-        try(Transaction tx = conn.beginTx()) {
+        try(Session session = conn.session()) {
 
             //Inicializa Propriedades do BD
-            conn.schema().indexFor(Nodes.USUARIO).on("Email").create();
-            conn.schema().constraintFor(Nodes.USUARIO).assertPropertyIsUnique("email").create();
 
-            tx.success();
+            session.run("CREATE INDEX ON :$Entidade($Field)", Values.parameters(Nodes.USUARIO, "Email"));
+            session.run("CREATE CONSTRAINT ON (entity:$Entidade) ASSERT entity.$Field IS UNIQUE"
+                    , Values.parameters(Nodes.USUARIO, "Email"));
+
         } finally {
-            conn.shutdown();
+            conn.close();
         }
     }
 }

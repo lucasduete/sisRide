@@ -36,9 +36,9 @@
             <version>0.3m</version>
         </dependency>
         <dependency>
-            <groupId>org.neo4j</groupId>
-            <artifactId>neo4j</artifactId>
-            <version>3.3.3</version>
+            <groupId>org.neo4j.driver</groupId>
+            <artifactId>neo4j-java-driver</artifactId>
+            <version>LATEST</version>
         </dependency>
     </dependencies>
 
