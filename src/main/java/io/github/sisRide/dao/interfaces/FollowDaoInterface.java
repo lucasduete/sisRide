@@ -13,7 +13,7 @@ import java.util.List;
 public interface FollowDaoInterface {
     
     public boolean salvar(Follow follow);
-    public List<Follow> listar();
+    public List<Usuario> listar();
     public boolean deletar(Follow follow);
     public List<Usuario> getFollowersByUsuario(String emailUsuario);
 }

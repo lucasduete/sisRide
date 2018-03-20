@@ -45,7 +45,7 @@ public class FollowDaoPostgres implements FollowDaoInterface{
     }
 
     @Override
-    public List<Follow> listar() {
+    public List<Usuario> listar() {
         String sql = "SELECT * FROM Follow;";
         List<Follow> follows = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class FollowDaoPostgres implements FollowDaoInterface{
             ex.printStackTrace();
         }
 
-        return follows;
+        return null;
     }
 
     /* CONCIDERADO DESNECESSARIO
