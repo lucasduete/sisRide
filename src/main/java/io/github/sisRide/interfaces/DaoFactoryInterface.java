@@ -1,18 +1,8 @@
 package io.github.sisRide.interfaces;
 
-import io.github.sisRide.dao.interfaces.CarroDaoInterface;
-import io.github.sisRide.dao.interfaces.FollowDaoInterface;
-import io.github.sisRide.dao.interfaces.FriendshipDaoInterface;
-import io.github.sisRide.dao.interfaces.LugarDaoInterface;
-import io.github.sisRide.dao.interfaces.MessageDaoInterface;
-import io.github.sisRide.dao.interfaces.PublicationDaoInterface;
-import io.github.sisRide.dao.interfaces.RequestFollowDaoInterface;
-import io.github.sisRide.dao.interfaces.RequestFriendshipDaoInterface;
-import io.github.sisRide.dao.interfaces.ReservaVagaDaoInterface;
-import io.github.sisRide.dao.interfaces.SolicitacaoVagaDaoInterface;
+import io.github.sisRide.dao.interfaces.*;
+
 import java.sql.SQLException;
-import io.github.sisRide.dao.interfaces.UsuarioDaoInterface;
-import io.github.sisRide.dao.interfaces.ViagemDaoInterface;
 
 public interface DaoFactoryInterface {
 
@@ -39,5 +29,7 @@ public interface DaoFactoryInterface {
     public SolicitacaoVagaDaoInterface criaDaoSolicitacaoVaga() throws SQLException, ClassNotFoundException;
     
     public ViagemDaoInterface criaDaoViagem() throws SQLException, ClassNotFoundException;
+
+    public RatingDaoInterface criarDaoRating() throws SQLException, ClassNotFoundException;
     
 }

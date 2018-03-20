@@ -1,7 +1,7 @@
 package io.github.sisRide.factory;
 
 import io.github.sisRide.dao.interfaces.*;
-import io.github.sisRide.dao.neo4j.UsuarioDaoNeo4j;
+import io.github.sisRide.dao.neo4j.*;
 import io.github.sisRide.interfaces.DaoFactoryInterface;
 
 import java.sql.SQLException;
@@ -21,12 +21,12 @@ public class DaoFactoryNeo4j implements DaoFactoryInterface {
 
     @Override
     public FollowDaoInterface criaDaoFollow() throws SQLException, ClassNotFoundException {
-        return null;
+        return new FollowDaoNeo4j();
     }
 
     @Override
     public FriendshipDaoInterface criaDaoFriendship() throws SQLException, ClassNotFoundException {
-        return null;
+        return new FriendshipDaoNeo4j();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class DaoFactoryNeo4j implements DaoFactoryInterface {
 
     @Override
     public PublicationDaoInterface criaDaoPublication() throws SQLException, ClassNotFoundException {
-        return null;
+        return new PublicationDaoNeo4j();
     }
 
     @Override
@@ -67,5 +67,10 @@ public class DaoFactoryNeo4j implements DaoFactoryInterface {
     @Override
     public ViagemDaoInterface criaDaoViagem() throws SQLException, ClassNotFoundException {
         return null;
+    }
+
+    @Override
+    public RatingDaoInterface criarDaoRating() throws SQLException, ClassNotFoundException {
+        return new RatingDaoNeo4j();
     }
 }
