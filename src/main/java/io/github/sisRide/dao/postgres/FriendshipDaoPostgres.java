@@ -3,6 +3,7 @@ package io.github.sisRide.dao.postgres;
 import io.github.sisRide.dao.interfaces.FriendshipDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Friendship;
+import io.github.sisRide.model.Usuario;
 
 import javax.naming.ldap.PagedResultsControl;
 import java.sql.Connection;
@@ -45,7 +46,7 @@ public class FriendshipDaoPostgres implements FriendshipDaoInterface{
     }
 
     @Override
-    public List<Friendship> listar() {
+    public List<Usuario> listar() {
         String sql = "SELECT * FROM Friendship;";
         List<Friendship> friendships = new ArrayList<>();
 
@@ -70,7 +71,7 @@ public class FriendshipDaoPostgres implements FriendshipDaoInterface{
             ex.printStackTrace();
         }
 
-        return friendships;
+        return null;
     }
 
     /* CONCIDERADO DESNECESSARIO
@@ -104,7 +105,7 @@ public class FriendshipDaoPostgres implements FriendshipDaoInterface{
     }
 
     @Override
-    public List<Friendship> getAmigosByUsuario(String emailUsuario) {
+    public List<Usuario> getAmigosByUsuario(String emailUsuario) {
         String sql = "SELECT EmailAmigo FROM Friendship WHERE EmailUsuario ILIKE ?;";
         List<Friendship> friends = new ArrayList<>();
 
@@ -132,6 +133,6 @@ public class FriendshipDaoPostgres implements FriendshipDaoInterface{
             ex.printStackTrace();
         }
 
-        return friends;
+        return null;
     }
 }
