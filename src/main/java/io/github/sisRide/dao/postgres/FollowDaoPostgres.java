@@ -3,6 +3,7 @@ package io.github.sisRide.dao.postgres;
 import io.github.sisRide.dao.interfaces.FollowDaoInterface;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Follow;
+import io.github.sisRide.model.Usuario;
 
 import javax.naming.ldap.PagedResultsControl;
 import java.sql.Connection;
@@ -103,7 +104,7 @@ public class FollowDaoPostgres implements FollowDaoInterface{
     }
 
     @Override
-    public List<Follow> getFollowersByUsuario(String emailUsuario) {
+    public List<Usuario> getFollowersByUsuario(String emailUsuario) {
         String sql = "SELECT EmailSeguidor FROM Follow WHERE EmailUsuario ILIKE ?;";
         List<Follow> followers = new ArrayList<>();
 
@@ -131,7 +132,7 @@ public class FollowDaoPostgres implements FollowDaoInterface{
             ex.printStackTrace();
         }
 
-        return followers;
+        return null;
     }
 
 }

@@ -6,20 +6,14 @@
 package io.github.sisRide.dao.interfaces;
 
 import io.github.sisRide.model.Follow;
+import io.github.sisRide.model.Usuario;
+
 import java.util.List;
 
-/**
- *
- * @author caio
- */
 public interface FollowDaoInterface {
     
     public boolean salvar(Follow follow);
-    
     public List<Follow> listar();
-    
     public boolean deletar(Follow follow);
-    
-    public List<Follow> getFollowersByUsuario(String emailUsuario);
-    
+    public List<Usuario> getFollowersByUsuario(String emailUsuario);
 }
