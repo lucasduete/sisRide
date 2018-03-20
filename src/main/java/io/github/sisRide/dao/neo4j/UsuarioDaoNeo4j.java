@@ -2,6 +2,7 @@ package io.github.sisRide.dao.neo4j;
 
 import io.github.sisRide.dao.interfaces.UsuarioDaoInterface;
 import io.github.sisRide.enums.Nodes;
+import io.github.sisRide.enums.Relacionamentos;
 import io.github.sisRide.exceptions.CredenciaisInvalidasException;
 import io.github.sisRide.factory.Conexao;
 import io.github.sisRide.model.Usuario;
@@ -23,14 +24,14 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public boolean salvar(Usuario usuario) {
         String sql = String.format("CREATE (u:%s{Email: $Email, Nome: $Nome, " +
-                "Senha: $Senha, Nota: $Nota, FotoPerfil: $FotoPerfil, Sexo: $Sexo, " +
+                "Senha: $Senha, FotoPerfil: $FotoPerfil, Sexo: $Sexo, " +
                 "DataNasc: $DataNasc, Profissao: $Profissao, Cidade: $Cidade, " +
                 "Tipo: $Tipo}) RETURN u.Email", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
              StatementResult stmt = session.run(sql, Values.parameters("Email", usuario.getEmail(),
-                     "Nome", usuario.getNome(), "Senha", usuario.getSenha(), "Nota", usuario.getNota(),
-                     "FotoPerfil", usuario.getFotoPerfil(), "Sexo", usuario.getSexo(), "DataNasc",
+                     "Nome", usuario.getNome(), "Senha", usuario.getSenha(), "FotoPerfil",
+                     usuario.getFotoPerfil(), "Sexo", usuario.getSexo(), "DataNasc",
                      usuario.getDataNasc().toString(), "Profissao", usuario.getProfissao(),
                      "Cidade", usuario.getCidade(), "Tipo", usuario.getTipo()));
 
@@ -47,12 +48,13 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public List<Usuario> listar() {
         List<Usuario> usuarios = new ArrayList<>();
-        String sql = String.format("MATCH (entity:%s) " +
+        String sql = String.format("MATCH (entity:%s)<-[relation:%s]-[:%s] " +
                 "RETURN entity.Email AS Email, entity.Nome AS Nome, " +
-                "entity.Senha AS Senha, entity.Nota AS Nota, " +
+                "entity.Senha AS Senha, relation.Nota AS Nota, " +
                 "entity.FotoPerfil AS FotoPerfil, entity.Sexo AS Sexo, " +
                 "entity.DataNasc AS DataNasc, entity.Profissao AS Profissao, " +
-                "entity.Cidade AS Cidade, entity.Tipo AS Tipo", Nodes.USUARIO);
+                "entity.Cidade AS Cidade, entity.Tipo AS Tipo", Nodes.USUARIO,
+                Relacionamentos.RATING, Nodes.USUARIO);
 
         try(Session session = conn.session()) {
 
@@ -86,15 +88,15 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public boolean atualizar(Usuario usuario) {
         String sql = String.format("MATCH (u:%s{Email: $Email}) SET u.Nome = $Nome, " +
-                "u.Senha = $Senha, u.Nota = $Nota, u.FotoPerfil = $FotoPerfil, u.Sexo = $Sexo, " +
+                "u.Senha = $Senha, u.FotoPerfil = $FotoPerfil, u.Sexo = $Sexo, " +
                 "u.DataNasc = $DataNasc, u.Profissao = $Profissao, u.Cidade = $Cidade, " +
                 "u.Tipo = $Tipo RETURN u.Email) RETURN u.Email AS UserEmail", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
 
             StatementResult stmt = session.run(sql, Values.parameters("Email", usuario.getEmail(),
-                    "Nome", usuario.getNome(), "Senha", usuario.getSenha(), "Nota", usuario.getNota(),
-                    "FotoPerfil", usuario.getFotoPerfil(), "Sexo", usuario.getSexo(), "DataNasc",
+                    "Nome", usuario.getNome(), "Senha", usuario.getSenha(), "FotoPerfil",
+                    usuario.getFotoPerfil(), "Sexo", usuario.getSexo(), "DataNasc",
                     usuario.getDataNasc().toString(), "Profissao", usuario.getProfissao(),
                     "Cidade", usuario.getCidade(), "Tipo", usuario.getTipo()));
 
@@ -152,12 +154,13 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public Usuario getUsuarioByEmail(String email) {
         Usuario user = null;
-        String sql = String.format("MATCH (entity:%s{Email: $Value}) " +
+        String sql = String.format("MATCH (entity:%s{Email: $Value})<-[relation:%s]-[:%s] " +
                 "RETURN entity.Email AS Email, entity.Nome AS Nome, " +
-                "entity.Senha AS Senha, entity.Nota AS Nota, " +
+                "entity.Senha AS Senha, relation.Nota AS Nota, " +
                 "entity.FotoPerfil AS FotoPerfil, entity.Sexo AS Sexo, " +
                 "entity.DataNasc AS DataNasc, entity.Profissao AS Profissao, " +
-                "entity.Cidade AS Cidade, entity.Tipo AS Tipo", Nodes.USUARIO);
+                "entity.Cidade AS Cidade, entity.Tipo AS Tipo", Nodes.USUARIO,
+                Relacionamentos.RATING, Nodes.USUARIO);
 
         try(Session session = conn.session()) {
             StatementResult stmt = session.run(sql,
