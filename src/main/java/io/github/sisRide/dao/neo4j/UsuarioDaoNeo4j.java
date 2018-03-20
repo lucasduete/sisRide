@@ -85,7 +85,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
 
     @Override
     public boolean atualizar(Usuario usuario) {
-        String sql = String.format("MATCH (u:%s{Email: $Email}) u.Nome = $Nome, " +
+        String sql = String.format("MATCH (u:%s{Email: $Email}) SET u.Nome = $Nome, " +
                 "u.Senha = $Senha, u.Nota = $Nota, u.FotoPerfil = $FotoPerfil, u.Sexo = $Sexo, " +
                 "u.DataNasc = $DataNasc, u.Profissao = $Profissao, u.Cidade = $Cidade, " +
                 "u.Tipo = $Tipo RETURN u.Email)", Nodes.USUARIO);
