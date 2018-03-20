@@ -47,7 +47,7 @@ public class FollowDaoNeo4j implements FollowDaoInterface {
 
     @Override
     public List<Usuario> listar() {
-        String sql = String.format("MATCH (:%s)-[:%s]-(entity:%s) " +
+        String sql = String.format("MATCH (:%s)-[:%s]->(entity:%s) " +
                         "RETURN entity.Nome AS Nome, entity.Email AS Email",
                 Nodes.USUARIO, Relacionamentos.FOLLOW, Nodes.USUARIO);
         List<Usuario> follows = new ArrayList<>();
@@ -83,7 +83,7 @@ public class FollowDaoNeo4j implements FollowDaoInterface {
 
     @Override
     public boolean deletar(Follow follow) {
-        String sql = String.format("MATCH (:%s{Email: $EmailUser})-[relation:%s]-(:%s{Email: $EmailSeguidor}) " +
+        String sql = String.format("MATCH (:%s{Email: $EmailUser})-[relation:%s]->(:%s{Email: $EmailSeguidor}) " +
                 "DELETE relation", Nodes.USUARIO, Relacionamentos.FOLLOW, Nodes.USUARIO);
 
         try(Session session = conn.session()) {
@@ -103,7 +103,7 @@ public class FollowDaoNeo4j implements FollowDaoInterface {
 
     @Override
     public List<Usuario> getFollowersByUsuario(String emailUsuario) {
-        String sql = String.format("MATCH (:%s{Email: $EmailUser})-[:%s]-(entity:%s) " +
+        String sql = String.format("MATCH (:%s{Email: $EmailUser})-[:%s]->(entity:%s) " +
                         "RETURN entity.Nome AS Nome, entity.Email AS Email",
                 Nodes.USUARIO, Relacionamentos.FOLLOW, Nodes.USUARIO);
         List<Usuario> follows = new ArrayList<>();
