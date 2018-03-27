@@ -48,7 +48,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public List<Usuario> listar() {
         List<Usuario> usuarios = new ArrayList<>();
-        String sql = String.format("MATCH (entity:%s)<-[relation:%s]-[:%s] " +
+        String sql = String.format("MATCH (entity:%s)<-[relation:%s]-(:%s) " +
                 "RETURN entity.Email AS Email, entity.Nome AS Nome, " +
                 "entity.Senha AS Senha, relation.Nota AS Nota, " +
                 "entity.FotoPerfil AS FotoPerfil, entity.Sexo AS Sexo, " +
@@ -154,7 +154,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public Usuario getUsuarioByEmail(String email) {
         Usuario user = null;
-        String sql = String.format("MATCH (entity:%s{Email: $Value})<-[relation:%s]-[:%s] " +
+        String sql = String.format("MATCH (entity:%s{Email: $Value})<-[relation:%s]-(:%s) " +
                 "RETURN entity.Email AS Email, entity.Nome AS Nome, " +
                 "entity.Senha AS Senha, relation.Nota AS Nota, " +
                 "entity.FotoPerfil AS FotoPerfil, entity.Sexo AS Sexo, " +
