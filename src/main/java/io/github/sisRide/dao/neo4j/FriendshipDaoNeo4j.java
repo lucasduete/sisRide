@@ -71,7 +71,7 @@ public class FriendshipDaoNeo4j implements FriendshipDaoInterface {
 
     @Override
     public boolean deletar(Friendship friendship) {
-        String sql = String.format("MATCH (:%s{Email: $EmailUser})->[relation:%s]->(:%s) " +
+        String sql = String.format("MATCH (:%s{Email: $EmailUser})-[relation:%s]->(:%s) " +
                 "DELETE relation", Nodes.USUARIO, Relacionamentos.FRIENDSHIP,
                 Nodes.USUARIO);
 
