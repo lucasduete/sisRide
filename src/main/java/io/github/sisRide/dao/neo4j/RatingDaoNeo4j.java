@@ -42,7 +42,7 @@ public class RatingDaoNeo4j implements RatingDaoInterface {
     @Override
     public boolean deletar(Rating rating) {
         String sql = String
-                .format("MATCH (:%s{Email: $EmailUsuario}-[relation:%s]->(:%s{Email: $EmailAvaliado}) " +
+                .format("MATCH (:%s{Email: $EmailUsuario})-[relation:%s]->(:%s{Email: $EmailAvaliado}) " +
                                 "DELETE relation",
                         Nodes.USUARIO, Relacionamentos.RATING, Nodes.USUARIO);
 
@@ -61,7 +61,7 @@ public class RatingDaoNeo4j implements RatingDaoInterface {
     @Override
     public boolean atualizar(Rating rating) {
         String sql = String
-                .format("MATCH (:%s{Email: $EmailUsuario}-[relation:%s]->(:%s{Email: $EmailAvaliado}) " +
+                .format("MATCH (:%s{Email: $EmailUsuario})-[relation:%s]->(:%s{Email: $EmailAvaliado}) " +
                                 "SET relation.Nota = $NotaRating",
                         Nodes.USUARIO, Relacionamentos.RATING, Nodes.USUARIO);
 
@@ -82,7 +82,7 @@ public class RatingDaoNeo4j implements RatingDaoInterface {
     public int getNotaByUsuario(String emailUsuario) {
         int nota = -1;
         String sql = String
-                .format("MATCH (:%s{Email: $EmailUsuario}<-[relation:%s]-(:%s) " +
+                .format("MATCH (:%s{Email: $EmailUsuario})<-[relation:%s]-(:%s) " +
                             "RETURN avg(relation.Nota) AS Nota", Nodes.USUARIO,
                             Relacionamentos.RATING, Nodes.USUARIO);
 
