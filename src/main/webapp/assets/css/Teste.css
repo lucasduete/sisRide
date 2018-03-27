@@ -1,0 +1,52 @@
+#map {
+    height: 700px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.novoA {
+    visibility: hidden;
+    position: absolute;
+    top: 70px;
+    height: 400px;
+    width: 300px;
+    right: 0;
+}
+
+.novoB {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    height: 400px;
+    width: 300px;
+    right: 0;
+}
+
+.novoC {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    height: 400px;
+    width: 300px;
+    right: 0;
+}
+
+.novoD {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    height: 300px;
+    width: 300px;
+    right: 0;
+}
+
+#l {
+    text-align: right;
+    font-size: 20px;
+}
+
+.circle {
+    height: 50px;
+    width: 50px;
+}
