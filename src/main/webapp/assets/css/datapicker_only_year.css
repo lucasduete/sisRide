@@ -1,0 +1,12 @@
+.ui-datepicker-calendar {
+    display: none!important;
+ }
+ .ui-datepicker-month {
+    display: none!important;
+ }
+ .ui-datepicker-prev{
+    display: none!important;
+ }
+ .ui-datepicker-next{
+    display: none!important;
+ }

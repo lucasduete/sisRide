@@ -14,7 +14,9 @@
         <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper light-green accent-4">
-                    <a href="TelaPrincipal.jsp" class="brand-logo">SisRide</a>
+                    <!--<a href="TelaPrincipal.jsp"><i class="material-icons black">reply</i></a>
+                    <a href="TelaPrincipal.jsp" class="brand-logo center">SisRide</a>-->
+                    <a href="TelaPrincipal.jsp" class="brand-logo"><i class="material-icons">reply</i>SisRide</a>
                     <ul class="right">
                         <li><a onclick='NovoA()'><i class="material-icons">group</i></a></li>
                         <li><a onclick='NovoB()'><i class="material-icons">message</i></a></li>
@@ -24,77 +26,62 @@
                 </div>
             </nav>
         </div>
-        <div class="row">
-            <div class="col s6">
-                <div id="map"></div>
-            </div>
-            <div class="col s6">
-                <div class="container">
-                    <ul class="collection">
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                    </ul>
+
+        <div class="container" style="margin-top: 3%">
+                <div class="row">
+                    <div class="col s12 m6 l6 offset-m3 offset-l3">
+                        <form class="login-form" action="front" method="post" enctype="multipart/form-data">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="input-field">
+                                        <input id="placa" name="placa" type="text" required>
+                                        <label for="placa">Placa</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input id="modelo" name="modelo" type="text" required>
+                                        <label for="modelo">Modelo</label>
+                                    </div>
+                                    <div class="row">
+                                        <p>Tem ArCondicionado?</p>
+                                        <div class="col m3 l3 offset-m2 offset-l2">
+                                            <input name="tipo" type="radio" id="sim" value="sim" />
+                                            <label for="sim">Sim</label>
+                                        </div>
+                                        <div class="col m1 l1 offset-m1 offset-l1">
+                                            <input name="tipo" type="radio" id="nao" value="nao" />
+                                            <label for="nao">Não</label>
+                                        </div>
+                                    </div>
+                                    <div id="ui" class="input-field">
+                                        <input id="dataNasc" name="dataNasc" type="text" class="datepicker">
+                                        <label for="dataNasc">Ano</label>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <div class="center-align">
+                                        <!-- POR COR INDIGO? -->
+                                        <button class="btn waves-effect waves-light btn light-green accent-4"><i class="material-icons left">vpn_key</i>Cadastrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="action" value="CadastraVeiculo"/>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        
+
         <div id="novoA" class="novoA white">
             
         <div>
+
         <div id="novoB" class="novoB white">
-            
+                
         </div>
+
         <div id="novoC" class="novoC white">
-            
+                
         <div>
+
         <div id="novoD" class="novoD white">
             <ul>
                 <li>
@@ -117,26 +104,25 @@
                 <li id="l"><a href="front?action=Sair"><span class="black-text name">Sair</span></a></li>
             </ul>
         <div>
-            
+                
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-        <!-- Compiled and minified JavaScript -->
         <script src="assets/js/materialize.min.js"></script>
-        <!--<script type="text/javascript">
+        <script type="text/javascript">
             $( document ).ready(function(){
-                // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-                //$('.modal').modal();
-            });
-        </script>-->
-        <script>
-            var map;
-            function initMap() {
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: -6.8899589, lng: -38.566035},
-                    zoom: 14
+                $('.datepicker').pickadate({
+                    selectMonths: false, // Creates a dropdown to control month
+                    selectYears: 160, // Creates a dropdown of 15 years to control year,
+                    format: 'yyyy',
+                    today: 'Hoje',
+                    clear: 'Limpar',
+                    close: 'Ok',
+                    disableWeekends: false,
+                    monthsFull: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                    weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+                    closeOnSelect: false // Close upon selecting a date,
                 });
-            }    
+            })
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdgqCYCczH453Qpx94NY071swfxdrSMPY&callback=initMap" async defer></script>
         <script>
             function NovoA() {
                 let novo = document.getElementById("novoA").style.visibility;
