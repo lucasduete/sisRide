@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="assets/css/materialize.min.css">
         <script src="assets/js/sweetalert.min.js"></script>
         <!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
         <link rel="stylesheet" href="assets/css/Teste.css">
+        <link rel="stylesheet" href="assets/css/inputSearchBox.css">
     </head>
     <body class="grey lighten-3">
         <div class="navbar-fixed">
