@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="assets/css/materialize.min.css">
         <script src="assets/js/sweetalert.min.js"></script>
         <!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
         <link rel="stylesheet" href="assets/css/Teste.css">
+        <link rel="stylesheet" href="assets/css/inputSearchBox.css">
     </head>
     <body class="grey lighten-3">
         <div class="navbar-fixed">
@@ -29,15 +30,15 @@
 
         <div class="container" style="margin-top: 3%">
             <div class="row">
-                <div class="col s12 m6 l6 offset-m3 offset-l3">
-                    <form class="login-form" action="front" method="post" enctype="multipart/form-data">
+                <div class="col s12 m6 l6">
+                    <form class="login-form" action="front" method="post">
                         <div class="card">
                             <div class="card-image">
                                <img src="assets/img/cadastro.png">    
                             </div>
                             <div class="card-content">
                                 <div class="input-field">
-                                    <input id="lugarSaida" name="lugarSaida" type="text" required>
+                                    <input id="lugarSaida" name="lugarSaida" disabled type="text" required>
                                     <label for="lugarSaida">Lugar de Saida</label>
                                 </div>
                                 <div class="input-field">
@@ -45,7 +46,7 @@
                                     <label for="lugarChegada">Lugar de Chegada</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="QuantidadeVagas" name="QuantidadeVagas" type="text" required>
+                                    <input id="QuantidadeVagas" name="QuantidadeVagas" type="number" min="0" max="50" required>
                                     <label for="QuantidadeVagas">Quantidade de Vagas</label>
                                 </div>
                                 <div class="input-field">
@@ -54,8 +55,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <select>
-                                          <option value="" disabled selected>Choose your option</option>
+                                        <select id="carro" name="carro">
+                                          <option value="" disabled selected>Selecione qual carro</option>
                                           <option value="1">Option 1</option>
                                           <option value="2">Option 2</option>
                                           <option value="3">Option 3</option>
@@ -66,12 +67,23 @@
                                 <div class="row">
                                     <p>Transporte de animais</p>
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="tipo" type="radio" id="motorista" value="motorista" />
-                                        <label for="motorista">Sim</label>
+                                        <input name="transporteAnimal" type="radio" id="transporteAnimalSim" value="sim" />
+                                        <label for="transporteAnimalSim">Sim</label>
                                     </div>
                                     <div class="col m1 l1 offset-m1 offset-l1">
-                                        <input name="tipo" type="radio" id="passageiro" value="passageiro" />
-                                        <label for="passageiro">Não</label>
+                                        <input name="transporteAnimal" type="radio" id="transporteAnimalNao" value="não" />
+                                        <label for="transporteAnimalNao">Não</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Pode Fumar Dentro do Carro Durante a Viagegm</p>
+                                    <div class="col m3 l3 offset-m2 offset-l2">
+                                        <input name="podeFumar" type="radio" id="podeFumarSim" value="sim" />
+                                        <label for="podeFumarSim">Sim</label>
+                                    </div>
+                                    <div class="col m1 l1 offset-m1 offset-l1">
+                                        <input name="podeFumar" type="radio" id="podeFumarNao" value="não" />
+                                        <label for="podeFumarNao">Não</label>
                                     </div>
                                 </div>
                             </div>
@@ -84,6 +96,12 @@
                         </div>
                         <input type="hidden" name="action" value="CadastraCarona"/>
                     </form>
+                </div>
+                <div class="col s12 m6 l6">
+                    <div class="row" style="margin-top: 7%;">
+                        <input id="searchBox" class="controls" type="text" placeholder="Digite para Encontrar">
+                        <div id="map"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,9 +140,12 @@
                 <li id="l"><a href="front?action=Sair"><span class="black-text name">Sair</span></a></li>
             </ul>
         <div>
-                        
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA26N7U2JuMCMfu1u4IJKGtSP7286dE45Q&libraries=places&callback=initMap" async defer></script>
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
         <script src="assets/js/materialize.min.js"></script>
+        <script src="assets/js/setSearchBox.js"></script>
+        <script src="assets/js/getLocationFromBrowser.js"></script>
         <script type="text/javascript">
             $( document ).ready(function(){
                 $('.datepicker').pickadate({
@@ -174,6 +195,31 @@
                     document.getElementById("novoD").style.visibility = "hidden";
                 }
             }
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: -6.887860, lng: -38.559366},
+                    zoom: 16
+                });
+                getLocationFromBrowser(map);
+                let searchBox = document.getElementById('searchBox');
+                setSearchBox(searchBox, map);
+                document.addEventListener('keydown', function(e) {
+                    e = e || window.event;
+                    let code = e.which || e.keyCode;
+                    if(code === 13){
+                        vm.readLocal(searchBox.value);
+                    }
+                });
+            };
+            $(document).ready(function () {
+                $('.modal-trigger').leanModal({
+                    ready: function () {
+                        var map = document.getElementById("map");
+                        google.maps.event.trigger(map, 'resize');
+                    }
+                });
+            });
         </script>
     </body>
 </html>
