@@ -143,6 +143,8 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA26N7U2JuMCMfu1u4IJKGtSP7286dE45Q&libraries=places&callback=initMap" async defer></script>
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
         <script src="assets/js/materialize.min.js"></script>
+        <script src="assets/js/setSearchBox.js"></script>
+        <script src="assets/js/getLocationFromBrowser.js"></script>
         <script type="text/javascript">
             $( document ).ready(function(){
                 $('.datepicker').pickadate({
@@ -209,7 +211,6 @@
                     }
                 });
             };
-            new google.maps.event.addDomListener(window, 'load', initMap);
             $(document).ready(function () {
                 $('.modal-trigger').leanModal({
                     ready: function () {
