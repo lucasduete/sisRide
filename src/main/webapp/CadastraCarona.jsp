@@ -96,7 +96,12 @@
                         <input type="hidden" name="action" value="CadastraCarona"/>
                     </form>
                 </div>
-
+                <div class="col s12 m6 l6">
+                    <div class="row" style="margin-top: 7%;">
+                        <input id="searchBox" class="controls" type="text" placeholder="Digite para Encontrar">
+                        <div id="map"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
