@@ -3,8 +3,9 @@
     <head>
 	<!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="assets/css/materialize.min.css">
+        <!-- Compiled and minified CSS 
+        <link rel="stylesheet" href="assets/css/materialize.min.css">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <script src="assets/js/sweetalert.min.js"></script>
         <!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
@@ -29,8 +30,78 @@
                 <div id="map"></div>
             </div>
             <div class="col s6">
-                <div class="container">
+                <div class="container" id="teste">
                     <ul class="collection">
+                        <div class="row">
+                        <li class="collection-item avatar">
+                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                            Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
+                        </li>
+                        </div>
+                        <div class="row">
+                        <li class="collection-item avatar">
+                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                            Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
+                        </li>
+                        </div>
+                        <div class="row">
+                        <li class="collection-item avatar">
+                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                            Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
+                        </li>
+                        </div>
+                        <div class="row">
+                        <li class="collection-item avatar">
+                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                            Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
+                        </li>
+                        </div>
+                        <div class="row">
+                        <li class="collection-item avatar">
+                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                            Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
+                        </li>
+                        </div>
+                        <div class="row">
+                        <li class="collection-item avatar">
+                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                            Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
+                        </li>
+                        </div>
+                        <div class="row">
+                        <li class="collection-item avatar">
+                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                            Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
+                        </li>
+                        </div>
                         <div class="row">
                         <li class="collection-item avatar">
                             <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
@@ -87,7 +158,64 @@
         </div>
         
         <div id="novoA" class="novoA white">
-            
+                <ul class="collection">
+                    <p>Solicitações de amizade 
+                        <a class="ad" href="sass.html">Encontrar amigos</a>
+                        <a class="ad" href="sass.html">Ver tudo</a>
+                    </p>
+                    <li class="collection-item avatar">
+                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                        <span class="title">Nome</span>
+                        <p>
+                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                        </p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                        <span class="title">Nome</span>
+                        <p>
+                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                        </p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                        <span class="title">Nome</span>
+                        <p>
+                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                        </p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                        <span class="title">Nome</span>
+                        <p>
+                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                        </p>
+                    </li>
+                    <p>Solicitações de seguir
+                        <a class="ad" href="sass.html">Encontrar pessoas para seguir</a>
+                        <a class="ad" href="sass.html">Ver tudo</a>
+                    </p>
+                    <li class="collection-item avatar">
+                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                        <span class="title">Nome</span>
+                        <p>
+                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                        </p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
+                        <span class="title">Nome</span>
+                        <p>
+                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                        </p>
+                    </li>
+                </ul>   
         <div>
         <div id="novoB" class="novoB white">
             
@@ -142,6 +270,9 @@
                 let novo = document.getElementById("novoA").style.visibility;
                 if((novo == "") || (novo == "hidden")){
                     document.getElementById("novoA").style.visibility = "visible";
+                    document.getElementById("novoB").style.visibility = "hidden";
+                    document.getElementById("novoC").style.visibility = "hidden";
+                    document.getElementById("novoD").style.visibility = "hidden";
                 }else{
                     document.getElementById("novoA").style.visibility = "hidden";
                 }
@@ -150,6 +281,9 @@
                 let novo = document.getElementById("novoB").style.visibility;
                 if((novo == "") || (novo == "hidden")){
                     document.getElementById("novoB").style.visibility = "visible";
+                    document.getElementById("novoA").style.visibility = "hidden";
+                    document.getElementById("novoC").style.visibility = "hidden";
+                    document.getElementById("novoD").style.visibility = "hidden";
                 }else{
                     document.getElementById("novoB").style.visibility = "hidden";
                 }
@@ -158,6 +292,9 @@
                 let novo = document.getElementById("novoC").style.visibility;
                 if((novo == "") || (novo == "hidden")){
                     document.getElementById("novoC").style.visibility = "visible";
+                    document.getElementById("novoA").style.visibility = "hidden";
+                    document.getElementById("novoB").style.visibility = "hidden";
+                    document.getElementById("novoD").style.visibility = "hidden";            
                 }else{
                     document.getElementById("novoC").style.visibility = "hidden";
                 }
@@ -166,6 +303,9 @@
                 let novo = document.getElementById("novoD").style.visibility;
                 if((novo == "") || (novo == "hidden")){
                     document.getElementById("novoD").style.visibility = "visible";
+                    document.getElementById("novoA").style.visibility = "hidden";
+                    document.getElementById("novoB").style.visibility = "hidden";
+                    document.getElementById("novoC").style.visibility = "hidden";
                 }else{
                     document.getElementById("novoD").style.visibility = "hidden";
                 }
