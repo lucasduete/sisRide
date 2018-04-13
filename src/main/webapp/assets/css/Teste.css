@@ -5,13 +5,19 @@
     padding: 0;
 }
 
+#teste {
+    height: 700px;
+    overflow: scroll;
+}
+
 .novoA {
     visibility: hidden;
     position: absolute;
     top: 70px;
     height: 400px;
-    width: 300px;
+    width: 450px;
     right: 0;
+    overflow: scroll;
 }
 
 .novoB {
@@ -49,4 +55,10 @@
 .circle {
     height: 50px;
     width: 50px;
+}
+
+.ad {
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
 }
