@@ -1,3 +1,4 @@
+<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -158,64 +159,36 @@
         </div>
         
         <div id="novoA" class="novoA white">
-                <ul class="collection">
-                    <p>Solicitações de amizade 
-                        <a class="ad" href="sass.html">Encontrar amigos</a>
-                        <a class="ad" href="sass.html">Ver tudo</a>
-                    </p>
+            <ul class="collection">
+                <p>Solicita��es de amizade 
+                    <a class="ad" href="">Encontrar amigos</a>
+                    <a class="ad" href="">Ver tudo</a>
+                </p>
+                <c:forEach  var="solicitacao" items="${SolicitacaoA}">
                     <li class="collection-item avatar">
-                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                        <span class="title">Nome</span>
+                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <span class="title">${solicitacao.nome}</span>
                         <p>
                             <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicita��o</a>
                         </p>
                     </li>
+                </c:forEach>
+                <p>Solicita��es de seguir
+                    <a class="ad" href="">Encontrar pessoas para seguir</a>
+                    <a class="ad" href="">Ver tudo</a>
+                </p>
+                <c:forEach  var="solicitacao" items="${SolicitacaoS}">
                     <li class="collection-item avatar">
-                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                        <span class="title">Nome</span>
+                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <span class="title">${solicitacao.nome}</span>
                         <p>
-                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                            <a href="front?action=ConfimarSeguir" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                            <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicita��o</a>
                         </p>
                     </li>
-                    <li class="collection-item avatar">
-                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                        <span class="title">Nome</span>
-                        <p>
-                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
-                        </p>
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                        <span class="title">Nome</span>
-                        <p>
-                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
-                        </p>
-                    </li>
-                    <p>Solicitações de seguir
-                        <a class="ad" href="sass.html">Encontrar pessoas para seguir</a>
-                        <a class="ad" href="sass.html">Ver tudo</a>
-                    </p>
-                    <li class="collection-item avatar">
-                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                        <span class="title">Nome</span>
-                        <p>
-                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
-                        </p>
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                        <span class="title">Nome</span>
-                        <p>
-                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
-                        </p>
-                    </li>
-                </ul>   
+                </c:forEach>
+            </ul>   
         <div>
         <div id="novoB" class="novoB white">
             
@@ -226,22 +199,26 @@
         <div id="novoD" class="novoD white">
             <ul>
                 <li>
-                    <a><img class="circle" src="assets/img/iconPadrao.jpg"></a>
-                    <a id="l"><span class="black-text name">Caio Guilherme</span></a>
+                    <a><img class="circle" src="${Usuario.fotoPerfil}"></a>
+                    <a id="l"><span class="black-text name">${Usuario.nome}</span></a>
                 </li>
                 <li><div class="divider"></div></li>
                 <li id="l"><a href="Perfil.jsp"><span class="black-text name">Ver perfil pessoal</span></a></li>
                 <li><div class="divider"></div></li>
-                <li id="l"><a href="CadastraCarona.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
-                <li><div class="divider"></div></li>
-                <li id="l"><a href="CadastraVeiculo.jsp"><span class="black-text name">Cadastra Veiculo</span></a></li>
-                <li><div class="divider"></div></li>
+                <c:if test="${Usuario.tipo eq 'motorista'}">
+                    <li id="l"><a href="CadastraCarona.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
+                    <li><div class="divider"></div></li>
+                    <li id="l"><a href="CadastraVeiculo.jsp"><span class="black-text name">Cadastra Veiculo</span></a></li>
+                    <li><div class="divider"></div></li>
+                    <li id="l"><a href="CaronasOfertadas.jsp"><span class="black-text name">Caronas ofertadas</span></a></li>
+                    <li><div class="divider"></div></li>
+                </c:if>
                 <li id="l"><a href="BuscarCarona.jsp"><span class="black-text name">Buscar Carona</span></a></li>
                 <li><div class="divider"></div></li>
-                <li id="l"><a href="SoElas.jsp"><span class="black-text name">So Elas</span></a></li>
-                <li><div class="divider"></div></li>
-                <li id="l"><a href="CaronasOfertadas.jsp"><span class="black-text name">Caronas ofertadas</span></a></li>
-                <li><div class="divider"></div></li>
+                <c:if test="${Usuario.tipo eq 'feminino'}">
+                    <li id="l"><a href="SoElas.jsp"><span class="black-text name">So Elas</span></a></li>
+                    <li><div class="divider"></div></li>
+                </c:if>
                 <li id="l"><a href="front?action=Sair"><span class="black-text name">Sair</span></a></li>
             </ul>
         <div>
