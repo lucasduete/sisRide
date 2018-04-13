@@ -33,126 +33,18 @@
             <div class="col s6">
                 <div class="container" id="teste">
                     <ul class="collection">
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
-                        <div class="row">
-                        <li class="collection-item avatar">
-                            <img src="assets/img/iconPadrao.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                            Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">share</i></a>
-                        </li>
-                        </div>
+                        <c:forEach  var="carona" items="${Caronas}">
+                            <div class="row">
+                                <li class="collection-item avatar">
+                                    <img src="${carona.fotoPerfil}" alt="" class="circle">
+                                    <span class="title">${carona.nome}</span>
+                                    <p>First Line <br>
+                                    Second Line
+                                    </p>
+                                    <a href="front?action=IrParaCarona" class="secondary-content"><i class="material-icons">share</i></a>
+                                </li>
+                            </div>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -191,10 +83,36 @@
             </ul>   
         <div>
         <div id="novoB" class="novoB white">
-            
+            <ul class="collection">
+                <p>Mensagem
+                    <a class="ad" href="">Ver tudo</a>
+                </p>
+                <c:forEach  var="mensagem" items="${Mensagem}">
+                    <li class="collection-item avatar">
+                        <img src="${mensagem.fotoPerfil}" alt="" class="circle">
+                        <span class="title">${mensagem.nome}</span>
+                        <p>
+                            <a href="front?action=IrParaMensagem" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                        </p>
+                    </li>
+                </c:forEach>
+            </ul>
         </div>
         <div id="novoC" class="novoC white">
-            
+            <ul class="collection">
+                <p>Notificações
+                    <a class="ad" href="">Ver tudo</a>
+                </p>
+                <c:forEach  var="notificacao" items="${Notificacao}">
+                    <li class="collection-item avatar">
+                        <img src="${notificacao.fotoPerfil}" alt="" class="circle">
+                        <span class="title">${notificacao.nome}</span>
+                        <p>
+                            <a href="front?action=IrParaNotificacao" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                        </p>
+                    </li>
+                </c:forEach>
+            </ul>
         <div>
         <div id="novoD" class="novoD white">
             <ul>
