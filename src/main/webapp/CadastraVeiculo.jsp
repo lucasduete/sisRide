@@ -44,17 +44,17 @@
                                     <div class="row">
                                         <p>Tem ArCondicionado?</p>
                                         <div class="col m3 l3 offset-m2 offset-l2">
-                                            <input name="tipo" type="radio" id="sim" value="sim" />
+                                            <input name="arCondicionado" type="radio" id="sim" value="sim" />
                                             <label for="sim">Sim</label>
                                         </div>
                                         <div class="col m1 l1 offset-m1 offset-l1">
-                                            <input name="tipo" type="radio" id="nao" value="nao" />
+                                            <input name="arCondicionado" type="radio" id="nao" value="não" />
                                             <label for="nao">Não</label>
                                         </div>
                                     </div>
                                     <div id="ui" class="input-field">
-                                        <input id="dataNasc" name="dataNasc" type="text" class="datepicker">
-                                        <label for="dataNasc">Ano</label>
+                                        <input id="ano" name="ano" type="number" class="valid">
+                                        <label for="ano">Ano</label>
                                     </div>
                                 </div>
                                 <div class="card-action">
@@ -107,23 +107,12 @@
                 
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
         <script src="assets/js/materialize.min.js"></script>
-        <script type="text/javascript">
-            $( document ).ready(function(){
-                $('.datepicker').pickadate({
-                    selectMonths: false, // Creates a dropdown to control month
-                    selectYears: 160, // Creates a dropdown of 15 years to control year,
-                    format: 'yyyy',
-                    today: 'Hoje',
-                    clear: 'Limpar',
-                    close: 'Ok',
-                    disableWeekends: false,
-                    monthsFull: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-                    weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-                    closeOnSelect: false // Close upon selecting a date,
-                });
-            })
-        </script>
         <script>
+            let now = new Date;
+            document.getElementById("ano").value = now.getFullYear();
+            document.getElementById("ano").min = now.getFullYear() - 100;
+            document.getElementById("ano").max = now.getFullYear() + 1;
+
             function NovoA() {
                 let novo = document.getElementById("novoA").style.visibility;
                 if((novo == "") || (novo == "hidden")){
