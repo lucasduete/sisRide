@@ -32,7 +32,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
             stmt.setDate(1, Date.valueOf(viagem.getData()));
             stmt.setFloat(2, viagem.getValor());
             stmt.setInt(3, viagem.getVagas());
-            stmt.setTime(4, Time.valueOf(viagem.getHorario().toLocalTime()));
+            stmt.setTime(4, Time.valueOf(viagem.getHorario()));
             stmt.setBoolean(5, viagem.getTransporteAnimal());
             stmt.setInt(6, viagem.getNivelConversa());
             stmt.setBoolean(7, viagem.getPodeFumar());
@@ -73,7 +73,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
                         LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
                         rs.getFloat("Valor"),
                         rs.getInt("Vagas"),
-                        LocalDateTime.of(LocalDate.now(), rs.getTime("Horario").toLocalTime()),
+                        rs.getTime("Horario").toLocalTime(),
                         rs.getBoolean("TransportarAnimal"),
                         rs.getInt("NivelConversa"),
                         rs.getBoolean("PodeFumar"),
@@ -109,7 +109,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
             stmt.setDate(1, Date.valueOf(viagem.getData()));
             stmt.setFloat(2, viagem.getValor());
             stmt.setInt(3, viagem.getVagas());
-            stmt.setTime(4, Time.valueOf(viagem.getHorario().toLocalTime()));
+            stmt.setTime(4, Time.valueOf(viagem.getHorario()));
             stmt.setBoolean(5, viagem.getTransporteAnimal());
             stmt.setInt(6, viagem.getNivelConversa());
             stmt.setBoolean(7, viagem.getPodeFumar());
@@ -180,7 +180,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
                         LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
                         rs.getFloat("Valor"),
                         rs.getInt("Vagas"),
-                        LocalDateTime.of(LocalDate.now(), rs.getTime("Horario").toLocalTime()),
+                        rs.getTime("Horario").toLocalTime(),
                         rs.getBoolean("TransportarAnimal"),
                         rs.getInt("NivelConversa"),
                         rs.getBoolean("PodeFumar"),

@@ -2,6 +2,7 @@ package io.github.sisRide.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class Viagem {
@@ -10,7 +11,7 @@ public class Viagem {
     private LocalDate data;
     private float valor;
     private int vagas;
-    private LocalDateTime horario;
+    private LocalTime horario;
     private boolean transporteAnimal;
     private int nivelConversa;
     private boolean podeFumar;
@@ -31,7 +32,7 @@ public class Viagem {
 
     }
 
-    public Viagem(int id, LocalDate data, float valor, int vagas, LocalDateTime horario,
+    public Viagem(int id, LocalDate data, float valor, int vagas, LocalTime horario,
                   boolean transporteAnimal, int nivelConversa, boolean podeFumar, String emailMotorista,
                   String placaCarro, int idLocalSaida, int idLocalDestino) {
 
@@ -81,11 +82,11 @@ public class Viagem {
         this.vagas = vagas;
     }
 
-    public LocalDateTime getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
 
-    public void setHorario(LocalDateTime horario) {
+    public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
 
