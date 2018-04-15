@@ -1,0 +1,19 @@
+<taglib>
+    <tlib-version>1.2</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>TagsUtil</short-name>
+    <uri>TagsUtil</uri>
+
+    <tag>
+        <name>placasCarro</name>
+        <tag-class>io.github.sisRide.tags.PlacasCarroByUserTag</tag-class>
+        <body-content>empty</body-content>
+        
+        <attribute>
+            <name>user</name>
+            <type>java.lang.Object</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
