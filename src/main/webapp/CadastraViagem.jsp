@@ -1,3 +1,5 @@
+<%@ page import="io.github.sisRide.model.Usuario" %>
+<%@ taglib prefix="tagsUtil" uri="TagsUtil" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -59,6 +61,9 @@
                                     <label for="hora">Horario</label>
                                 </div>
                                 <div class="row">
+                                    <% Usuario usuario = (Usuario) session.getAttribute("Usuario"); %>
+                                    ${usuario}
+                                    <tagsUtil:placasCarro user="${usuario}"></tagsUtil:placasCarro>
                                     <div class="input-field col s12">
                                         <select id="carro" name="carro">
                                           <option value="" disabled selected>Selecione qual carro</option>
@@ -175,7 +180,7 @@
         <script src="assets/js/setSearchBox.js"></script>
         <script src="assets/js/getLocationFromBrowser.js"></script>
         <script type="text/javascript">
-            $( document ).ready(function(){
+            $( document ).ready(function() {
                 $('.datepicker').pickadate({
                     selectMonths: true, // Creates a dropdown to control month
                     selectYears: 160, // Creates a dropdown of 15 years to control year,
@@ -248,6 +253,13 @@
                     }
                 });
             });
+
+            var code = "${param.code}";
+            if(code == "1"){
+                swal("Sucesso", "Viagem Cadastrada com Sucesso", "success");
+            } else if(code == "2") {
+                swal("Ops...", "Problema ao cadastrar sua Viagem, verifique os dados e tente novamente", "error");
+            }
         </script>
     </body>
 </html>

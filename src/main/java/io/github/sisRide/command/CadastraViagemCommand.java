@@ -1,5 +1,7 @@
 package io.github.sisRide.command;
 
+import io.github.sisRide.gerenciadores.GerenciadorLugar;
+import io.github.sisRide.gerenciadores.GerenciadorViagem;
 import io.github.sisRide.interfaces.Command;
 import io.github.sisRide.model.Usuario;
 import io.github.sisRide.model.Viagem;
@@ -23,8 +25,9 @@ public class CadastraViagemCommand implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {
 
-        Usuario user = (Usuario) req.getSession().getAttribute("Usuario");
+        GerenciadorViagem gerenciadorViagem = new GerenciadorViagem();
 
+        Usuario user = (Usuario) req.getSession().getAttribute("Usuario");
         Viagem viagem = new Viagem();
 
         viagem.setEmailMotorista(user.getEmail());
@@ -59,7 +62,24 @@ public class CadastraViagemCommand implements Command {
         else if (transporteAnimal.equals("não"))
             viagem.setTransporteAnimal(false);
 
-        System.out.println(viagem);
+        viagem.setIdLocalSaida(
+                new GerenciadorLugar().getPlaceId(
+                        req.getParameter("lugarSaida")
+                )
+        );
 
+        viagem.setIdLocalDestino(
+                new GerenciadorLugar().getPlaceId(
+                        req.getParameter("lugarChegada")
+                )
+        );
+
+        if (gerenciadorViagem.salvar(viagem)) {
+            res.setStatus(200);
+            res.sendRedirect("CadastraViagem.jsp?code=1");
+        } else {
+            res.setStatus(400);
+            res.sendRedirect("CadastraViagem.jsp?code=2");
+        }
     }
 }
