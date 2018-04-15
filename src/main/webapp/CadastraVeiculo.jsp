@@ -91,7 +91,7 @@
                 <li><div class="divider"></div></li>
                 <li id="l"><a href="Perfil.jsp"><span class="black-text name">Ver perfil pessoal</span></a></li>
                 <li><div class="divider"></div></li>
-                <li id="l"><a href="CadastraCarona.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
+                <li id="l"><a href="CadastraViagem.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
                 <li><div class="divider"></div></li>
                 <li id="l"><a href="CadastraVeiculo.jsp"><span class="black-text name">Cadastra Veiculo</span></a></li>
                 <li><div class="divider"></div></li>

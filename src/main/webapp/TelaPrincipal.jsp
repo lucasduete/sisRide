@@ -52,7 +52,7 @@
         
         <div id="novoA" class="novoA white">
             <ul class="collection">
-                <p>Solicitações de amizade 
+                <p>Solicitaï¿½ï¿½es de amizade 
                     <a class="ad" href="">Encontrar amigos</a>
                     <a class="ad" href="">Ver tudo</a>
                 </p>
@@ -62,11 +62,11 @@
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitaï¿½ï¿½o</a>
                         </p>
                     </li>
                 </c:forEach>
-                <p>Solicitações de seguir
+                <p>Solicitaï¿½ï¿½es de seguir
                     <a class="ad" href="">Encontrar pessoas para seguir</a>
                     <a class="ad" href="">Ver tudo</a>
                 </p>
@@ -76,7 +76,7 @@
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <a href="front?action=ConfimarSeguir" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitação</a>
+                            <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitaï¿½ï¿½o</a>
                         </p>
                     </li>
                 </c:forEach>
@@ -100,7 +100,7 @@
         </div>
         <div id="novoC" class="novoC white">
             <ul class="collection">
-                <p>Notificações
+                <p>Notificaï¿½ï¿½es
                     <a class="ad" href="">Ver tudo</a>
                 </p>
                 <c:forEach  var="notificacao" items="${Notificacao}">
@@ -124,7 +124,7 @@
                 <li id="l"><a href="Perfil.jsp"><span class="black-text name">Ver perfil pessoal</span></a></li>
                 <li><div class="divider"></div></li>
                 <c:if test="${Usuario.tipo eq 'motorista'}">
-                    <li id="l"><a href="CadastraCarona.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
+                    <li id="l"><a href="CadastraViagem.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
                     <li><div class="divider"></div></li>
                     <li id="l"><a href="CadastraVeiculo.jsp"><span class="black-text name">Cadastra Veiculo</span></a></li>
                     <li><div class="divider"></div></li>

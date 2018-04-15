@@ -33,9 +33,6 @@
                 <div class="col s12 m6 l6">
                     <form class="login-form" action="front" method="post">
                         <div class="card">
-                            <div class="card-image">
-                               <img src="assets/img/cadastro.png">    
-                            </div>
                             <div class="card-content">
                                 <div class="input-field">
                                     <input id="lugarSaida" name="lugarSaida" disabled type="text" required>
@@ -50,8 +47,16 @@
                                     <label for="QuantidadeVagas">Quantidade de Vagas</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="dataNasc" name="dataNasc" type="text" class="datepicker">
-                                    <label for="dataNasc">Data</label>
+                                    <input id="valor" name="valor" type="number" min="0" max="50" required>
+                                    <label for="valor">Valor à ser Rachado</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="data" name="data" type="text" class="datepicker">
+                                    <label for="data">Data</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="hora" name="hora" type="time">
+                                    <label for="hora">Horario</label>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
@@ -76,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <p>Pode Fumar Dentro do Carro Durante a Viagegm</p>
+                                    <p>Pode Fumar Dentro do Carro Durante a Viagem</p>
                                     <div class="col m3 l3 offset-m2 offset-l2">
                                         <input name="podeFumar" type="radio" id="podeFumarSim" value="sim" />
                                         <label for="podeFumarSim">Sim</label>
@@ -84,6 +89,29 @@
                                     <div class="col m1 l1 offset-m1 offset-l1">
                                         <input name="podeFumar" type="radio" id="podeFumarNao" value="não" />
                                         <label for="podeFumarNao">Não</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Nivel de Conversa</p>
+                                    <div class="col m3 l3 offset-m2 offset-l2">
+                                        <input name="nivelConversa" type="radio" id="nivel1" value="sim" />
+                                        <label for="nivel1">1</label>
+                                    </div>
+                                    <div class="col m3 l3 offset-m2 offset-l2">
+                                        <input name="nivelConversa" type="radio" id="nivel2" value="sim" />
+                                        <label for="nivel2">2</label>
+                                    </div>
+                                    <div class="col m3 l3 offset-m2 offset-l2">
+                                        <input name="nivelConversa" type="radio" id="nivel3" value="sim" />
+                                        <label for="nivel3">3</label>
+                                    </div>
+                                    <div class="col m3 l3 offset-m2 offset-l2">
+                                        <input name="nivelConversa" type="radio" id="nivel4" value="sim" />
+                                        <label for="nivel4">4</label>
+                                    </div>
+                                    <div class="col m3 l3 offset-m2 offset-l2">
+                                        <input name="nivelConversa" type="radio" id="nivel5" value="sim" />
+                                        <label for="nivel5">5</label>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +155,7 @@
                 <li><div class="divider"></div></li>
                 <li id="l"><a href="Perfil.jsp"><span class="black-text name">Ver perfil pessoal</span></a></li>
                 <li><div class="divider"></div></li>
-                <li id="l"><a href="CadastraCarona.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
+                <li id="l"><a href="CadastraViagem.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
                 <li><div class="divider"></div></li>
                 <li id="l"><a href="CadastraVeiculo.jsp"><span class="black-text name">Cadastra Veiculo</span></a></li>
                 <li><div class="divider"></div></li>
