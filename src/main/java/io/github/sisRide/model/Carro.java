@@ -9,7 +9,7 @@ public class Carro {
     private String modelo;
     private boolean arCondicionado;
     private LocalDate ano;
-    private String emailAdministrador;
+    private String emailProprieatario;
 
     {
         arCondicionado = false;
@@ -20,13 +20,13 @@ public class Carro {
     }
 
     public Carro(String placa, String modelo, boolean arCondicionado,
-                 LocalDate ano, String emailAdministrador) {
+                 LocalDate ano, String emailProprieatario) {
 
         this.placa = placa;
         this.modelo = modelo;
         this.arCondicionado = arCondicionado;
         this.ano = ano;
-        this.emailAdministrador = emailAdministrador;
+        this.emailProprieatario = emailProprieatario;
     }
 
     public String getPlaca() {
@@ -61,12 +61,12 @@ public class Carro {
         this.ano = ano;
     }
 
-    public String getEmailAdministrador() {
-        return emailAdministrador;
+    public String getEmailProprieatario() {
+        return emailProprieatario;
     }
 
-    public void setEmailAdministrador(String emailAdministrador) {
-        this.emailAdministrador = emailAdministrador;
+    public void setEmailProprieatario(String emailProprieatario) {
+        this.emailProprieatario = emailProprieatario;
     }
 
     @Override
@@ -79,13 +79,13 @@ public class Carro {
                 Objects.equals(getPlaca(), carro.getPlaca()) &&
                 Objects.equals(getModelo(), carro.getModelo()) &&
                 Objects.equals(getAno(), carro.getAno()) &&
-                Objects.equals(getEmailAdministrador(), carro.getEmailAdministrador());
+                Objects.equals(getEmailProprieatario(), carro.getEmailProprieatario());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getPlaca(), getModelo(), getArCondicionado(), getAno(), getEmailAdministrador());
+        return Objects.hash(getPlaca(), getModelo(), getArCondicionado(), getAno(), getEmailProprieatario());
     }
 
     @Override
@@ -96,7 +96,7 @@ public class Carro {
                 ", modelo='" + modelo + '\'' +
                 ", arCondicionado=" + arCondicionado +
                 ", ano=" + ano +
-                ", emailAdministrador='" + emailAdministrador + '\'' +
+                ", emailProprieatario='" + emailProprieatario + '\'' +
                 '}';
     }
 }
