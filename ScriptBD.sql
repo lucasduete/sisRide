@@ -1,4 +1,4 @@
-/* Versao 3.4 */
+/* Versao 4 */
 
 /* Tabelas do Escopo do Negocio */
 
@@ -34,7 +34,7 @@ CREATE TABLE Carro (
 CREATE TABLE Lugar (
   Place_id SERIAL,
   Descricao VARCHAR,
-  Nome VARCHAR(50) NOT NULL,
+  Nome VARCHAR(50) NOT NULL UNIQUE,
   Lat FLOAT NOT NULL,
   Lng FLOAT NOT NULL,
   EmailUsuario VARCHAR(25) NOT NULL,
