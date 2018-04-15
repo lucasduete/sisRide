@@ -39,8 +39,7 @@ CREATE TABLE Lugar (
   Lng FLOAT NOT NULL,
   EmailUsuario VARCHAR(25) NOT NULL,
   CONSTRAINT Lugar_PK_PlaceId PRIMARY KEY (Place_id),
-  CONSTRAINT Lugar_Unico_LatLng UNIQUE (Lat, Lng),
-  CONSTRAINT Lugar_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email)
+  CONSTRAINT Lugar_Unico_LatLng UNIQUE (Lat, Lng)
 );
 
 CREATE TABLE Viagem (
