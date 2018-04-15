@@ -31,8 +31,8 @@ public class LugarDaoPostgres implements LugarDaoInterface{
 
             stmt.setString(1, lugar.getDescricao());
             stmt.setString(2, lugar.getNome());
-            stmt.setFloat(3, lugar.getLat());
-            stmt.setFloat(4, lugar.getLng());
+            stmt.setDouble(3, lugar.getLat());
+            stmt.setDouble(4, lugar.getLng());
             stmt.setString(5, lugar.getEmailUsuario());
 
             stmt.executeUpdate();
@@ -63,8 +63,8 @@ public class LugarDaoPostgres implements LugarDaoInterface{
                         rs.getInt("Place_Id"),
                         rs.getString("Descricao"),
                         rs.getString("Nome"),
-                        rs.getFloat("Lat"),
-                        rs.getFloat("Lng"),
+                        rs.getDouble("Lat"),
+                        rs.getDouble("Lng"),
                         rs.getString("EmailUsuario")
                 );
 
@@ -92,8 +92,8 @@ public class LugarDaoPostgres implements LugarDaoInterface{
 
             stmt.setString(1, lugar.getDescricao());
             stmt.setString(2, lugar.getNome());
-            stmt.setFloat(3, lugar.getLat());
-            stmt.setFloat(3, lugar.getLng());
+            stmt.setDouble(3, lugar.getLat());
+            stmt.setDouble(3, lugar.getLng());
             stmt.setString(4, lugar.getEmailUsuario());
 
             stmt.executeUpdate();
@@ -148,8 +148,8 @@ public class LugarDaoPostgres implements LugarDaoInterface{
                         rs.getInt("Place_Id"),
                         rs.getString("Descricao"),
                         rs.getString("Nome"),
-                        rs.getFloat("Lat"),
-                        rs.getFloat("Lng"),
+                        rs.getDouble("Lat"),
+                        rs.getDouble("Lng"),
                         emailUsuario
                 );
 

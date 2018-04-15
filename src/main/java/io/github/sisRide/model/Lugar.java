@@ -7,15 +7,15 @@ public class Lugar {
     private int place_id;
     private String descricao;
     private String nome;
-    private float lat;
-    private float lng;
+    private double lat;
+    private double lng;
     private String emailUsuario;
 
     public Lugar() {
 
     }
 
-    public Lugar(int place_id, String descricao, String nome, float lat, float lng, String emailUsuario) {
+    public Lugar(int place_id, String descricao, String nome, double lat, double lng, String emailUsuario) {
 
         this.place_id = place_id;
         this.descricao = descricao;
@@ -49,19 +49,19 @@ public class Lugar {
         this.nome = nome;
     }
 
-    public float getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLat(float lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
-    public float getLng() {
+    public double getLng() {
         return lng;
     }
 
-    public void setLng(float lng) {
+    public void setLng(double lng) {
         this.lng = lng;
     }
 
@@ -80,8 +80,8 @@ public class Lugar {
         if (o == null || getClass() != o.getClass()) return false;
         Lugar lugar = (Lugar) o;
         return getPlace_id() == lugar.getPlace_id() &&
-                Float.compare(lugar.getLat(), getLat()) == 0 &&
-                Float.compare(lugar.getLng(), getLng()) == 0 &&
+                Double.compare(lugar.getLat(), getLat()) == 0 &&
+                Double.compare(lugar.getLng(), getLng()) == 0 &&
                 Objects.equals(getDescricao(), lugar.getDescricao()) &&
                 Objects.equals(getNome(), lugar.getNome()) &&
                 Objects.equals(getEmailUsuario(), lugar.getEmailUsuario());

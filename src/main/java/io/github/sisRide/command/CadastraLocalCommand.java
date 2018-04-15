@@ -27,8 +27,8 @@ public class CadastraLocalCommand implements Command {
 
         lugar.setNome(req.getParameter("nome"));
         lugar.setDescricao(req.getParameter("descricao"));
-        lugar.setLat(Float.parseFloat(req.getParameter("lat")));
-        lugar.setLng(Float.parseFloat(req.getParameter("lng")));
+        lugar.setLat(Double.parseDouble(req.getParameter("lat")));
+        lugar.setLng(Double.parseDouble(req.getParameter("lng")));
         lugar.setEmailUsuario(user.getEmail());
 
         if (gerenciadorLugar.salvar(lugar)) {
