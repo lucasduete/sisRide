@@ -154,13 +154,11 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
     @Override
     public Usuario getUsuarioByEmail(String email) {
         Usuario user = null;
-        String sql = String.format("MATCH (entity:%s{Email: $Value})<-[relation:%s]-(:%s) " +
+        String sql = String.format("MATCH (entity:%s{Email: $Value}) " +
                 "RETURN entity.Email AS Email, entity.Nome AS Nome, " +
-                "entity.Senha AS Senha, relation.Nota AS Nota, " +
-                "entity.FotoPerfil AS FotoPerfil, entity.Sexo AS Sexo, " +
-                "entity.DataNasc AS DataNasc, entity.Profissao AS Profissao, " +
-                "entity.Cidade AS Cidade, entity.Tipo AS Tipo", Nodes.USUARIO,
-                Relacionamentos.RATING, Nodes.USUARIO);
+                "entity.Senha AS Senha, entity.Sexo AS Sexo, " +
+                "entity.DataNasc AS DataNasc, entity.Tipo AS Tipo",
+                Nodes.USUARIO, Relacionamentos.RATING, Nodes.USUARIO);
 
         try(Session session = conn.session()) {
             StatementResult stmt = session.run(sql,
@@ -173,12 +171,8 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
                 user.setEmail(record.get("Email").asString());
                 user.setNome(record.get("Nome").asString());
                 user.setSenha(record.get("Senha").asString());
-                user.setNota(record.get("Nota").asFloat());
-                user.setFotoPerfil(record.get("FotoPerfil").asString());
                 user.setSexo(record.get("Sexo").asString());
                 user.setDataNasc(LocalDate.parse(record.get("DataNasc").asString()));
-                user.setProfissao(record.get("Profissao").asString());
-                user.setCidade(record.get("Cidade").asString());
                 user.setTipo(record.get("Tipo").asString());
             }
 
