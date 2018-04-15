@@ -35,7 +35,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="input-field">
-                                    <input id="lugarSaida" name="lugarSaida" disabled type="text" required>
+                                    <input id="lugarSaida" name="lugarSaida" type="text" required>
                                     <label for="lugarSaida">Lugar de Saida</label>
                                 </div>
                                 <div class="input-field">
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="action" value="CadastraCarona"/>
+                        <input type="hidden" name="action" value="CadastraViagem"/>
                     </form>
                 </div>
                 <div class="col s12 m6 l6">
