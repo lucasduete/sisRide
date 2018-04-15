@@ -24,7 +24,7 @@ CREATE TABLE Carro (
   Placa VARCHAR(7),
   Modelo VARCHAR NOT NULL,
   ArCondicionado BOOLEAN NOT NULL DEFAULT FALSE,
-  Ano DATE,
+  Ano INTEGER,
   EmailMotorista VARCHAR(25) NOT NULL,
   CONSTRAINT Carro_PK_Placa PRIMARY KEY (Placa),
   CONSTRAINT Carro_Modelo_Valido CHECK (length(Modelo) >= 5),

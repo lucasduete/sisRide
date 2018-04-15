@@ -32,7 +32,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
             stmt.setString(1, carro.getPlaca());
             stmt.setString(2, carro.getModelo());
             stmt.setBoolean(3, carro.getArCondicionado());
-            stmt.setDate(4, Date.valueOf(carro.getAno()));
+            stmt.setInt(4, carro.getAno());
             stmt.setString(5, carro.getEmailProprieatario());
 
             stmt.executeUpdate();
@@ -67,7 +67,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
                         rs.getString("Placa"),
                         rs.getString("Modelo"),
                         rs.getBoolean("ArCondicionado"),
-                        LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
+                        rs.getInt("Ano"),
                         rs.getString("EmailMotorista")
                 );
 
@@ -97,7 +97,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
             stmt.setString(1, carro.getPlaca());
             stmt.setString(2, carro.getModelo());
             stmt.setBoolean(3, carro.getArCondicionado());
-            stmt.setDate(4, Date.valueOf(carro.getAno()));
+            stmt.setInt(4, carro.getAno());
             stmt.setString(5, carro.getEmailProprieatario());
             stmt.setString(6, carro.getPlaca());
 
@@ -155,9 +155,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
                 carro.setPlaca(rs.getString("Placa"));
                 carro.setModelo(rs.getString("Modelo"));
                 carro.setArCondicionado(rs.getBoolean("ArCondicionado"));
-                carro.setAno(
-                        LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate()
-                );
+                carro.setAno(rs.getInt("Ano"));
                 carro.setEmailProprieatario(rs.getString("EmailMotorista"));
             }
 
@@ -193,7 +191,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
                         rs.getString("Placa"),
                         rs.getString("Modelo"),
                         rs.getBoolean("ArCondicionado"),
-                        LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
+                        rs.getInt("Ano"),
                         rs.getString(emailMotorista)
                 );
 

@@ -8,7 +8,7 @@ public class Carro {
     private String placa;
     private String modelo;
     private boolean arCondicionado;
-    private LocalDate ano;
+    private int ano;
     private String emailProprieatario;
 
     {
@@ -20,7 +20,7 @@ public class Carro {
     }
 
     public Carro(String placa, String modelo, boolean arCondicionado,
-                 LocalDate ano, String emailProprieatario) {
+                 int ano, String emailProprieatario) {
 
         this.placa = placa;
         this.modelo = modelo;
@@ -53,11 +53,11 @@ public class Carro {
         this.arCondicionado = arCondicionado;
     }
 
-    public LocalDate getAno() {
+    public int getAno() {
         return ano;
     }
 
-    public void setAno(LocalDate ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 
