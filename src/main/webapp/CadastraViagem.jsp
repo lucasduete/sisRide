@@ -43,7 +43,7 @@
                                     <label for="lugarChegada">Lugar de Chegada</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="QuantidadeVagas" name="QuantidadeVagas" type="number" min="0" max="50" required>
+                                    <input id="QuantidadeVagas" name="QuantidadeVagas" type="number" min="0" max="1000" required>
                                     <label for="QuantidadeVagas">Quantidade de Vagas</label>
                                 </div>
                                 <div class="input-field">
@@ -94,23 +94,23 @@
                                 <div class="row">
                                     <p>Nivel de Conversa</p>
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="nivelConversa" type="radio" id="nivel1" value="sim" />
+                                        <input name="nivelConversa" type="radio" id="nivel1" value="1" />
                                         <label for="nivel1">1</label>
                                     </div>
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="nivelConversa" type="radio" id="nivel2" value="sim" />
+                                        <input name="nivelConversa" type="radio" id="nivel2" value="2" />
                                         <label for="nivel2">2</label>
                                     </div>
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="nivelConversa" type="radio" id="nivel3" value="sim" />
+                                        <input name="nivelConversa" type="radio" id="nivel3" value="3" />
                                         <label for="nivel3">3</label>
                                     </div>
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="nivelConversa" type="radio" id="nivel4" value="sim" />
+                                        <input name="nivelConversa" type="radio" id="nivel4" value="4" />
                                         <label for="nivel4">4</label>
                                     </div>
                                     <div class="col m3 l3 offset-m2 offset-l2">
-                                        <input name="nivelConversa" type="radio" id="nivel5" value="sim" />
+                                        <input name="nivelConversa" type="radio" id="nivel5" value="5" />
                                         <label for="nivel5">5</label>
                                     </div>
                                 </div>
