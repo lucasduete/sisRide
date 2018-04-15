@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.gerenciadores;
-
 
 import io.github.sisRide.dao.interfaces.LugarDaoInterface;
 import io.github.sisRide.factory.DaoFactory;
@@ -15,10 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author caio
- */
 public class GerenciadorLugar {
     
     private DaoFactoryInterface fabrica = null;
@@ -51,5 +41,9 @@ public class GerenciadorLugar {
     
     public List<Lugar> getLugaresByUsuario(String emailUsuario){
         return lugarDao.getLugaresByUsuario(emailUsuario);
+    }
+
+    public int getPlaceId(String nomeLugar) {
+        return lugarDao.getPlaceIDByNome(nomeLugar);
     }
 }

@@ -167,4 +167,28 @@ public class LugarDaoPostgres implements LugarDaoInterface{
         return lugares;
     }
 
+    @Override
+    public int getPlaceIDByNome(String nome) {
+        String sql = "SELECT Place_id FROM Lugar WHERE Nome LIKE ?";
+        int placeId = -1;
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nome);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next())
+                placeId = rs.getInt("Place_id");
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return -1;
+        }
+
+        return placeId;
+    }
 }
