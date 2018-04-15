@@ -24,7 +24,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
     public boolean salvar(Viagem viagem) {
         String sql = "INSERT INTO Viagem Data, Valor, Vagas, Horario, TransportarAnimal, NivelConversa, " +
                 "PodeFumar, EmailMotorista, PlacaCarro, IdLocalSaida, IdLocalDestino " +
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
