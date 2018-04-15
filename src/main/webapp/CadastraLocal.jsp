@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,26 +34,21 @@
                 <div class="col s12 m6 l6">
                     <form class="login-form" action="front" method="post">
                         <div class="card">
-                            <%--<div class="card-image">--%>
-                               <%--<img src="assets/img/cadastro.png">    --%>
-                            <%--</div>--%>
+                           <!-- <div class="card-image">
+                               <img src="assets/img/cadastro.png">
+                            </div>-->
                             <div class="card-content">
                                 <div class="input-field">
-                                    <input id="nomeLocal" name="nomeLocal" type="text" required>
-                                    <label for="nomeLocal">Nome do Local</label>
+                                    <input id="nome" name="nome" type="text" required>
+                                    <label for="nome">Nome do Local</label>
                                 </div>
                                 <div class="input-field">
                                     <input id="descricao" name="descricao" type="text" required>
                                     <label for="descricao">Descrição</label>
                                 </div>
-                                <div class="input-field">
-                                    <input id="lat" name="lat" type="text" disabled required>
-                                    <label for="lat">Latitude</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="lng" name="lng" type="text" disabled required>
-                                    <label for="lng">Longitude</label>
-                                </div>
+
+                                <input id="lat" name="lat" type="text" hidden>
+                                <input id="lng" name="lng" type="text" hidden>
                             </div>
                             <div class="card-action">
                                 <div class="center-align">
@@ -198,6 +194,13 @@
                     }
                 });
             });
+
+            var code = "${param.code}";
+            if(code == "1"){
+                swal("Sucesso", "Local Cadastrado com Sucesso", "success");
+            } else if(code == "2") {
+                swal("Ops...", "Problema ao cadastrar Local, verifique os dados e tente novamente", "error");
+            }
         </script>
     </body>
 </html>
