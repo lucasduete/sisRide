@@ -145,6 +145,13 @@
                     document.getElementById("novoD").style.visibility = "hidden";
                 }
             }
+
+            var code = "${param.code}";
+            if(code == "1") {
+                swal("Sucesso", "Veiculo Cadastrado com Sucesso", "success");
+            } else if(code == "2") {
+                swal("Ops...", "Problema ao cadastrar seu Veiculo, verifique os dados e tente novamente", "error");
+            }
         </script>
     </body>
 </html>
