@@ -33,7 +33,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
             stmt.setString(2, carro.getModelo());
             stmt.setBoolean(3, carro.getArCondicionado());
             stmt.setDate(4, Date.valueOf(carro.getAno()));
-            stmt.setString(5, carro.getEmailAdministrador());
+            stmt.setString(5, carro.getEmailProprieatario());
 
             stmt.executeUpdate();
 
@@ -98,7 +98,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
             stmt.setString(2, carro.getModelo());
             stmt.setBoolean(3, carro.getArCondicionado());
             stmt.setDate(4, Date.valueOf(carro.getAno()));
-            stmt.setString(5, carro.getEmailAdministrador());
+            stmt.setString(5, carro.getEmailProprieatario());
             stmt.setString(6, carro.getPlaca());
 
             stmt.executeUpdate();
@@ -158,7 +158,7 @@ public class CarroDaoPostgres implements CarroDaoInterface{
                 carro.setAno(
                         LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate()
                 );
-                carro.setEmailAdministrador(rs.getString("EmailMotorista"));
+                carro.setEmailProprieatario(rs.getString("EmailMotorista"));
             }
 
             rs.close();
