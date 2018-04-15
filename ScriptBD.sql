@@ -28,7 +28,7 @@ CREATE TABLE Carro (
   EmailMotorista VARCHAR(25) NOT NULL,
   CONSTRAINT Carro_PK_Placa PRIMARY KEY (Placa),
   CONSTRAINT Carro_Modelo_Valido CHECK (length(Modelo) >= 5),
-  CONSTRAINT Carro_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email)
+  --CONSTRAINT Carro_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Lugar (
@@ -62,7 +62,7 @@ CREATE TABLE Viagem (
   CONSTRAINT Viagem_NivelConversa_Valido CHECK (NivelConversa >= 0 AND NivelConversa <= 5),
   CONSTRAINT Viagem_Locais_NaoNull CHECK ((IdLocalSaida IS NOT NULL) AND (IdLocalDestino IS NOT NULL)),
   CONSTRAINT Viagem_Locais_Validos CHECK ((IdLocalSaida = IdLocalDestino) IS FALSE),
-  CONSTRAINT Viagem_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email),
+  --CONSTRAINT Viagem_FK_EmailMotorista_Usuario FOREIGN KEY (EmailMotorista) REFERENCES Usuario(Email),
   CONSTRAINT Viagem_FK_PlacaCarro_Carro FOREIGN KEY (PlacaCarro) REFERENCES Carro(Placa),
   CONSTRAINT Viagem_FK_IdLocalSaida_Local FOREIGN KEY (IdLocalSaida) REFERENCES Lugar(Place_id),
   CONSTRAINT Viagem_FK_IdLocalDestino_Local FOREIGN KEY (IdLocalDestino) REFERENCES Lugar(Place_id)
@@ -72,7 +72,7 @@ CREATE TABLE SolicitacaoVaga (
   EmailPassageiro VARCHAR(25) NOT NULL,
   IdViagem INTEGER NOT NULL,
   CONSTRAINT SolicitacaoVaga_PK_EmailPassageiro_IdViagem PRIMARY KEY (EmailPassageiro, IdViagem),
-  CONSTRAINT SolicitacaoVaga_FK_EmailPassageiro_Usuario FOREIGN KEY (EmailPassageiro) REFERENCES Usuario (Email),
+  --CONSTRAINT SolicitacaoVaga_FK_EmailPassageiro_Usuario FOREIGN KEY (EmailPassageiro) REFERENCES Usuario (Email),
   CONSTRAINT SolicitacaoVaga_FK_IdViagem_Viagem FOREIGN KEY (IdViagem) REFERENCES Viagem(Id)
 );
 
@@ -80,7 +80,7 @@ CREATE TABLE ReservaVaga (
   EmailPassageiro VARCHAR(25) NOT NULL,
   IdViagem INTEGER NOT NULL,
   CONSTRAINT ReservaVaga_PK_EmailPassageiro_IdViagem PRIMARY KEY (EmailPassageiro, IdViagem),
-  CONSTRAINT SolicitacaoVaga_FK_EmailPassageiro_Usuario FOREIGN KEY (EmailPassageiro) REFERENCES Usuario (Email),
+  --CONSTRAINT SolicitacaoVaga_FK_EmailPassageiro_Usuario FOREIGN KEY (EmailPassageiro) REFERENCES Usuario (Email),
   CONSTRAINT SolicitacaoVaga_FK_IdViagem_Viagem FOREIGN KEY (IdViagem) REFERENCES Viagem(Id)
 );
 
@@ -92,8 +92,8 @@ CREATE TABLE Follow (
   EmailSeguidor VARCHAR(25) NOT NULL,
   CONSTRAINT Follow_PK_EmailUsuario_EmailSeguidor PRIMARY KEY (EmailUsuario, EmailSeguidor),
   CONSTRAINT Follow_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailSeguidor) IS FALSE),
-  CONSTRAINT Follow_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT Follow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
+  --CONSTRAINT Follow_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  --CONSTRAINT Follow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Friendship (
@@ -101,8 +101,8 @@ CREATE TABLE Friendship (
   EmailAmigo VARCHAR(25) NOT NULL,
   CONSTRAINT Friendship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
   CONSTRAINT Friendship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
-  CONSTRAINT Friendship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT Friendship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
+  --CONSTRAINT Friendship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  --CONSTRAINT Friendship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Message (
@@ -112,8 +112,8 @@ CREATE TABLE Message (
   Mensagem VARCHAR NOT NULL,
   CONSTRAINT Message_PK_Id PRIMARY KEY (Id),
   CONSTRAINT Message_Emails_Diferentes CHECK ((EmailEmissor ILIKE EmailDestinatario) IS FALSE),
-  CONSTRAINT Message_FK_EmailEmissor_Usuario FOREIGN KEY (EmailEmissor) REFERENCES Usuario(Email),
-  CONSTRAINT Message_PK_EmailDestinatario_Usuario FOREIGN KEY (EmailDestinatario) REFERENCES Usuario(Email)
+  --CONSTRAINT Message_FK_EmailEmissor_Usuario FOREIGN KEY (EmailEmissor) REFERENCES Usuario(Email),
+  --CONSTRAINT Message_PK_EmailDestinatario_Usuario FOREIGN KEY (EmailDestinatario) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Rating (
@@ -123,8 +123,8 @@ CREATE TABLE Rating (
   CONSTRAINT Rating_PK_EmailUsuaro_EmailAvaliado PRIMARY KEY (EmailUsuario, EmailAvaliado),
   CONSTRAINT Rating_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAvaliado) IS FALSE),
   CONSTRAINT Rating_Nota_Valida CHECK (Nota >= 0 AND Nota <=10),
-  CONSTRAINT Rating_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT Rating_PK_EmailAvaliado_Usuario FOREIGN KEY (EmailAvaliado) REFERENCES Usuario(Email)
+  --CONSTRAINT Rating_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  --CONSTRAINT Rating_PK_EmailAvaliado_Usuario FOREIGN KEY (EmailAvaliado) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE Publication (
@@ -133,7 +133,7 @@ CREATE TABLE Publication (
   IdLocal INTEGER NOT NULL,
   Mensagem VARCHAR,
   CONSTRAINT Publication_PK_Id PRIMARY KEY (Id),
-  CONSTRAINT Publication_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  --CONSTRAINT Publication_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
   CONSTRAINT Publication_FK_IdLocal_Lugar FOREIGN KEY (IdLocal) REFERENCES Lugar(Place_Id)
 );
 
@@ -142,8 +142,8 @@ CREATE TABLE RequestFollow (
   EmailSeguidor VARCHAR(25) NOT NULL,
   CONSTRAINT RequestFollow_PK_EmailUsuario_EmailSeguidor PRIMARY KEY (EmailUsuario, EmailSeguidor),
   CONSTRAINT RequestFollow_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailSeguidor) IS FALSE),
-  CONSTRAINT RequestFollow_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT RequestFollow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
+  --CONSTRAINT RequestFollow_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  --CONSTRAINT RequestFollow_PK_EmailSeguidor_Usuario FOREIGN KEY (EmailSeguidor) REFERENCES Usuario(Email)
 );
 
 CREATE TABLE RequestFriendship (
@@ -151,6 +151,6 @@ CREATE TABLE RequestFriendship (
   EmailAmigo VARCHAR(25) NOT NULL,
   CONSTRAINT RequestFriendship_PK_EmailUsuario_EmailAmigo PRIMARY KEY (EmailUsuario, EmailAmigo),
   CONSTRAINT RequestFriendship_Emails_Diferentes CHECK ((EmailUsuario ILIKE EmailAmigo) IS FALSE),
-  CONSTRAINT RequestFriendship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
-  CONSTRAINT RequestFriendship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
+  --CONSTRAINT RequestFriendship_FK_EmailUsuario_Usuario FOREIGN KEY (EmailUsuario) REFERENCES Usuario(Email),
+  --CONSTRAINT RequestFriendship_PK_EmailAmigo_Usuario FOREIGN KEY (EmailAmigo) REFERENCES Usuario(Email)
 );
