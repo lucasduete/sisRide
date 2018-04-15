@@ -21,10 +21,11 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpSession session = request.getSession();
 
-        //Se nao for a ação de login entao o a sessão deveria ter um atributo chamado de 'Usuario'
-        //contendo o usuario logado, caso esse atributo seja null entao, nesta sessão, não foi realizado
-        //o login,Logo, Caso a ação não seja login e o usuario seja null ele não está autorizado.
-        if (!request.getParameter("action").equals("Login") && session.getAttribute("Usuario") != null) {
+        if (request.getParameter("action").equals("Login")
+                || request.getParameter("action").equals("UsuarioCadastro")) {
+
+            filterChain.doFilter(servletRequest, servletResponse);
+        } else if (session.getAttribute("Usuario") != null) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/TeladeLogin.jsp");
