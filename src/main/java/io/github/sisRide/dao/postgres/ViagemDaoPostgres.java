@@ -311,6 +311,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, localSaida);
+            stmt.setString(2, localDestino);
 
             ResultSet rs = stmt.executeQuery();
 
