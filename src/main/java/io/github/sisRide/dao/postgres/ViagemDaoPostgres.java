@@ -205,4 +205,146 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
 
     }
 
+    @Override
+    public List<Viagem> getViagensWithSaida(String localSaida) {
+        String sql = "SELECT * FROM Viagem AS V JOIN Lugar AS L " +
+                "ON V.idlocalsaida = L.place_id WHERE L.nome LIKE ?;";
+
+        List<Viagem> viagens = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+                    stmt.setString(1, localSaida);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                Date data = rs.getDate("DataViagem");
+                Instant instant = Instant.ofEpochMilli(data.getTime());
+
+                Viagem viagem = new Viagem (
+                        rs.getInt("Id"),
+                        LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
+                        rs.getFloat("Valor"),
+                        rs.getInt("Vagas"),
+                        rs.getTime("Horario").toLocalTime(),
+                        rs.getBoolean("TransportarAnimal"),
+                        rs.getInt("NivelConversa"),
+                        rs.getBoolean("PodeFumar"),
+                        rs.getString("EmailMotorista"),
+                        rs.getString("PlacaCarro"),
+                        rs.getInt("IdLocalSaida"),
+                        rs.getInt("IdLocalDestino")
+                );
+
+                viagens.add(viagem);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return viagens;
+    }
+
+    @Override
+    public List<Viagem> getViagensWithDestino(String localDestino) {
+        String sql = "SELECT * FROM Viagem AS V JOIN Lugar AS L " +
+                "ON V.idlocaldestino = L.place_id WHERE L.nome LIKE ?;";
+
+        List<Viagem> viagens = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, localDestino);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                Date data = rs.getDate("DataViagem");
+                Instant instant = Instant.ofEpochMilli(data.getTime());
+
+                Viagem viagem = new Viagem (
+                        rs.getInt("Id"),
+                        LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
+                        rs.getFloat("Valor"),
+                        rs.getInt("Vagas"),
+                        rs.getTime("Horario").toLocalTime(),
+                        rs.getBoolean("TransportarAnimal"),
+                        rs.getInt("NivelConversa"),
+                        rs.getBoolean("PodeFumar"),
+                        rs.getString("EmailMotorista"),
+                        rs.getString("PlacaCarro"),
+                        rs.getInt("IdLocalSaida"),
+                        rs.getInt("IdLocalDestino")
+                );
+
+                viagens.add(viagem);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return viagens;
+    }
+
+    @Override
+    public List<Viagem> getViagensWithSaidaDestino(String localSaida, String localDestino) {
+        String sql = "SELECT * FROM Viagem AS V JOIN Lugar AS L " +
+                "ON V.idlocalsaida = L.place_id JOIN Lugar AS L2 " +
+                "ON V.idlocaldestino = L.place_id WHERE L.nome LIKE ? AND L2.nome LIKE ?;";
+
+        List<Viagem> viagens = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, localSaida);
+            stmt.setString(2, localDestino);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                Date data = rs.getDate("DataViagem");
+                Instant instant = Instant.ofEpochMilli(data.getTime());
+
+                Viagem viagem = new Viagem (
+                        rs.getInt("Id"),
+                        LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
+                        rs.getFloat("Valor"),
+                        rs.getInt("Vagas"),
+                        rs.getTime("Horario").toLocalTime(),
+                        rs.getBoolean("TransportarAnimal"),
+                        rs.getInt("NivelConversa"),
+                        rs.getBoolean("PodeFumar"),
+                        rs.getString("EmailMotorista"),
+                        rs.getString("PlacaCarro"),
+                        rs.getInt("IdLocalSaida"),
+                        rs.getInt("IdLocalDestino")
+                );
+
+                viagens.add(viagem);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return viagens;
+    }
 }

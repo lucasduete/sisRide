@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.gerenciadores;
 
 import io.github.sisRide.dao.interfaces.ViagemDaoInterface;
@@ -14,10 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author caio
- */
 public class GerenciadorViagem {
     
     private DaoFactoryInterface fabrica = null;
@@ -50,6 +41,20 @@ public class GerenciadorViagem {
     
     public List<Viagem> getViagemByMotorista(String emailMotorista){
         return viagemDao.getViagemByMotorista(emailMotorista);
+    }
+
+    public List<Viagem> searchViagem(String localSaida, String localDestino) {
+
+        if ((localSaida == null || localSaida.isEmpty()) && (localDestino == null || localDestino.isEmpty()))
+            return viagemDao.listar();
+        else if (localSaida == null || localSaida.isEmpty())
+            return viagemDao.getViagensWithDestino(localDestino);
+        else if (localDestino == null || localDestino.isEmpty())
+            return viagemDao.getViagensWithSaida(localSaida);
+        else if ((localSaida != null && !localSaida.isEmpty()) && (localDestino != null && !localDestino.isEmpty()))
+            return viagemDao.getViagensWithSaidaDestino(localSaida, localDestino);
+        else
+            return null;
     }
     
 }
