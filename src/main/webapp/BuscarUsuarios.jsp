@@ -34,7 +34,7 @@
             <form action="front" method="post" enctype="multipart/form-data">
                 <div class="input-field col s8">
                     <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <label class="label-icon" name="search" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i>
                 </div>
                 <div class="col s4" style="margin-top: 1.5%">
