@@ -44,5 +44,9 @@ public class GerenciadorSolicitacaoVaga {
     public boolean deletar(SolicitacaoVaga solicitacao){
         return solicitacaovagaDao.deletar(solicitacao);
     }
+
+    public List<SolicitacaoVaga> listarById(int idViagem) {
+        return solicitacaovagaDao.listarById(idViagem);
+    }
     
 }
