@@ -121,7 +121,7 @@
     </body>
     <script type="text/javascript">
         var code = "${param.code}";
-        if(code == "1"){
+        if(code == "1") {
             swal("Sucesso", "Vaga Solicitada com Sucesso", "success");
         } else if(code == "2") {
             swal("Ops...", "Problema ao Solicitar sua Vaga, tente novamente mais tarde.", "error");
