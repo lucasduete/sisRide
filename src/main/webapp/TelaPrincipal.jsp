@@ -156,7 +156,7 @@
                     <form action="front" method="post" enctype="multipart/form-data">
                         <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" >Ver perfil pessoal</button>
                         <input type="hidden" name="action" value="IrParaPerfil">
-                        <input type="hidden" name="emailU" value="${Usuario.email}">
+                        <input type="hidden" name="email" value="${Usuario.email}">
                     </form>
                 </li>
                 <li><div class="divider"></div></li>

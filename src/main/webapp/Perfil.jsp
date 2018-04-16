@@ -1,4 +1,5 @@
-<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tagsUtils" uri="TagsUtil" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +27,7 @@
                 </div>
             </nav>
         </div>
-        
+        <tagsUtils:getPerfilTag/>
         <div class="col s12">
             <div class="row">
                 <div class="col s6">
@@ -36,12 +37,14 @@
                                 <div class="card-content white-text">
                                     <span class="card-title">${UsuarioP.nome}</span>
                                     <p>
-                                        <img class="circle" src="data:image/jpg;base64,${UsuarioP.fotoPerfil}"><br>
-                                        ${UsuarioP.sexo}<br>
-                                        ${UsuarioP.dataNasc}<br>
-                                        ${UsuarioP.profissao}<br>
-                                        ${UsuarioP.cidade}<br>
-                                        ${UsuarioP.nota}<br>
+                                        <tagsUtils:getFotoPerfil/>
+                                        <a><img class="circle" src="data:image/jpg;base64,${fotoPerfil}"></a>
+                                        <br/>
+                                        Sexo: ${UsuarioP.sexo}<br>
+                                        Data de Nascimento: ${UsuarioP.dataNasc}<br>
+                                        Nota: ${UsuarioP.nota}<br>
+                                        Profissao: ${UsuarioP.profissao}<br>
+                                        Cidade: ${UsuarioP.cidade}<br>
                                     </p>
                                 </div>
                                 <div class="card-action">

@@ -67,4 +67,10 @@
         <tag-class>io.github.sisRide.tags.FotoPerfilTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+
+    <tag>
+        <name>getPerfilTag</name>
+        <tag-class>io.github.sisRide.tags.PerfilTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 </taglib>
