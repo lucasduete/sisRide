@@ -1,7 +1,10 @@
-<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
+<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+-->
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Compiled and minified CSS 
@@ -9,7 +12,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <script src="assets/js/sweetalert.min.js"></script>
         <!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="assets/css/Teste.css">
     </head>
     <body class="grey lighten-3">
@@ -27,77 +30,38 @@
             </nav>
         </div>
         
-        <div class="col s12">
-            <div class="row">
-                <div class="col s6">
-                    <div class="row">
-                        <div class="col s12">
-                            <div class="card teal lighten-2">
-                                <div class="card-content white-text">
-                                    <span class="card-title">${UsuarioP.nome}</span>
-                                    <p>
-                                        <img class="circle" src="${UsuarioP.fotoPerfil}"><br>
-                                        ${UsuarioP.sexo}<br>
-                                        ${UsuarioP.dataNasc}<br>
-                                        ${UsuarioP.profissao}<br>
-                                        ${UsuarioP.cidade}<br>
-                                        ${UsuarioP.nota}<br>
-                                    </p>
-                                </div>
-                                <div class="card-action">
-                                    <c:if test="${Usuario.email}">
-                                        <form class="left" action="front" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="action" value="ExcluirConta">
-                                            <input type="hidden" name="email" value="${usuario.email}">
-                                            <input class="button" type="submit" value="Excluir Conta">
-                                        </form>
-                                        <form class="left" action="front" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="action" value="EditarConta">
-                                            <input type="hidden" name="email" value="${usuario.email}">
-                                            <input class="button" type="submit" value="Editar Conta">
-                                        </form>
-                                    </c:if>
-                                    <c:if test="${Usuario.email}">
-                                        <form class="right" action="front" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="action" value="SolicitarSeguir">
-                                            <input type="hidden" name="email" value="${usuario.email}">
-                                            <input class="button" type="submit" value="Solicitar Seguir">
-                                        </form>
-                                        <form class="right" action="front" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="action" value="SolicitarAmizadade">
-                                            <input type="hidden" name="email" value="${usuario.email}">
-                                            <input class="button" type="submit" value="Solicitar Amizadade">
-                                        </form> 
-                                    </c:if>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s6">
-                    <div class="container" id="teste">
-                        <ul class="collection">
-                            <c:forEach  var="carona" items="${Caronas}">
-                                <div class="row">
-                                    <li class="collection-item avatar">
-                                        <img src="${carona.fotoPerfil}" alt="" class="circle">
-                                        <span class="title">${carona.nome}</span>
-                                        <p>First Line
-                                        </p>
-                                        <form class="right" action="front" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="action" value="IrParaCarona">
-                                            <input type="hidden" name="email" value="${carona}">
-                                            <input class="button" type="submit" value="Ver carona">
-                                        </form>
-                                    </li>
-                                </div>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col s6">
+                <ul class="collection">
+                    <p>Solicitacoes de amizade</p>
+                    <c:forEach  var="solicitacao" items="${SolicitacaoA}">
+                        <li class="collection-item avatar">
+                            <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                            <span class="title">${solicitacao.nome}</span>
+                            <p>
+                                <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                                <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                            </p>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+            <div class="col s6">
+                <ul class="collection">
+                    <p>Solicitacoes de seguir</p>
+                    <c:forEach  var="solicitacao" items="${SolicitacaoS}">
+                        <li class="collection-item avatar">
+                            <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                            <span class="title">${solicitacao.nome}</span>
+                            <p>
+                                <a href="front?action=ConfimarSeguir" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
+                                <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                            </p>
+                        </li>
+                    </c:forEach>
+                </ul>
             </div>
         </div>
-
         
         <div id="novoA" class="novoA white">
             <ul class="collection">
