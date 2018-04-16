@@ -6,12 +6,8 @@ import io.github.sisRide.model.Carro;
 
 import java.sql.*;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class CarroDaoPostgres implements CarroDaoInterface{
 
@@ -184,15 +180,12 @@ public class CarroDaoPostgres implements CarroDaoInterface{
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Date data = rs.getDate("Ano");
-                Instant instant = Instant.ofEpochMilli(data.getTime());
-
                 Carro carro = new Carro(
                         rs.getString("Placa"),
                         rs.getString("Modelo"),
                         rs.getBoolean("ArCondicionado"),
                         rs.getInt("Ano"),
-                        rs.getString(emailMotorista)
+                        emailMotorista
                 );
 
                 carros.add(carro);
