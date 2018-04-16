@@ -11,7 +11,8 @@ package io.github.sisRide.model;
  */
 public class MessageUsuario {
     
-    private int id;
+    private String emailEmissor;
+    private String emailDestinatario;
     private String nomeDestinatario;
     private String fotoPerfilDestinatario;
     
@@ -19,18 +20,27 @@ public class MessageUsuario {
         
     }
 
-    public MessageUsuario(int id, String nomeDestinatario, String fotoPerfilDestinatario) {
-        this.id = id;
+    public MessageUsuario(String emailEmissor, String emailDestinatario, String nomeDestinatario, String fotoPerfilDestinatario) {
+        this.emailEmissor = emailEmissor;
+        this.emailDestinatario = emailDestinatario;
         this.nomeDestinatario = nomeDestinatario;
         this.fotoPerfilDestinatario = fotoPerfilDestinatario;
     }
 
-    public int getId() {
-        return id;
+    public String getEmailEmissor() {
+        return emailEmissor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmailEmissor(String emailEmissor) {
+        this.emailEmissor = emailEmissor;
+    }
+
+    public String getEmailDestinatario() {
+        return emailDestinatario;
+    }
+
+    public void setEmailDestinatario(String emailDestinatario) {
+        this.emailDestinatario = emailDestinatario;
     }
 
     public String getNomeDestinatario() {
@@ -50,4 +60,5 @@ public class MessageUsuario {
     }
     
     
+
 }

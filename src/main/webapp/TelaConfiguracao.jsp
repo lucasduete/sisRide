@@ -21,7 +21,7 @@
                     <a href="TelaPrincipal.jsp" class="brand-logo">SisRide</a>
                     <ul class="right">
                         <li><a onclick='NovoA()'><i class="material-icons">group</i></a></li>
-                        <li><a onclick='NovoB()'><i class="material-icons">message</i></a></li>
+                        <!--<li><a onclick='NovoB()'><i class="material-icons">message</i></a></li>-->
                         <!--<li><a onclick='NovoC()'><i class="material-icons">notifications</i></a></li>-->
                         <li><a onclick='NovoD()'><i class="material-icons">account_circle</i></a></li>
                     </ul>
@@ -158,7 +158,7 @@
                 </c:forEach>
             </ul>   
         <div>
-        <div id="novoB" class="novoB white">
+        <!--<div id="novoB" class="novoB white">
             <ul class="collection">
                 <p>Mensagem
                     <a class="ad" href="TelaMessagem.jsp">Ver tudo</a>
@@ -177,7 +177,7 @@
                     </li>
                 </c:forEach>
             </ul>
-        </div>
+        </div>-->
         <!--<div id="novoC" class="novoC white">
             <ul class="collection">
                 <p>Notificacoes
@@ -219,7 +219,7 @@
                 </c:if>
                 <li id="l"><a href="BuscarCarona.jsp"><span class="black-text name">Buscar Carona</span></a></li>
                 <li><div class="divider"></div></li>
-                <c:if test="${Usuario.tipo eq 'feminino'}">
+                <c:if test="${Usuario.sexo eq 'feminino'}">
                     <li id="l"><a href="SoElas.jsp"><span class="black-text name">So Elas</span></a></li>
                     <li><div class="divider"></div></li>
                 </c:if>
