@@ -7,7 +7,7 @@ public class RequestFriendship {
     private String emailUsuario;
     private String emailAmigo;
 
-    private RequestFriendship() {
+    public RequestFriendship() {
 
     }
 

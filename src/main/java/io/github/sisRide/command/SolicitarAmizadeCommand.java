@@ -9,6 +9,7 @@ import io.github.sisRide.gerenciadores.GerenciadorRequestFriendship;
 import io.github.sisRide.interfaces.Command;
 import io.github.sisRide.model.socialRequest.RequestFriendship;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,12 +32,17 @@ public class SolicitarAmizadeCommand implements Command{
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         
-        RequestFriendship reque = new RequestFriendship();
-        
         String emailU = req.getParameter("emailU");
         String emailS = req.getParameter("emailS");
         
+        friend.setEmailAmigo(emailS);
+        friend.setEmailUsuario(emailU);
         
+        gerfri.salvar(friend);
+        
+        RequestDispatcher dispatcher = req.getRequestDispatcher("TelaPrincipal.jsp");
+        
+        dispatcher.forward(req, res);
 
     }
     
