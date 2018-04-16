@@ -3,11 +3,14 @@ package io.github.sisRide.tags;
 import io.github.sisRide.gerenciadores.GerenciadorCarro;
 import io.github.sisRide.model.Usuario;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
+import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -15,12 +18,12 @@ import java.util.List;
 
 public class PlacasCarroByUserTag extends SimpleTagSupport {
 
-    Object user;
-
     @Override
     public void doTag() throws JspException, IOException {
+        PageContext pageContext = (PageContext) getJspContext();
+        HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 
-        Usuario usuario = (Usuario) user;
+        Usuario usuario = (Usuario) request.getSession().getAttribute("Usuario");
 
         System.out.println(usuario);
 
@@ -64,11 +67,4 @@ public class PlacasCarroByUserTag extends SimpleTagSupport {
         return super.getJspBody();
     }
 
-    public Object getUser() {
-        return user;
-    }
-
-    public void setUser(Object user) {
-        this.user = user;
-    }
 }
