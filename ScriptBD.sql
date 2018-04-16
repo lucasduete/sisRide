@@ -1,4 +1,4 @@
-/* Versao 4.1 */
+/* Versao 4.1.1 */
 
 /* Tabelas do Escopo do Negocio */
 
@@ -56,7 +56,7 @@ CREATE TABLE Viagem (
   IdLocalSaida INTEGER NOT NULL,
   IdLocalDestino INTEGER NOT NULL,
   CONSTRAINT Viagem_PK_Id PRIMARY KEY (Id),
-  CONSTRAINT Viagem_Data_Valida CHECK (DataViagem > now()),
+  --CONSTRAINT Viagem_Data_Valida CHECK (DataViagem >= now()),
   CONSTRAINT Viagem_Valor_Valido CHECK (Valor >= 0),
   CONSTRAINT Viagem_Vagas_Validas CHECK (Vagas >= 0 AND Vagas <= 50),
   CONSTRAINT Viagem_NivelConversa_Valido CHECK (NivelConversa >= 0 AND NivelConversa <= 5),
