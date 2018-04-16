@@ -36,7 +36,7 @@
                                 <div class="card-content white-text">
                                     <span class="card-title">${UsuarioP.nome}</span>
                                     <p>
-                                        <img class="circle" src="${UsuarioP.fotoPerfil}"><br>
+                                        <img class="circle" src="data:image/jpg;base64,${UsuarioP.fotoPerfil}"><br>
                                         ${UsuarioP.sexo}<br>
                                         ${UsuarioP.dataNasc}<br>
                                         ${UsuarioP.profissao}<br>
@@ -80,7 +80,7 @@
                             <c:forEach  var="carona" items="${Caronas}">
                                 <div class="row">
                                     <li class="collection-item avatar">
-                                        <img src="${carona.fotoPerfil}" alt="" class="circle">
+                                        <img src="data:image/jpg;base64,${carona.fotoPerfil}" alt="" class="circle">
                                         <span class="title">${carona.nome}</span>
                                         <p>First Line
                                         </p>
@@ -107,7 +107,7 @@
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoA}">
                     <li class="collection-item avatar">
-                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                         <form action="front" method="post" enctype="multipart/form-data">
@@ -131,7 +131,7 @@
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoS}">
                     <li class="collection-item avatar">
-                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <form action="front" method="post" enctype="multipart/form-data">
@@ -158,7 +158,7 @@
                 </p>
                 <c:forEach  var="mensagem" items="${Mensagem}">
                     <li class="collection-item avatar">
-                        <img src="${mensagem.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${mensagem.fotoPerfil}" alt="" class="circle">
                         <span class="title">${mensagem.nome}</span>
                         <p>
                             <form action="front" method="post" enctype="multipart/form-data">
@@ -190,7 +190,7 @@
         <div id="novoD" class="novoD white">
             <ul>
                 <li>
-                    <a><img class="circle" src="${Usuario.fotoPerfil}"></a>
+                    <a><img class="circle" src="data:image/jpg;base64,${Usuario.fotoPerfil}"></a>
                     <a id="l"><span class="black-text name">${Usuario.nome}</span></a>
                 </li>
                 <li><div class="divider"></div></li>

@@ -36,7 +36,7 @@
                     <p>Solicitacoes de amizade</p>
                     <c:forEach  var="solicitacao" items="${SolicitacaoA}">
                         <li class="collection-item avatar">
-                            <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                            <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                             <span class="title">${solicitacao.nome}</span>
                             <p>
                                 <form action="front" method="post" enctype="multipart/form-data">
@@ -61,7 +61,7 @@
                     <p>Solicitacoes de seguir</p>
                     <c:forEach  var="solicitacao" items="${SolicitacaoS}">
                         <li class="collection-item avatar">
-                            <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                            <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                             <span class="title">${solicitacao.nome}</span>
                             <p>
                                 <form action="front" method="post" enctype="multipart/form-data">
@@ -91,7 +91,7 @@
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoA}">
                     <li class="collection-item avatar">
-                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                         <form action="front" method="post" enctype="multipart/form-data">
@@ -115,7 +115,7 @@
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoS}">
                     <li class="collection-item avatar">
-                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <form action="front" method="post" enctype="multipart/form-data">
@@ -138,17 +138,21 @@
         <div id="novoB" class="novoB white">
             <ul class="collection">
                 <p>Mensagem
-                    <a class="ad" href="TelaMessagem.jsp">Ver tudo</a>
+                    <form class="right" action="front" method="post" enctype="multipart/form-data">
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver Tudo</button>
+                        <input type="hidden" name="action" value="IrParaMensagemTudo">
+                        <input type="hidden" name="emailU" value="${Usuario.email}">
+                    </form>
                 </p>
                 <c:forEach  var="mensagem" items="${Mensagem}">
                     <li class="collection-item avatar">
-                        <img src="${mensagem.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${mensagem.fotoPerfil}" alt="" class="circle">
                         <span class="title">${mensagem.nome}</span>
                         <p>
                             <form action="front" method="post" enctype="multipart/form-data">
                                 <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action"><i class="material-icons">arrow_forward</i></button>
                                 <input type="hidden" name="action" value="IrParaMensagem">
-                                <input type="hidden" name="emailU" value="${mensagem.email}">
+                                <input type="hidden" name="emailU" value="${mensagem.id}">
                             </form>
                         </p>
                     </li>
@@ -174,7 +178,7 @@
         <div id="novoD" class="novoD white">
             <ul>
                 <li>
-                    <a><img class="circle" src="${Usuario.fotoPerfil}"></a>
+                    <a><img class="circle" src="data:image/jpg;base64,${Usuario.fotoPerfil}"></a>
                     <a id="l"><span class="black-text name">${Usuario.nome}</span></a>
                 </li>
                 <li><div class="divider"></div></li>
