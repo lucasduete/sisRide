@@ -1,7 +1,5 @@
 package io.github.sisRide.tags;
 
-import io.github.sisRide.gerenciadores.GerenciadorCarro;
-import io.github.sisRide.model.Usuario;
 import io.github.sisRide.model.Viagem;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +10,6 @@ import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListViagensTag extends SimpleTagSupport {
