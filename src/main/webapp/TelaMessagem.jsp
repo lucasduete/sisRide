@@ -48,16 +48,16 @@
                 <div class="row">
                     <div class="container" id="teste">
                         <ul class="collection">
-                            <c:forEach  var="mensagem" items="${Mensagem}">
+                            <c:forEach  var="mensagem" items="${Mensagem2}">
                                 <div class="row">
                                     <li class="collection-item avatar">
-                                        <img src="${mensagem.fotoPerfil}" alt="" class="circle">
+                                        <img src="data:image/jpg;base64,${mensagem.fotoPerfil}" alt="" class="circle">
                                         <span class="title">${mensagem.nome}</span>
                                         <p>
                                         </p>
                                             <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="action" value="IrParaMensagem">
-                                                <input type="hidden" name="id" value="${usuario.email}">
+                                                <input type="hidden" name="id" value="${Usuario.id}">
                                                 <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Ir</button>
                                             </form>
                                         </p>
@@ -71,7 +71,7 @@
             <div class="col s6">
                 <div class="row">
                     <div id="teste2" class="col s12 white" style="margin-top: 3%">
-                        <c:forEach  var="mensagem" items="${Mensagem}">
+                        <c:forEach  var="mensagem" items="${Mensagem3}">
                             <c:if test="${mensagem.tipo eq 'sent'}">
                                 <div class="row">
                                     <p class="right text-black">${mensagem}</p>
@@ -87,10 +87,13 @@
                 </div>
                 <div class="row">
                     <form action="front" method="post" enctype="multipart/form-data">
-                        <div class="input-field col s12">
+                        <div class="input-field col s8">
                             <i class="material-icons prefix">mode_edit</i>
                             <textarea id="textarea1" name="mensagem" class="materialize-textarea"></textarea>
                             <label for="textarea1">Digite aqui sua mensagem</label>
+                        </div>
+                        <div class="col s4">
+                            <button class="btn waves-effect waves-light light-green accent-4" type="submit" name="action">Enviar</button>
                         </div>
                         <input type="hidden" name="action" value="NovaMensagem"/>
                     </form>    
@@ -106,7 +109,7 @@
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoA}">
                     <li class="collection-item avatar">
-                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                         <form action="front" method="post" enctype="multipart/form-data">
@@ -130,7 +133,7 @@
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoS}">
                     <li class="collection-item avatar">
-                        <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <form action="front" method="post" enctype="multipart/form-data">
@@ -157,13 +160,13 @@
                 </p>
                 <c:forEach  var="mensagem" items="${Mensagem}">
                     <li class="collection-item avatar">
-                        <img src="${mensagem.fotoPerfil}" alt="" class="circle">
+                        <img src="data:image/jpg;base64,${mensagem.fotoPerfil}" alt="" class="circle">
                         <span class="title">${mensagem.nome}</span>
                         <p>
                             <form action="front" method="post" enctype="multipart/form-data">
                                 <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action"><i class="material-icons">arrow_forward</i></button>
                                 <input type="hidden" name="action" value="IrParaMensagem">
-                                <input type="hidden" name="emailU" value="${mensagem.email}">
+                                <input type="hidden" name="emailU" value="${mensagem.id}">
                             </form>
                         </p>
                     </li>
@@ -189,7 +192,7 @@
         <div id="novoD" class="novoD white">
             <ul>
                 <li>
-                    <a><img class="circle" src="${Usuario.fotoPerfil}"></a>
+                    <a><img class="circle" src="data:image/jpg;base64,${Usuario.fotoPerfil}"></a>
                     <a id="l"><span class="black-text name">${Usuario.nome}</span></a>
                 </li>
                 <li><div class="divider"></div></li>
