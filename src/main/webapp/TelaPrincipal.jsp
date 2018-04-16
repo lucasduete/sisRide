@@ -147,7 +147,8 @@
         <div id="novoD" class="novoD white">
             <ul>
                 <li>
-                    <a><img class="circle" src="data:image/jpg;base64,${Usuario.fotoPerfil}"></a>
+                    <tagsUtil:getFotoPerfil/>
+                    <a><img class="circle" src="data:image/jpg;base64,${fotoPerfil}"></a>
                     <a id="l"><span class="black-text name">${Usuario.nome}</span></a>
                 </li>
                 <li><div class="divider"></div></li>
