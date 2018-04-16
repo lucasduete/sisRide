@@ -36,10 +36,6 @@
                         <div class="card-content">
                             <span class="card-title">Configurar os dados</span>
                             <div class="input-field">
-                                <input class="validate" id="email" name="email" type="email" required>
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="input-field">
                                 <input id="password" name="password" type="password" required>
                                 <label for="password">Senha</label>
                             </div>
@@ -104,7 +100,8 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="action" value="UsuarioCadastro"/>
+                    <input type="hidden" name="email" value="${UsuarioC.email}">
+                    <input type="hidden" name="action" value="AtualizaUsuario"/>
                 </form>
             </div>
         </div>

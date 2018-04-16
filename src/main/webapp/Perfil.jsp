@@ -45,27 +45,27 @@
                                     </p>
                                 </div>
                                 <div class="card-action">
-                                    <c:if test="${Usuario.email}">
+                                    <c:if test="${UsuarioP.email eq Usuario.email}">
                                         <form class="left" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="ExcluirConta">
-                                            <input type="hidden" name="email" value="${usuario.email}">
+                                            <input type="hidden" name="email" value="${UsuarioP.email}">
                                             <input class="button" type="submit" value="Excluir Conta">
                                         </form>
                                         <form class="left" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="EditarConta">
-                                            <input type="hidden" name="email" value="${usuario.email}">
+                                            <input type="hidden" name="email" value="${UsuarioP.email}">
                                             <input class="button" type="submit" value="Editar Conta">
                                         </form>
                                     </c:if>
-                                    <c:if test="${Usuario.email}">
+                                    <c:if test="${UsuarioP.email}">
                                         <form class="right" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="SolicitarSeguir">
-                                            <input type="hidden" name="email" value="${usuario.email}">
+                                            <input type="hidden" name="email" value="${UsuarioP.email}">
                                             <input class="button" type="submit" value="Solicitar Seguir">
                                         </form>
                                         <form class="right" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="SolicitarAmizadade">
-                                            <input type="hidden" name="email" value="${usuario.email}">
+                                            <input type="hidden" name="email" value="${UsuarioP.email}">
                                             <input class="button" type="submit" value="Solicitar Amizadade">
                                         </form> 
                                     </c:if>
@@ -86,7 +86,7 @@
                                         </p>
                                         <form class="right" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="IrParaCarona">
-                                            <input type="hidden" name="email" value="${carona}">
+                                            <input type="hidden" name="id" value="${carona.id}">
                                             <input class="button" type="submit" value="Ver carona">
                                         </form>
                                     </li>
