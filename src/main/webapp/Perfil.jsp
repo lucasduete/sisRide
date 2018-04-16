@@ -32,7 +32,7 @@
                 <div class="col s6">
                     <div class="row">
                         <div class="col s12">
-                            <div class="card teal lighten-2">
+                            <div class="card blue-grey darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">${UsuarioP.nome}</span>
                                     <p>
@@ -49,24 +49,24 @@
                                         <form class="left" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="ExcluirConta">
                                             <input type="hidden" name="email" value="${UsuarioP.email}">
-                                            <input class="button" type="submit" value="Excluir Conta">
+                                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Excluir Conta</button>
                                         </form>
                                         <form class="left" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="EditarConta">
                                             <input type="hidden" name="email" value="${UsuarioP.email}">
-                                            <input class="button" type="submit" value="Editar Conta">
+                                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Editar Conta</button>
                                         </form>
                                     </c:if>
                                     <c:if test="${UsuarioP.email}">
                                         <form class="right" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="SolicitarSeguir">
                                             <input type="hidden" name="email" value="${UsuarioP.email}">
-                                            <input class="button" type="submit" value="Solicitar Seguir">
+                                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Solicitar Seguir</button>
                                         </form>
                                         <form class="right" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="SolicitarAmizadade">
                                             <input type="hidden" name="email" value="${UsuarioP.email}">
-                                            <input class="button" type="submit" value="Solicitar Amizadade">
+                                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Solicitar Amizade</button>
                                         </form> 
                                     </c:if>
                                 </div>
@@ -87,7 +87,7 @@
                                         <form class="right" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="IrParaCarona">
                                             <input type="hidden" name="id" value="${carona.id}">
-                                            <input class="button" type="submit" value="Ver carona">
+                                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Ver Carona</button>
                                         </form>
                                     </li>
                                 </div>
@@ -110,8 +110,18 @@
                         <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
-                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                        <form action="front" method="post" enctype="multipart/form-data">
+                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                            <input type="hidden" name="action" value="ConfimarAmizadade">
+                            <input type="hidden" name="emailU" value="${Usuario.email}">
+                            <input type="hidden" name="emailS" value="${solicitacao.email}">
+                        </form>
+                        <form action="front" method="post" enctype="multipart/form-data">
+                            <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                            <input type="hidden" name="action" value="NaoConfimarAmizada">
+                            <input type="hidden" name="emailU" value="${Usuario.email}">
+                            <input type="hidden" name="emailS" value="${solicitacao.email}">
+                        </form>
                         </p>
                     </li>
                 </c:forEach>
@@ -124,8 +134,18 @@
                         <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
-                            <a href="front?action=ConfimarSeguir" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                            <form action="front" method="post" enctype="multipart/form-data">
+                                <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                                <input type="hidden" name="action" value="ConfimarSeguir">
+                                <input type="hidden" name="emailU" value="${Usuario.email}">
+                                <input type="hidden" name="emailS" value="${solicitacao.email}">
+                            </form>
+                            <form action="front" method="post" enctype="multipart/form-data">
+                                <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                                <input type="hidden" name="action" value="NaoConfimarSeguir">
+                                <input type="hidden" name="emailU" value="${Usuario.email}">
+                                <input type="hidden" name="emailS" value="${solicitacao.email}">
+                            </form>
                         </p>
                     </li>
                 </c:forEach>
@@ -141,7 +161,11 @@
                         <img src="${mensagem.fotoPerfil}" alt="" class="circle">
                         <span class="title">${mensagem.nome}</span>
                         <p>
-                            <a href="front?action=IrParaMensagem" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                            <form action="front" method="post" enctype="multipart/form-data">
+                                <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action"><i class="material-icons">arrow_forward</i></button>
+                                <input type="hidden" name="action" value="IrParaMensagem">
+                                <input type="hidden" name="emailU" value="${mensagem.email}">
+                            </form>
                         </p>
                     </li>
                 </c:forEach>
@@ -170,7 +194,13 @@
                     <a id="l"><span class="black-text name">${Usuario.nome}</span></a>
                 </li>
                 <li><div class="divider"></div></li>
-                <li id="l"><a href="Perfil.jsp"><span class="black-text name">Ver perfil pessoal</span></a></li>
+                <li id="l">
+                    <form action="front" method="post" enctype="multipart/form-data">
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver perfil pessoal</button>
+                        <input type="hidden" name="action" value="IrParaPerfil">
+                        <input type="hidden" name="emailU" value="${Usuario.email}">
+                    </form>
+                </li>
                 <li><div class="divider"></div></li>
                 <c:if test="${Usuario.tipo eq 'motorista'}">
                     <li id="l"><a href="CadastraViagem.jsp"><span class="black-text name">Cadastra Carona</span></a></li>

@@ -87,16 +87,16 @@ public class AtualizaUsuarioCommand implements Command{
         String fotoBase64 = FileManagement.encodeFile(foto);
         usuario.setFotoPerfil(fotoBase64);
 
-            usuario.setEmail(email);
-            usuario.setDataNasc(dataNasc);
-            usuario.setCidade(cidade);
-            usuario.setProfissao(profissao);
-            usuario.setNome(nome);
-            usuario.setTipo(tipo);
-            usuario.setSexo(sexo);
-            usuario.setSenha(senha);
+        usuario.setEmail(email);
+        usuario.setDataNasc(dataNasc);
+        usuario.setCidade(cidade);
+        usuario.setProfissao(profissao);
+        usuario.setNome(nome);
+        usuario.setTipo(tipo);
+        usuario.setSexo(sexo);
+        usuario.setSenha(senha);
             
-            gerusu.atualizar(usuario);
+        gerusu.atualizar(usuario);
         
     }
     
