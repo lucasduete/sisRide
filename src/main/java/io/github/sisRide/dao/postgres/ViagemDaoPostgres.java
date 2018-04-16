@@ -22,8 +22,8 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
 
     @Override
     public boolean salvar(Viagem viagem) {
-        String sql = "INSERT INTO Viagem Data, Valor, Vagas, Horario, TransportarAnimal, NivelConversa, " +
-                "PodeFumar, EmailMotorista, PlacaCarro, IdLocalSaida, IdLocalDestino " +
+        String sql = "INSERT INTO Viagem (DataViagem, Valor, Vagas, Horario, TransportarAnimal, NivelConversa, " +
+                "PodeFumar, EmailMotorista, PlacaCarro, IdLocalSaida, IdLocalDestino) " +
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
@@ -64,7 +64,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()) {
-                Date data = rs.getDate("Data");
+                Date data = rs.getDate("DataViagem");
                 Instant instant = Instant.ofEpochMilli(data.getTime());
 
 
@@ -99,7 +99,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
 
     @Override
     public boolean atualizar(Viagem viagem) {
-        String sql = "UPDATE Viagem SET Data = ?, Valor = ?, Vagas = ?, Horario = ?, TransportarAnimal = ?, " +
+        String sql = "UPDATE Viagem SET DataViagem = ?, Valor = ?, Vagas = ?, Horario = ?, TransportarAnimal = ?, " +
                 "NivelConversa = ?, PodeFumar = ?, EmailMotorista = ?, PlacaCarro = ?, IdLocalSaida = ?, " +
                 "IdLocalDestino = ? WHERE Id = ?";
 
@@ -160,7 +160,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
 
     @Override
     public List<Viagem> getViagemByMotorista(String emailMotorista) {
-        String sql = "SELECT Id, Data, Valor, Vagas, Horario, TransportarAnimal, NivelConversa, PodeFumar, " +
+        String sql = "SELECT Id, DataViagem, Valor, Vagas, Horario, TransportarAnimal, NivelConversa, PodeFumar, " +
                 "PlacaCarro, IdLocalSaida, IdLocalDestino FROM Viagem WHERE EmailMotorista ILIKE ?;";
         List<Viagem> viagens = new ArrayList<>();
 
@@ -172,7 +172,7 @@ public class ViagemDaoPostgres implements ViagemDaoInterface{
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()) {
-                Date data = rs.getDate("Data");
+                Date data = rs.getDate("DataViagem");
                 Instant instant = Instant.ofEpochMilli(data.getTime());
 
                 Viagem viagem = new Viagem (
