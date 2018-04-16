@@ -20,7 +20,7 @@
                     <ul class="right">
                         <li><a onclick='NovoA()'><i class="material-icons">group</i></a></li>
                         <li><a onclick='NovoB()'><i class="material-icons">message</i></a></li>
-                        <li><a onclick='NovoC()'><i class="material-icons">notifications</i></a></li>
+                        <!--<li><a onclick='NovoC()'><i class="material-icons">notifications</i></a></li>-->
                         <li><a onclick='NovoD()'><i class="material-icons">account_circle</i></a></li>
                     </ul>
                 </div>
@@ -38,10 +38,13 @@
                                 <li class="collection-item avatar">
                                     <img src="${carona.fotoPerfil}" alt="" class="circle">
                                     <span class="title">${carona.nome}</span>
-                                    <p>First Line <br>
-                                    Second Line
+                                    <p>First Line
                                     </p>
-                                    <a href="front?action=IrParaCarona" class="secondary-content"><i class="material-icons">share</i></a>
+                                    <form class="right" action="front" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="action" value="IrParaCarona">
+                                        <input type="hidden" name="email" value="${carona}">
+                                        <input class="button" type="submit" value="Ver carona">
+                                    </form>
                                 </li>
                             </div>
                         </c:forEach>
@@ -53,8 +56,8 @@
         <div id="novoA" class="novoA white">
             <ul class="collection">
                 <p>Solicitacoes de amizade 
-                    <a class="ad" href="">Encontrar amigos</a>
-                    <a class="ad" href="">Ver tudo</a>
+                    <a class="ad" href="BuscarUsuarios.jsp">Encontrar amigos</a>
+                    <a class="ad" href="TodasSolicitacoes.jsp">Ver tudo</a>
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoA}">
                     <li class="collection-item avatar">
@@ -67,8 +70,8 @@
                     </li>
                 </c:forEach>
                 <p>Solicitacoes de seguir
-                    <a class="ad" href="">Encontrar pessoas para seguir</a>
-                    <a class="ad" href="">Ver tudo</a>
+                    <a class="ad" href="BuscarUsuarios.jsp">Encontrar pessoas para seguir</a>
+                    <a class="ad" href="TodasSolicitacoes.jsp">Ver tudo</a>
                 </p>
                 <c:forEach  var="solicitacao" items="${SolicitacaoS}">
                     <li class="collection-item avatar">
@@ -98,7 +101,7 @@
                 </c:forEach>
             </ul>
         </div>
-        <div id="novoC" class="novoC white">
+        <!--<div id="novoC" class="novoC white">
             <ul class="collection">
                 <p>Notificacoes
                     <a class="ad" href="">Ver tudo</a>
@@ -113,7 +116,7 @@
                     </li>
                 </c:forEach>
             </ul>
-        <div>
+        <div>-->
         <div id="novoD" class="novoD white">
             <ul>
                 <li>
