@@ -9,4 +9,10 @@
         <tag-class>io.github.sisRide.tags.PlacasCarroByUserTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+
+    <tag>
+        <name>listaViagens</name>
+        <tag-class>io.github.sisRide.tags.ListViagensTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 </taglib>
