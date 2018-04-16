@@ -25,11 +25,8 @@ public class PlacasCarroByUserTag extends SimpleTagSupport {
 
         Usuario usuario = (Usuario) request.getSession().getAttribute("Usuario");
 
-        System.out.println(usuario);
-
         GerenciadorCarro gerenciadorCarro = new GerenciadorCarro();
         List<String> placas = new ArrayList<>();
-
 
         gerenciadorCarro.getCarrosByMotorista(usuario.getEmail())
                 .forEach((carro) -> placas.add(carro.getPlaca()));
