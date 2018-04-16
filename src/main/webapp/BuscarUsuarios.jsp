@@ -51,12 +51,12 @@
                             <li class="collection-item avatar">
                                 <img src="${usuario.fotoPerfil}" alt="" class="circle">
                                 <span class="title">${carona.usuario}</span>
-                                <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
+                                <form class="col s3 right" action="front" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="SolicitarAmizade">
                                     <input type="hidden" name="email" value="${usuario.email}">
                                     <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Solicitar Amizade</button>
                                 </form>
-                                <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
+                                <form class="col s3 right" action="front" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="SolicitarSeguir">
                                     <input type="hidden" name="email" value="${usuario.email}">
                                     <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Solicitar seguir</button>
