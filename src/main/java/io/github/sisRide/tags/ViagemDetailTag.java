@@ -1,6 +1,6 @@
 package io.github.sisRide.tags;
 
-import io.github.sisRide.model.Viagem;
+import io.github.sisRide.gerenciadores.GerenciadorLugar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspContext;
@@ -10,18 +10,19 @@ import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
-import java.util.List;
 
-public class ListViagensTag extends SimpleTagSupport {
+public class ViagemDetailTag extends SimpleTagSupport {
+
+    private int idLocalSaida;
+    private int idLocalDestino;
 
     @Override
     public void doTag() throws JspException, IOException {
         PageContext pageContext = (PageContext) getJspContext();
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 
-        List<Viagem> viagens = (List<Viagem>) request.getAttribute("viagens");
-
-        this.getJspContext().setAttribute("viagens", viagens);
+        this.getJspContext().setAttribute("localSaida", new GerenciadorLugar().getNome(idLocalSaida));
+        this.getJspContext().setAttribute("localDestino", new GerenciadorLugar().getNome(idLocalDestino));
     }
 
     @Override
@@ -54,4 +55,19 @@ public class ListViagensTag extends SimpleTagSupport {
         return super.getJspBody();
     }
 
+    public int getIdLocalSaida() {
+        return idLocalSaida;
+    }
+
+    public void setIdLocalSaida(int idLocalSaida) {
+        this.idLocalSaida = idLocalSaida;
+    }
+
+    public int getIdLocalDestino() {
+        return idLocalDestino;
+    }
+
+    public void setIdLocalDestino(int idLocalDestino) {
+        this.idLocalDestino = idLocalDestino;
+    }
 }

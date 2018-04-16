@@ -11,4 +11,5 @@ public interface LugarDaoInterface {
     public boolean deletar(Lugar lugar);
     public List<Lugar> getLugaresByUsuario(String emailUsuario);
     public int getPlaceIDByNome(String nome);
+    public String getNomeByPlaceId(int placeId);
 }

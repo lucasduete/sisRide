@@ -46,4 +46,8 @@ public class GerenciadorLugar {
     public int getPlaceId(String nomeLugar) {
         return lugarDao.getPlaceIDByNome(nomeLugar);
     }
+
+    public String getNome(int placeId) {
+        return lugarDao.getNomeByPlaceId(placeId);
+    }
 }

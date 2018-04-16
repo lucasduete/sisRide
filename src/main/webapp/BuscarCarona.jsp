@@ -24,22 +24,22 @@
                         <div class="card-content">
                             <div class="row">
                                 <form action="front" method="post">
-                                    <div class="col m5 l5 s12">
+                                    <div class="col m4 l4 s12">
                                         <div class="input-field">
                                             <input type="text" name="localSaida" id="localSaida">
                                             <label for="localSaida">Local de Saida</label>
                                         </div>
                                     </div>
-                                    <div class="col m5 l5 s12">
+                                    <div class="col m4 l4 s12">
                                         <div class="input-field">
                                             <input type="text" name="localChegada" id="localChegada">
                                             <label for="localChegada">Local de Chegada</label>
                                         </div>
                                     </div>
-                                    <div class="col m2 l2">
-                                        <button class="btn waves-effect waves-light btn light-green accent-4">
+                                    <div class="col right">
+                                        <button class="waves-effect waves-light btn light-green">
                                             <i class="material-icons left">search</i>
-                                            Cadastrar
+                                            Buscar
                                         </button>
                                     </div>
                                     <input type="hidden" name="action" value="BuscarCarona"/>
@@ -67,15 +67,32 @@
                                 <tbody>
                                     <tagsUtil:listaViagens/>
                                     <c:forEach var="viagem" items="${viagens}">
+                                        <tagsUtil:viagemDetail idLocalSaida="${viagem.idLocalSaida}" idLocalDestino="${viagem.idLocalDestino}"></tagsUtil:viagemDetail>
                                         <tr>
-                                            <td>${viagem.idLocalSaida}</td>
-                                            <td>${viagem.idLocalDestino}</td>
+                                            <td>${localSaida}</td>
+                                            <td>${localDestino}</td>
                                             <td>${viagem.data}</td>
                                             <td>${viagem.horario}</td>
                                             <td>${viagem.valor}</td>
-                                            <td>${viagem.vagas}</td>
-                                            <td>${viagem.transporteAnimal}</td>
-                                            <td>${viagem.podeFumar}</td>
+                                            <td>
+                                                ${viagem.vagas}
+                                            </td>
+                                            <td>
+                                                <c:if test="${viagem.transporteAnimal eq true}">
+                                                    Sim
+                                                </c:if>
+                                                <c:if test="${viagem.transporteAnimal eq false}">
+                                                Não
+                                                </c:if>
+                                            </td>
+                                            <td>
+                                                <c:if test="${viagem.podeFumar eq true}">
+                                                    Sim
+                                                </c:if>
+                                                <c:if test="${viagem.podeFumar eq false}">
+                                                    Não
+                                                </c:if>
+                                            </td>
                                             <td>${viagem.nivelConversa}</td>
                                             <td>${viagem.emailMotorista}</td>
                                             <td>${viagem.placaCarro}</td>
