@@ -22,7 +22,7 @@ public class SolicitacaoVagaDaoPostgres implements SolicitacaoVagaDaoInterface{
 
     @Override
     public boolean salvar(SolicitacaoVaga solicitacaoVaga) {
-        String sql = "INSERT INTO SolicatacaoVaga(EmailPassageiro, IdViagem) VALUES (?,?)";
+        String sql = "INSERT INTO SolicitacaoVaga (EmailPassageiro, IdViagem) VALUES (?,?)";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
