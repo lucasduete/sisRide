@@ -60,7 +60,7 @@
                                                 <input type="hidden" name="action" value="IrParaMensagem">
                                                 <input type="hidden" name="emailEmissor" value="${mensagem.emailEmissor}">
                                                 <input type="hidden" name="emailDestinatario" value="${mensagem.emailDestinatario}">
-                                                <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Ir</button>
+                                                <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" >Ir</button>
                                             </form>
                                         </p>
                                     </li>
@@ -95,7 +95,7 @@
                             <label for="textarea1">Digite aqui sua mensagem</label>
                         </div>
                         <div class="col s4">
-                            <button class="btn waves-effect waves-light light-green accent-4" type="submit" name="action">Enviar</button>
+                            <button class="btn waves-effect waves-light light-green accent-4" type="submit" >Enviar</button>
                         </div>
                         <input type="hidden" name="emailEmissor" value="${emailEmissor}">
                         <input type="hidden" name="emailDestinatario" value="${emailDestinatario}">
@@ -117,13 +117,13 @@
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                         <form action="front" method="post" enctype="multipart/form-data">
-                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" >Confimar</button>
                             <input type="hidden" name="action" value="ConfimarAmizade">
                             <input type="hidden" name="emailU" value="${Usuario.email}">
                             <input type="hidden" name="emailS" value="${solicitacao.email}">
                         </form>
                         <form action="front" method="post" enctype="multipart/form-data">
-                            <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                            <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" >Excluir solicitacao</button>
                             <input type="hidden" name="action" value="NaoConfimarAmizade">
                             <input type="hidden" name="emailU" value="${Usuario.email}">
                             <input type="hidden" name="emailS" value="${solicitacao.email}">
@@ -141,13 +141,13 @@
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <form action="front" method="post" enctype="multipart/form-data">
-                                <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                                <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" >Confimar</button>
                                 <input type="hidden" name="action" value="ConfimarSeguir">
                                 <input type="hidden" name="emailU" value="${Usuario.email}">
                                 <input type="hidden" name="emailS" value="${solicitacao.email}">
                             </form>
                             <form action="front" method="post" enctype="multipart/form-data">
-                                <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                                <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" >Excluir solicitacao</button>
                                 <input type="hidden" name="action" value="NaoConfimarSeguir">
                                 <input type="hidden" name="emailU" value="${Usuario.email}">
                                 <input type="hidden" name="emailS" value="${solicitacao.email}">
@@ -202,7 +202,7 @@
                 <li><div class="divider"></div></li>
                 <li id="l">
                     <form action="front" method="post" enctype="multipart/form-data">
-                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver perfil pessoal</button>
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit">Ver perfil pessoal</button>
                         <input type="hidden" name="action" value="IrParaPerfil">
                         <input type="hidden" name="emailU" value="${Usuario.email}">
                     </form>
@@ -210,7 +210,7 @@
                 <li><div class="divider"></div></li>
                 <li id="l">
                     <form action="front" method="post" enctype="multipart/form-data">
-                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver Mensagens</button>
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" >Ver Mensagens</button>
                         <input type="hidden" name="action" value="IrParaMensagemtudo">
                         <input type="hidden" name="email" value="${Usuario.email}">
                     </form>
