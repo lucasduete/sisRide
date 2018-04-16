@@ -19,7 +19,7 @@
 
         <div class="container" style="margin-top: 3%">
             <div class="row">
-                <div class="col m11 l11 s12 offset-m1 offset-l1">
+                <div class="col m12 l12 s12">
                     <div class="card">
                         <div class="card-content">
                             <div class="row">
@@ -75,7 +75,20 @@
                                             <td>${viagem.horario}</td>
                                             <td>${viagem.valor}</td>
                                             <td>
-                                                ${viagem.vagas}
+                                                <c:if test="${viagem.vagas ge 1}">
+                                                    <form action="front" method="post">
+                                                        <input type="hidden" name="viagem" value="${viagem.id}">
+                                                        <input type="hidden" name="action" value="SolicitarVaga">
+                                                        <button class="waves-effect waves-light btn green accent-2">
+                                                            Solicitar Vaga
+                                                        </button>
+                                                    </form>
+                                                </c:if>
+                                                <c:if test="${viagem.vagas eq 0}">
+                                                    <button class="waves-effect waves-light disabled btn">
+                                                        Indiponível
+                                                    </button>
+                                                </c:if>
                                             </td>
                                             <td>
                                                 <c:if test="${viagem.transporteAnimal eq true}">
