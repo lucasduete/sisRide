@@ -10,5 +10,9 @@ public interface ViagemDaoInterface {
     public boolean atualizar(Viagem viagem);
     public boolean deletar(Viagem viagem);
     public List<Viagem> getViagemByMotorista(String emailMotorista);
+    public List<Viagem> getViagensWithSaida(String localSaida);
+    public List<Viagem> getViagensWithDestino(String localDestino);
+    public List<Viagem> getViagensWithSaidaDestino(String localSaida, String localDestino);
+
     
 }
