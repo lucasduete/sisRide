@@ -48,4 +48,17 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>reservasVagas</name>
+        <tag-class>io.github.sisRide.tags.ReservaVagasTag</tag-class>
+        <body-content>empty</body-content>
+
+        <attribute>
+            <name>idViagem</name>
+            <type> int </type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>
