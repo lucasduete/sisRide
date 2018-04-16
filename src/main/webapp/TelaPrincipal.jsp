@@ -1,4 +1,6 @@
-<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tagsUtil" uri="TagsUtil" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,7 +38,8 @@
                         <c:forEach  var="carona" items="${Caronas}">
                             <div class="row">
                                 <li class="collection-item avatar">
-                                    <img src="data:image/jpg;base64,${carona.fotoPerfil}" alt="" class="circle">
+                                    <tagsUtil:getFotoPerfil/>
+                                    <img src="data:image/jpg;base64,${fotoPerfil}" alt="" class="circle">
                                     <span class="title">${carona.nome}</span>
                                     <p>First Line
                                     </p>

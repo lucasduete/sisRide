@@ -71,10 +71,10 @@ public class LoginCommand implements Command {
                 }
                 
             }
-            
-            request.getSession().setAttribute("SolicitacaoS", solicitacaoS);
-            request.getSession().setAttribute("SolicitacaoA", solicitacaoA);
-            
+
+//            request.getSession().setAttribute("SolicitacaoS", solicitacaoS);
+//            request.getSession().setAttribute("SolicitacaoA", solicitacaoA);
+
             response.sendRedirect("TelaPrincipal.jsp");
         
         } else {

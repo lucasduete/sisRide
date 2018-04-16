@@ -31,14 +31,14 @@
         </div>
         
         <div class="row">
-            <form action="front" method="post" enctype="multipart/form-data">
+            <form action="front" method="post">
                 <div class="input-field col s8">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" name="search" for="search"><i class="material-icons">search</i></label>
+                    <input id="search" name="search" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i>
                 </div>
                 <div class="col s4" style="margin-top: 1.5%">
-                    <button class="btn waves-effect waves-light light-green accent-4" type="submit" name="action">Procurar</button>
+                    <button class="btn waves-effect waves-light light-green accent-4" type="submit">Procurar</button>
                 </div>
                 <input type="hidden" name="action" value="BuscarUsuario"/>
             </form>

@@ -61,4 +61,10 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>getFotoPerfil</name>
+        <tag-class>io.github.sisRide.tags.FotoPerfilTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 </taglib>

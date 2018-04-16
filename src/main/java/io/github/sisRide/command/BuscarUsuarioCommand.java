@@ -9,6 +9,7 @@ import io.github.sisRide.gerenciadores.GerenciadorUsuario;
 import io.github.sisRide.interfaces.Command;
 import io.github.sisRide.model.Usuario;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,14 +35,22 @@ public class BuscarUsuarioCommand implements Command{
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         
         String search = req.getParameter("search");
+        System.out.println(search);
         
         List<Usuario> usuarios = gerusu.listar();
         
-        List<Usuario> collect = usuarios.stream() // Iterador sobre cada elemento da lista
-                                        .filter((u) -> u.getNome().startsWith(search))  // Recupera para o stream de resultados quem atende a condição
-                                        .collect(Collectors.toList());  // Collecta todos os elementos do stream para uma lista com os itens filtrados
-        
-        req.setAttribute("Usuarios", collect);
+//        List<Usuario> collect = usuarios.stream() // Iterador sobre cada elemento da lista
+//                                        .filter((u) -> u.getNome().startsWith(search))  // Recupera para o stream de resultados quem atende a condição
+//                                        .collect(Collectors.toList());  // Collecta todos os elementos do stream para uma lista com os itens filtrados
+//
+        List<Usuario> users = new ArrayList<>();
+
+        usuarios.forEach((usuario) -> {
+            if (usuario.getNome().contains(search))
+                users.add(usuario);
+        });
+
+        req.setAttribute("Usuarios", users);
         
         RequestDispatcher dispatcher = req.getRequestDispatcher("BuscarUsuarios.jsp");
         

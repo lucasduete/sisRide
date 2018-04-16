@@ -254,4 +254,9 @@ public class UsuarioDaoPostgres implements UsuarioDaoInterface {
 
         return usuario;
     }
+
+    @Override
+    public String getFotoPerfil(String emailUser) {
+        return null;
+    }
 }

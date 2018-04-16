@@ -52,4 +52,8 @@ public class GerenciadorUsuario {
         }
         return usuarioDao.getUsuarioByEmail(email);
     }
+
+    public String getFotoPerfil(String emailUser) {
+        return usuarioDao.getFotoPerfil(emailUser);
+    }
 }

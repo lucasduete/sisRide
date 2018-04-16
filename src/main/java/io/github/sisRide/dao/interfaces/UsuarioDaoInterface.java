@@ -11,5 +11,6 @@ public interface UsuarioDaoInterface {
     public boolean deletar(Usuario usuario);
     public boolean login(String email, String senha);
     public Usuario getUsuarioByEmail(String email);
+    public String getFotoPerfil(String emailUser);
 
 }
