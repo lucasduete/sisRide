@@ -1,5 +1,6 @@
-<%@ page import="io.github.sisRide.model.Usuario" %>
+<%@ page pageEncoding="utf-8" %>
 <%@ taglib prefix="tagsUtil" uri="TagsUtil" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,7 +50,7 @@
                                     <label for="QuantidadeVagas">Quantidade de Vagas</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="valor" name="valor" type="number" min="0" max="50" required>
+                                    <input id="valor" name="valor" type="number" min="0" required>
                                     <label for="valor">Valor à ser Rachado</label>
                                 </div>
                                 <div class="input-field">
@@ -61,18 +62,21 @@
                                     <label for="hora">Horario</label>
                                 </div>
                                 <div class="row">
-                                    <% Usuario usuario = (Usuario) session.getAttribute("Usuario"); %>
-                                    ${usuario}
-                                    <tagsUtil:placasCarro user="${usuario}"></tagsUtil:placasCarro>
+
+                                    <tagsUtil:placasCarro />
+
                                     <div class="input-field col s12">
                                         <select id="carro" name="carro">
-                                          <option value="" disabled selected>Selecione qual carro</option>
-                                          <option value="1">Option 1</option>
-                                          <option value="2">Option 2</option>
-                                          <option value="3">Option 3</option>
+                                            <option value="" disabled selected>Selecione qual carro</option>
+
+                                            <c:forEach var="placa" items="${placas}">
+                                                <option value="${placa}">${placa}</option>
+                                            </c:forEach>
+
                                         </select>
                                         <label>Carro</label>
                                       </div>
+
                                 </div>
                                 <div class="row">
                                     <p>Transporte de animais</p>
