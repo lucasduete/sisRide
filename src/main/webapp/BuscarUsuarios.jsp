@@ -34,7 +34,7 @@
             <form action="front" method="post" enctype="multipart/form-data">
                 <div class="input-field col s8">
                     <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <label class="label-icon" name="search" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i>
                 </div>
                 <div class="col s4" style="margin-top: 1.5%">
@@ -50,7 +50,7 @@
                         <div class="row">
                             <li class="collection-item avatar">
                                 <img src="data:image/jpg;base64,${usuario.fotoPerfil}" alt="" class="circle">
-                                <span class="title">${carona.usuario}</span>
+                                <span class="title">${usuario.nome}</span>
                                 <form class="col s3 right" action="front" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="SolicitarAmizade">
                                     <input type="hidden" name="email" value="${usuario.email}">
@@ -173,6 +173,14 @@
                         <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver perfil pessoal</button>
                         <input type="hidden" name="action" value="IrParaPerfil">
                         <input type="hidden" name="emailU" value="${Usuario.email}">
+                    </form>
+                </li>
+                <li><div class="divider"></div></li>
+                <li id="l">
+                    <form action="front" method="post" enctype="multipart/form-data">
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver Mensagens</button>
+                        <input type="hidden" name="action" value="IrParaMensagemtudo">
+                        <input type="hidden" name="email" value="${Usuario.email}">
                     </form>
                 </li>
                 <li><div class="divider"></div></li>

@@ -209,6 +209,14 @@
                     </form>
                 </li>
                 <li><div class="divider"></div></li>
+                <li id="l">
+                    <form action="front" method="post" enctype="multipart/form-data">
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver Mensagens</button>
+                        <input type="hidden" name="action" value="IrParaMensagemtudo">
+                        <input type="hidden" name="email" value="${Usuario.email}">
+                    </form>
+                </li>
+                <li><div class="divider"></div></li>
                 <c:if test="${Usuario.tipo eq 'motorista'}">
                     <li id="l"><a href="CadastraViagem.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
                     <li><div class="divider"></div></li>
