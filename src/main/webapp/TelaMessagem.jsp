@@ -48,18 +48,19 @@
                 <div class="row">
                     <div class="container" id="teste">
                         <ul class="collection">
-                            <c:forEach  var="usuario" items="${Usuarios}">
+                            <c:forEach  var="mensagem" items="${Mensagem}">
                                 <div class="row">
                                     <li class="collection-item avatar">
-                                        <img src="${usuario.fotoPerfil}" alt="" class="circle">
-                                        <span class="title">${carona.usuario}</span>
-                                        <p>First Line
+                                        <img src="${mensagem.fotoPerfil}" alt="" class="circle">
+                                        <span class="title">${mensagem.nome}</span>
+                                        <p>
                                         </p>
-                                        <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="action" value="IrParaMensagem">
-                                            <input type="hidden" name="id" value="${usuario.email}">
-                                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Ir</button>
-                                        </form>
+                                            <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="action" value="IrParaMensagem">
+                                                <input type="hidden" name="id" value="${usuario.email}">
+                                                <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Ir</button>
+                                            </form>
+                                        </p>
                                     </li>
                                 </div>
                             </c:forEach>
@@ -110,13 +111,13 @@
                         <p>
                         <form action="front" method="post" enctype="multipart/form-data">
                             <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
-                            <input type="hidden" name="action" value="ConfimarAmizadade">
+                            <input type="hidden" name="action" value="ConfimarAmizade">
                             <input type="hidden" name="emailU" value="${Usuario.email}">
                             <input type="hidden" name="emailS" value="${solicitacao.email}">
                         </form>
                         <form action="front" method="post" enctype="multipart/form-data">
                             <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
-                            <input type="hidden" name="action" value="NaoConfimarAmizada">
+                            <input type="hidden" name="action" value="NaoConfimarAmizade">
                             <input type="hidden" name="emailU" value="${Usuario.email}">
                             <input type="hidden" name="emailS" value="${solicitacao.email}">
                         </form>

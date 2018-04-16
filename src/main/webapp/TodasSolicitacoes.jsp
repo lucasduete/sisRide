@@ -39,8 +39,18 @@
                             <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
                             <span class="title">${solicitacao.nome}</span>
                             <p>
-                                <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                                <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                                <form action="front" method="post" enctype="multipart/form-data">
+                                    <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                                    <input type="hidden" name="action" value="ConfimarAmizade">
+                                    <input type="hidden" name="emailU" value="${Usuario.email}">
+                                    <input type="hidden" name="emailS" value="${solicitacao.email}">
+                                </form>
+                                <form action="front" method="post" enctype="multipart/form-data">
+                                    <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                                    <input type="hidden" name="action" value="NaoConfimarAmizade">
+                                    <input type="hidden" name="emailU" value="${Usuario.email}">
+                                    <input type="hidden" name="emailS" value="${solicitacao.email}">
+                                </form>
                             </p>
                         </li>
                     </c:forEach>
@@ -54,8 +64,18 @@
                             <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
                             <span class="title">${solicitacao.nome}</span>
                             <p>
-                                <a href="front?action=ConfimarSeguir" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                                <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                                <form action="front" method="post" enctype="multipart/form-data">
+                                    <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                                    <input type="hidden" name="action" value="ConfimarSeguir">
+                                    <input type="hidden" name="emailU" value="${Usuario.email}">
+                                    <input type="hidden" name="emailS" value="${solicitacao.email}">
+                                </form>
+                                <form action="front" method="post" enctype="multipart/form-data">
+                                    <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                                    <input type="hidden" name="action" value="NaoConfimarSeguir">
+                                    <input type="hidden" name="emailU" value="${Usuario.email}">
+                                    <input type="hidden" name="emailS" value="${solicitacao.email}">
+                                </form>
                             </p>
                         </li>
                     </c:forEach>
@@ -76,13 +96,13 @@
                         <p>
                         <form action="front" method="post" enctype="multipart/form-data">
                             <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
-                            <input type="hidden" name="action" value="ConfimarAmizadade">
+                            <input type="hidden" name="action" value="ConfimarAmizade">
                             <input type="hidden" name="emailU" value="${Usuario.email}">
                             <input type="hidden" name="emailS" value="${solicitacao.email}">
                         </form>
                         <form action="front" method="post" enctype="multipart/form-data">
                             <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
-                            <input type="hidden" name="action" value="NaoConfimarAmizada">
+                            <input type="hidden" name="action" value="NaoConfimarAmizade">
                             <input type="hidden" name="emailU" value="${Usuario.email}">
                             <input type="hidden" name="emailS" value="${solicitacao.email}">
                         </form>
