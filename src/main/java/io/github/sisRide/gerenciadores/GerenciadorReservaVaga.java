@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.gerenciadores;
-
 
 import io.github.sisRide.dao.interfaces.ReservaVagaDaoInterface;
 import io.github.sisRide.factory.DaoFactory;
@@ -15,10 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author caio
- */
 public class GerenciadorReservaVaga {
     
     private DaoFactoryInterface fabrica = null;
@@ -44,5 +34,8 @@ public class GerenciadorReservaVaga {
     public boolean deletar(ReservaVaga reserva){
         return reservavagaDao.deletar(reserva);
     }
-    
+
+    public List<ReservaVaga> listarById(int idViagem) {
+        return reservavagaDao.listarById(idViagem);
+    }
 }

@@ -101,4 +101,34 @@ public class ReservaVagaDaoPostgres implements ReservaVagaDaoInterface{
 
         return true;
     }
+
+    @Override
+    public List<ReservaVaga> listarById(int idViagem) {
+        String sql = "SELECT * FROM ReservaVaga WHERE idViagem = ?;";
+        List<ReservaVaga> reservas = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idViagem);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ReservaVaga reserva = new ReservaVaga (
+                        rs.getString("EmailPassageiro"),
+                        rs.getInt("IdViagem")
+                );
+
+                reservas.add(reserva);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return reservas;
+    }
 }

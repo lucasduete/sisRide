@@ -8,5 +8,6 @@ public interface ReservaVagaDaoInterface {
     public boolean salvar(ReservaVaga reservaVaga);
     public List<ReservaVaga> listar();
     public boolean deletar(ReservaVaga reserva);
+    public List<ReservaVaga> listarById(int idViagem);
     
 }
