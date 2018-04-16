@@ -68,6 +68,7 @@
                                     <div class="row">
                                         <tagsUtil:solicitacoesVagas idViagem="${viagem.id}" />
                                         <c:forEach var="solicitacao" items="${solicitacoes}">
+                                            Solicitações:
                                             <form action="front" method="post">
                                                 <div class="col m6 l6 s12">
                                                     <div class="input-field">
@@ -89,6 +90,9 @@
 
                                         </c:forEach>
                                     </div>
+                                </div>
+                                <div class="row">
+
                                 </div>
                             </div>
                         </c:forEach>
