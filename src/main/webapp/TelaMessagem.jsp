@@ -58,7 +58,7 @@
                                         <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="action" value="IrParaMensagem">
                                             <input type="hidden" name="id" value="${usuario.email}">
-                                            <input class="button" type="submit" value="Ir">
+                                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Ir</button>
                                         </form>
                                     </li>
                                 </div>
@@ -108,8 +108,18 @@
                         <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
-                            <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                        <form action="front" method="post" enctype="multipart/form-data">
+                            <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                            <input type="hidden" name="action" value="ConfimarAmizadade">
+                            <input type="hidden" name="emailU" value="${Usuario.email}">
+                            <input type="hidden" name="emailS" value="${solicitacao.email}">
+                        </form>
+                        <form action="front" method="post" enctype="multipart/form-data">
+                            <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                            <input type="hidden" name="action" value="NaoConfimarAmizada">
+                            <input type="hidden" name="emailU" value="${Usuario.email}">
+                            <input type="hidden" name="emailS" value="${solicitacao.email}">
+                        </form>
                         </p>
                     </li>
                 </c:forEach>
@@ -122,8 +132,18 @@
                         <img src="${solicitacao.fotoPerfil}" alt="" class="circle">
                         <span class="title">${solicitacao.nome}</span>
                         <p>
-                            <a href="front?action=ConfimarSeguir" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
+                            <form action="front" method="post" enctype="multipart/form-data">
+                                <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Confimar</button>
+                                <input type="hidden" name="action" value="ConfimarSeguir">
+                                <input type="hidden" name="emailU" value="${Usuario.email}">
+                                <input type="hidden" name="emailS" value="${solicitacao.email}">
+                            </form>
+                            <form action="front" method="post" enctype="multipart/form-data">
+                                <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Excluir solicitacao</button>
+                                <input type="hidden" name="action" value="NaoConfimarSeguir">
+                                <input type="hidden" name="emailU" value="${Usuario.email}">
+                                <input type="hidden" name="emailS" value="${solicitacao.email}">
+                            </form>
                         </p>
                     </li>
                 </c:forEach>
@@ -139,7 +159,11 @@
                         <img src="${mensagem.fotoPerfil}" alt="" class="circle">
                         <span class="title">${mensagem.nome}</span>
                         <p>
-                            <a href="front?action=IrParaMensagem" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                            <form action="front" method="post" enctype="multipart/form-data">
+                                <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action"><i class="material-icons">arrow_forward</i></button>
+                                <input type="hidden" name="action" value="IrParaMensagem">
+                                <input type="hidden" name="emailU" value="${mensagem.email}">
+                            </form>
                         </p>
                     </li>
                 </c:forEach>
@@ -168,7 +192,13 @@
                     <a id="l"><span class="black-text name">${Usuario.nome}</span></a>
                 </li>
                 <li><div class="divider"></div></li>
-                <li id="l"><a href="Perfil.jsp"><span class="black-text name">Ver perfil pessoal</span></a></li>
+                <li id="l">
+                    <form action="front" method="post" enctype="multipart/form-data">
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver perfil pessoal</button>
+                        <input type="hidden" name="action" value="IrParaPerfil">
+                        <input type="hidden" name="emailU" value="${Usuario.email}">
+                    </form>
+                </li>
                 <li><div class="divider"></div></li>
                 <c:if test="${Usuario.tipo eq 'motorista'}">
                     <li id="l"><a href="CadastraViagem.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
