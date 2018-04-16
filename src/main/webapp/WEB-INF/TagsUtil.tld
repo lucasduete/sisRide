@@ -15,4 +15,24 @@
         <tag-class>io.github.sisRide.tags.ListViagensTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+    
+    <tag>
+        <name>viagemDetail</name>
+        <tag-class>io.github.sisRide.tags.ViagemDetailTag</tag-class>
+        <body-content>empty</body-content>
+        
+        <attribute>
+            <name>idLocalSaida</name>
+            <type> int </type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <name>idLocalDestino</name>
+            <type> int </type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>
