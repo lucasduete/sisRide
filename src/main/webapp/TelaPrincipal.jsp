@@ -52,7 +52,7 @@
         
         <div id="novoA" class="novoA white">
             <ul class="collection">
-                <p>Solicita��es de amizade 
+                <p>Solicitacoes de amizade 
                     <a class="ad" href="">Encontrar amigos</a>
                     <a class="ad" href="">Ver tudo</a>
                 </p>
@@ -62,11 +62,11 @@
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <a href="front?action=ConfimarAmizadade" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicita��o</a>
+                            <a href="front?action=NaoConfimarAmizada" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
                         </p>
                     </li>
                 </c:forEach>
-                <p>Solicita��es de seguir
+                <p>Solicitacoes de seguir
                     <a class="ad" href="">Encontrar pessoas para seguir</a>
                     <a class="ad" href="">Ver tudo</a>
                 </p>
@@ -76,7 +76,7 @@
                         <span class="title">${solicitacao.nome}</span>
                         <p>
                             <a href="front?action=ConfimarSeguir" class="waves-effect waves-light btn-small green darken-2">Confimar</a>
-                            <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicita��o</a>
+                            <a href="front?action=NaoConfimarSeguir" class="waves-effect waves-light btn-small grey lighten-5 black-text">Excluir solicitacao</a>
                         </p>
                     </li>
                 </c:forEach>
@@ -85,7 +85,7 @@
         <div id="novoB" class="novoB white">
             <ul class="collection">
                 <p>Mensagem
-                    <a class="ad" href="">Ver tudo</a>
+                    <a class="ad" href="TelaMessagem.jsp">Ver tudo</a>
                 </p>
                 <c:forEach  var="mensagem" items="${Mensagem}">
                     <li class="collection-item avatar">
@@ -100,7 +100,7 @@
         </div>
         <div id="novoC" class="novoC white">
             <ul class="collection">
-                <p>Notifica��es
+                <p>Notificacoes
                     <a class="ad" href="">Ver tudo</a>
                 </p>
                 <c:forEach  var="notificacao" items="${Notificacao}">

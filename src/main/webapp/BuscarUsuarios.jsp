@@ -31,72 +31,48 @@
         </div>
         
         <div class="row">
-            <div class="col s6">
-                <div class="row">
-                    <form action="front" method="post" enctype="multipart/form-data">
-                        <div class="input-field col s8">
-                            <input id="search" type="search" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="material-icons">close</i>
+            <form action="front" method="post" enctype="multipart/form-data">
+                <div class="input-field col s8">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+                <div class="col s4" style="margin-top: 1.5%">
+                    <button class="btn waves-effect waves-light light-green accent-4" type="submit" name="action">Procurar</button>
+                </div>
+                <input type="hidden" name="action" value="BuscarUsuario"/>
+            </form>
+        </div>
+        <div class="row">
+            <div class="container" id="teste">
+                <ul class="collection">
+                    <c:forEach  var="usuario" items="${Usuarios}">
+                        <div class="row">
+                            <li class="collection-item avatar">
+                                <img src="${usuario.fotoPerfil}" alt="" class="circle">
+                                <span class="title">${carona.usuario}</span>
+                                <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="action" value="SolicitarAmizade">
+                                    <input type="hidden" name="email" value="${usuario.email}">
+                                    <input class="button" type="submit" value="Solicitar Amizade">
+                                </form>
+                                <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="action" value="SolicitarSeguir">
+                                    <input type="hidden" name="email" value="${usuario.email}">
+                                    <input class="button" type="submit" value="Solicitar seguir">
+                                </form>
+                                <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="action" value="IrParaPerfil">
+                                    <input type="hidden" name="email" value="${usuario.email}">
+                                    <input class="button" type="submit" value="Ver perfil">
+                                </form>    
+                            </li>
                         </div>
-                        <div class="col s4" style="margin-top: 3%">
-                            <button class="btn waves-effect waves-light light-green accent-4" type="submit" name="action">Procurar</button>
-                        </div>
-                        <input type="hidden" name="action" value="BuscarListUsuario"/>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="container" id="teste">
-                        <ul class="collection">
-                            <c:forEach  var="usuario" items="${Usuarios}">
-                                <div class="row">
-                                    <li class="collection-item avatar">
-                                        <img src="${usuario.fotoPerfil}" alt="" class="circle">
-                                        <span class="title">${carona.usuario}</span>
-                                        <p>First Line
-                                        </p>
-                                        <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="action" value="IrParaMensagem">
-                                            <input type="hidden" name="id" value="${usuario.email}">
-                                            <input class="button" type="submit" value="Ir">
-                                        </form>
-                                    </li>
-                                </div>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="row">
-                    <div id="teste2" class="col s12 white" style="margin-top: 3%">
-                        <c:forEach  var="mensagem" items="${Mensagem}">
-                            <c:if test="${mensagem.tipo eq 'sent'}">
-                                <div class="row">
-                                    <p class="right text-black">${mensagem}</p>
-                                </div>
-                            </c:if>
-                            <c:if test="${mensagem.tipo eq 'replies'}">
-                                <div class="row">
-                                    <p class="left text-black">${mensagem}</p>
-                                </div>
-                            </c:if>
-                        </c:forEach>
-                    </div>
-                </div>
-                <div class="row">
-                    <form action="front" method="post" enctype="multipart/form-data">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">mode_edit</i>
-                            <textarea id="textarea1" name="mensagem" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Digite aqui sua mensagem</label>
-                        </div>
-                        <input type="hidden" name="action" value="NovaMensagem"/>
-                    </form>    
-                </div>
+                    </c:forEach>
+                </ul>
             </div>
         </div>
-
+        
         <div id="novoA" class="novoA white">
             <ul class="collection">
                 <p>Solicitacoes de amizade 
