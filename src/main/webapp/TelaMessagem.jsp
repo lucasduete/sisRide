@@ -22,7 +22,7 @@
                     <a href="TelaPrincipal.jsp" class="brand-logo">SisRide</a>
                     <ul class="right">
                         <li><a onclick='NovoA()'><i class="material-icons">group</i></a></li>
-                        <li><a onclick='NovoB()'><i class="material-icons">message</i></a></li>
+                        <!--<li><a onclick='NovoB()'><i class="material-icons">message</i></a></li>-->
                         <!--<li><a onclick='NovoC()'><i class="material-icons">notifications</i></a></li>-->
                         <li><a onclick='NovoD()'><i class="material-icons">account_circle</i></a></li>
                     </ul>
@@ -32,32 +32,34 @@
         
         <div class="row">
             <div class="col s6">
-                <div class="row">
+                <!--<div class="row">
                     <form action="front" method="post" enctype="multipart/form-data">
                         <div class="input-field col s8">
-                            <input id="search" type="search" required>
+                            <input id="search" name="search" type="search" required>
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                             <i class="material-icons">close</i>
                         </div>
                         <div class="col s4" style="margin-top: 3%">
                             <button class="btn waves-effect waves-light light-green accent-4" type="submit" name="action">Procurar</button>
                         </div>
+                        <input type="hidden" name="emailU" value="${Usuario.email}">
                         <input type="hidden" name="action" value="BuscarListUsuario"/>
                     </form>
-                </div>
+                </div>-->
                 <div class="row">
                     <div class="container" id="teste">
                         <ul class="collection">
                             <c:forEach  var="mensagem" items="${Mensagem2}">
                                 <div class="row">
                                     <li class="collection-item avatar">
-                                        <img src="data:image/jpg;base64,${mensagem.fotoPerfil}" alt="" class="circle">
-                                        <span class="title">${mensagem.nome}</span>
+                                        <img src="data:image/jpg;base64,${mensagem.fotoPerfilDestinatario}" alt="" class="circle">
+                                        <span class="title">${mensagem.nomeDestinatario}</span>
                                         <p>
                                         </p>
                                             <form class="col s2 right" action="front" method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="action" value="IrParaMensagem">
-                                                <input type="hidden" name="id" value="${Usuario.id}">
+                                                <input type="hidden" name="emailEmissor" value="${mensagem.emailEmissor}">
+                                                <input type="hidden" name="emailDestinatario" value="${mensagem.emailDestinatario}">
                                                 <button class="btn waves-effect waves-light btn-small green darken-2" type="submit" name="action">Ir</button>
                                             </form>
                                         </p>
@@ -74,12 +76,12 @@
                         <c:forEach  var="mensagem" items="${Mensagem3}">
                             <c:if test="${mensagem.tipo eq 'sent'}">
                                 <div class="row">
-                                    <p class="right text-black">${mensagem}</p>
+                                    <p class="right text-black">${mensagem.messagem}</p>
                                 </div>
                             </c:if>
                             <c:if test="${mensagem.tipo eq 'replies'}">
                                 <div class="row">
-                                    <p class="left text-black">${mensagem}</p>
+                                    <p class="left text-black">${mensagem.messagem}</p>
                                 </div>
                             </c:if>
                         </c:forEach>
@@ -95,6 +97,8 @@
                         <div class="col s4">
                             <button class="btn waves-effect waves-light light-green accent-4" type="submit" name="action">Enviar</button>
                         </div>
+                        <input type="hidden" name="emailEmissor" value="${emailEmissor}">
+                        <input type="hidden" name="emailDestinatario" value="${emailDestinatario}">
                         <input type="hidden" name="action" value="NovaMensagem"/>
                     </form>    
                 </div>
@@ -153,7 +157,7 @@
                 </c:forEach>
             </ul>   
         <div>
-        <div id="novoB" class="novoB white">
+        <!--<div id="novoB" class="novoB white">
             <ul class="collection">
                 <p>Mensagem
                     <a class="ad" href="TelaMessagem.jsp">Ver tudo</a>
@@ -172,7 +176,7 @@
                     </li>
                 </c:forEach>
             </ul>
-        </div>
+        </div>-->
         <!--<div id="novoC" class="novoC white">
             <ul class="collection">
                 <p>Notificacoes
@@ -204,6 +208,14 @@
                     </form>
                 </li>
                 <li><div class="divider"></div></li>
+                <li id="l">
+                    <form action="front" method="post" enctype="multipart/form-data">
+                        <button class="btn waves-effect waves-light btn-small grey lighten-5 black-text" type="submit" name="action">Ver Mensagens</button>
+                        <input type="hidden" name="action" value="IrParaMensagemtudo">
+                        <input type="hidden" name="email" value="${Usuario.email}">
+                    </form>
+                </li>
+                <li><div class="divider"></div></li>
                 <c:if test="${Usuario.tipo eq 'motorista'}">
                     <li id="l"><a href="CadastraViagem.jsp"><span class="black-text name">Cadastra Carona</span></a></li>
                     <li><div class="divider"></div></li>
@@ -214,7 +226,7 @@
                 </c:if>
                 <li id="l"><a href="BuscarCarona.jsp"><span class="black-text name">Buscar Carona</span></a></li>
                 <li><div class="divider"></div></li>
-                <c:if test="${Usuario.tipo eq 'feminino'}">
+                <c:if test="${Usuario.sexo eq 'feminino'}">
                     <li id="l"><a href="SoElas.jsp"><span class="black-text name">So Elas</span></a></li>
                     <li><div class="divider"></div></li>
                 </c:if>
