@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.command;
 
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
@@ -14,17 +9,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author caio
- */
 public class EditarContaCommand implements Command{
     
-    private GerenciadorUsuario gerusu;
+    private GerenciadorUsuario gerenciadorUsuario;
     
     public EditarContaCommand() {
 
-        this.gerusu = new GerenciadorUsuario();
+        this.gerenciadorUsuario = new GerenciadorUsuario();
     }
     
     @Override
@@ -32,12 +23,11 @@ public class EditarContaCommand implements Command{
         
         String email = req.getParameter("email");
         
-        Usuario usuario = gerusu.getUsuarioByEmail(email);
+        Usuario usuario = gerenciadorUsuario.getUsuarioByEmail(email);
         
         req.setAttribute("UsuarioC", usuario);
         
         RequestDispatcher dispatcher = req.getRequestDispatcher("TelaConfiguracao.jsp");
-        
         dispatcher.forward(req, res);
     }
     
