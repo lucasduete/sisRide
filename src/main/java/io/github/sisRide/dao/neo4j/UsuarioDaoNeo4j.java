@@ -88,7 +88,7 @@ public class UsuarioDaoNeo4j implements UsuarioDaoInterface {
         String sql = String.format("MATCH (u:%s{Email: $Email}) SET u.Nome = $Nome, " +
                 "u.Senha = $Senha, u.FotoPerfil = $FotoPerfil, u.Sexo = $Sexo, " +
                 "u.DataNasc = $DataNasc, u.Profissao = $Profissao, u.Cidade = $Cidade, " +
-                "u.Tipo = $Tipo RETURN u.Email) RETURN u.Email AS UserEmail", Nodes.USUARIO);
+                "u.Tipo = $Tipo RETURN u.Email AS UserEmail", Nodes.USUARIO);
 
         try(Session session = conn.session()) {
 
