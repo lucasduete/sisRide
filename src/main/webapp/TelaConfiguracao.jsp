@@ -1,4 +1,5 @@
-<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -45,7 +46,7 @@
                             </div>
                             <div class="input-field">
                                 <input id="profissao" name="profissao" type="text" required>
-                                <label for="profissao">Profiss„o</label>
+                                <label for="profissao">Profiss√£o</label>
                             </div>
                             <div class="input-field">
                                 <input id="cidade" name="cidade" type="text" required>
@@ -247,7 +248,7 @@
                     today: 'Hoje',
                     clear: 'Limpar',
                     close: 'Ok',
-                    monthsFull: ['Janeiro', 'Fevereiro', 'MarÁo', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                    monthsFull: ['Janeiro', 'Fevereiro', 'Mar√ßo', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
                     weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
                     closeOnSelect: false // Close upon selecting a date,
                 });
