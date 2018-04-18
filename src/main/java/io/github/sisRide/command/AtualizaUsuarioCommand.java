@@ -27,23 +27,24 @@ public class AtualizaUsuarioCommand implements Command{
     }
     
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         
         Usuario usuario = new Usuario();
-        String email = req.getParameter("email");
-        String cidade = req.getParameter("cidade");
-        String profissao = req.getParameter("profissao");
+        String email = request.getParameter("email");
+        String cidade = request.getParameter("cidade");
+        String profissao = request.getParameter("profissao");
         
-        String nome = req.getParameter("nome");
-        String senha = req.getParameter("password");
-        String sexo = req.getParameter("sexo");
-        String tipo = req.getParameter("tipo");
+        String nome = request.getParameter("nome");
+        String senha = request.getParameter("password");
+        String sexo = request.getParameter("sexo");
+        String tipo = request.getParameter("tipo");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dataNasc = LocalDate.parse(
-            req.getParameter("dataNasc"), formatter
+            request.getParameter("dataNasc"), formatter
         );
 
-        final Part fotoPerfil = req.getPart("foto");
+        final Part fotoPerfil = request.getPart("foto");
 
         OutputStream out = null;
         InputStream filecontent = null;
@@ -87,10 +88,13 @@ public class AtualizaUsuarioCommand implements Command{
         usuario.setSexo(sexo);
         usuario.setSenha(senha);
 
-        usuario.setFotoPerfil(null);
-        System.out.println(usuario);
-
-        //gerenciadorUsuario.atualizar(usuario);
+        if (gerenciadorUsuario.atualizar(usuario)) {
+            response.setStatus(200);
+            response.sendRedirect("TelaConfiguracao.jsp?code=1");
+        } else {
+            response.setStatus(400);
+            response.sendRedirect("TelaConfiguracao.jsp?code=2");
+        }
         
     }
     
