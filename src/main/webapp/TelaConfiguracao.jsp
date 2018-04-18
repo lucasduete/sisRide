@@ -299,6 +299,17 @@
                     document.getElementById("novoD").style.visibility = "hidden";
                 }
             }
+
+            var code = "${param.code}";
+            if(code == "1") {
+                swal({
+                    type: 'success',
+                    title: 'Conta Atualizada com Sucesso!',
+                    confirmButtonText: 'Ok'
+                });
+            } else if(code == "2") {
+                swal("Ops...", "Houve um problema, verifique os dados e tente novamente.", "error");
+            }
         </script>
     </body>
 </html>
