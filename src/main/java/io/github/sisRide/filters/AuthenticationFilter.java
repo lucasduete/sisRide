@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "Authentication")
+@WebFilter(filterName = "Authentication", servletNames = "FrontController")
 public class AuthenticationFilter implements Filter {
 
     private ServletContext servletContext;
