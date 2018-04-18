@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.command;
 
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
@@ -22,17 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-/**
- *
- * @author caio
- */
 public class AtualizaUsuarioCommand implements Command{
     
-    private GerenciadorUsuario gerusu;
+    private GerenciadorUsuario gerenciadorUsuario;
     
     public AtualizaUsuarioCommand() {
 
-        this.gerusu = new GerenciadorUsuario();
+        this.gerenciadorUsuario = new GerenciadorUsuario();
     }
     
     @Override
@@ -95,8 +86,11 @@ public class AtualizaUsuarioCommand implements Command{
         usuario.setTipo(tipo);
         usuario.setSexo(sexo);
         usuario.setSenha(senha);
-            
-        gerusu.atualizar(usuario);
+
+        usuario.setFotoPerfil(null);
+        System.out.println(usuario);
+
+        //gerenciadorUsuario.atualizar(usuario);
         
     }
     

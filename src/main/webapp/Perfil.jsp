@@ -38,7 +38,7 @@
                                     <span class="card-title">${UsuarioP.nome}</span>
                                     <p>
                                         <tagsUtils:getFotoPerfil/>
-                                        <a><img class="circle" src="data:image/jpg;base64,${fotoPerfil}"></a>
+                                        <a><img class="circle" src="data:image/jpg;base64,${UsuarioP.fotoPerfil}"></a>
                                         <br/>
                                         Sexo: ${UsuarioP.sexo}<br>
                                         Data de Nascimento: ${UsuarioP.dataNasc}<br>
