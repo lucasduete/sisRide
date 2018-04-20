@@ -1,6 +1,5 @@
 package io.github.sisRide.tags;
 
-import io.github.sisRide.gerenciadores.GerenciadorSolicitacaoVaga;
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
 import io.github.sisRide.model.Usuario;
 
@@ -21,9 +20,14 @@ public class FotoPerfilTag extends SimpleTagSupport {
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 
         Usuario user = (Usuario) request.getSession().getAttribute("Usuario");
+        Usuario userProfile = (Usuario) request.getAttribute("UsuarioP");
 
-        this.getJspContext().setAttribute("fotoPerfil",
+        if (userProfile == null)
+            this.getJspContext().setAttribute("fotoPerfil",
                 new GerenciadorUsuario().getFotoPerfil(user.getEmail()));
+        else
+            this.getJspContext().setAttribute("fotoPerfil",
+                    new GerenciadorUsuario().getFotoPerfil(userProfile.getEmail()));
     }
 
     @Override
