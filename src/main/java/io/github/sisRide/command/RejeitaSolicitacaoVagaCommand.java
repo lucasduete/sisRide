@@ -1,9 +1,7 @@
 package io.github.sisRide.command;
 
-import io.github.sisRide.gerenciadores.GerenciadorReservaVaga;
 import io.github.sisRide.gerenciadores.GerenciadorSolicitacaoVaga;
 import io.github.sisRide.interfaces.Command;
-import io.github.sisRide.model.vaga.ReservaVaga;
 import io.github.sisRide.model.vaga.SolicitacaoVaga;
 
 import javax.servlet.ServletException;

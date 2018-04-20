@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class IrParaPerfilCommand implements Command{
+public class IrParaPerfilCommand implements Command {
     
     private GerenciadorUsuario gerenciadorUsuario;
     

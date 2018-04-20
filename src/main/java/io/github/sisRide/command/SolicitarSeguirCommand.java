@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.command;
 
 import io.github.sisRide.gerenciadores.GerenciadorRequestFollow;
@@ -14,35 +9,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author caio
- */
-public class SolicitarSeguirCommand implements Command{
+public class SolicitarSeguirCommand implements Command {
     
-    private GerenciadorRequestFollow gerfol;
+    private GerenciadorRequestFollow gerenciadorRequestFollow;
     
     public SolicitarSeguirCommand() {
 
-        this.gerfol = new GerenciadorRequestFollow();
+        this.gerenciadorRequestFollow = new GerenciadorRequestFollow();
     }
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         
-        RequestFollow follow = new RequestFollow();
+        RequestFollow requestFollow = new RequestFollow();
         
-        String emailU = req.getParameter("emailU");
-        String emailS = req.getParameter("emailS");
+        String emailU = request.getParameter("emailU");
+        String emailS = request.getParameter("emailS");
         
-        follow.setEmailUsuario(emailU);
-        follow.setEmailSeguidor(emailS);
+        requestFollow.setEmailUsuario(emailU);
+        requestFollow.setEmailSeguidor(emailS);
         
-        gerfol.salvar(follow);
+        gerenciadorRequestFollow.salvar(requestFollow);
         
-        RequestDispatcher dispatcher = req.getRequestDispatcher("TelaPrincipal.jsp");
-        
-        dispatcher.forward(req, res);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("TelaPrincipal.jsp");
+        dispatcher.forward(request, response);
     }
     
 }

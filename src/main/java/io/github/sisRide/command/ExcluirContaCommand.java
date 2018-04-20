@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.command;
 
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
@@ -14,33 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author caio
- */
-public class ExcluirContaCommand implements Command{
+public class ExcluirContaCommand implements Command {
     
-    private GerenciadorUsuario gerusu;
+    private GerenciadorUsuario gerenciadorUsuario;
     
     public ExcluirContaCommand() {
 
-        this.gerusu = new GerenciadorUsuario();
+        this.gerenciadorUsuario = new GerenciadorUsuario();
     }
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         
-        String email = req.getParameter("email");
+        String email = request.getParameter("email");
         
-        Usuario usuario = gerusu.getUsuarioByEmail(email);
+        Usuario usuario = gerenciadorUsuario.getUsuarioByEmail(email);
+        gerenciadorUsuario.deletar(usuario);
         
-        gerusu.deletar(usuario);
-        
-        HttpSession session = req.getSession();
-        
+        HttpSession session = request.getSession();
         session.invalidate();
         
-        res.sendRedirect("TeladeLogin.jsp");
+        response.sendRedirect("TeladeLogin.jsp");
         
     }
     

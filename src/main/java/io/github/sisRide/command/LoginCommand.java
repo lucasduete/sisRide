@@ -1,7 +1,5 @@
 package io.github.sisRide.command;
 
-import io.github.sisRide.dao.interfaces.UsuarioDaoInterface;
-import io.github.sisRide.factory.DaoFactory;
 import io.github.sisRide.gerenciadores.GerenciadorRequestFollow;
 import io.github.sisRide.gerenciadores.GerenciadorRequestFriendship;
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
@@ -12,7 +10,6 @@ import io.github.sisRide.model.socialRequest.RequestFollow;
 import io.github.sisRide.model.socialRequest.RequestFriendship;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

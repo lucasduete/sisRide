@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.command;
 
 import io.github.sisRide.gerenciadores.GerenciadorUsuario;
@@ -11,33 +6,28 @@ import io.github.sisRide.model.Usuario;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author caio
- */
-public class BuscarUsuarioCommand implements Command{
+public class BuscarUsuarioCommand implements Command {
     
-    private GerenciadorUsuario gerusu;
+    private GerenciadorUsuario gerenciadorUsuario;
     
     public BuscarUsuarioCommand(){
         
-        this.gerusu = new GerenciadorUsuario();
+        this.gerenciadorUsuario = new GerenciadorUsuario();
     }
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         
-        String search = req.getParameter("search");
+        String search = request.getParameter("search");
         System.out.println(search);
         
-        List<Usuario> usuarios = gerusu.listar();
+        List<Usuario> usuarios = gerenciadorUsuario.listar();
         
 //        List<Usuario> collect = usuarios.stream() // Iterador sobre cada elemento da lista
 //                                        .filter((u) -> u.getNome().startsWith(search))  // Recupera para o stream de resultados quem atende a condição
@@ -50,11 +40,10 @@ public class BuscarUsuarioCommand implements Command{
                 users.add(usuario);
         });
 
-        req.setAttribute("Usuarios", users);
+        request.setAttribute("Usuarios", users);
         
-        RequestDispatcher dispatcher = req.getRequestDispatcher("BuscarUsuarios.jsp");
-        
-        dispatcher.forward(req, res);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("BuscarUsuarios.jsp");
+        dispatcher.forward(request, response);
         
     }
     

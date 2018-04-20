@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.sisRide.command;
 
 import io.github.sisRide.gerenciadores.GerenciadorMessage;
@@ -19,30 +14,27 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author caio
- */
-public class IrParaMensagemCommand implements Command{
+public class IrParaMensagemCommand implements Command {
     
-    private GerenciadorUsuario gerusu;
-    private GerenciadorMessage germen;
-    private Message men;
+    private GerenciadorUsuario gerenciadorUsuario;
+    private GerenciadorMessage gerenciadorMessage;
+    private Message message;
     
     public IrParaMensagemCommand(){
-        
-        this.germen = new GerenciadorMessage();
-        this.men = new Message();
-        this.gerusu = new GerenciadorUsuario();
+
+        this.gerenciadorUsuario = new GerenciadorUsuario();
+        this.gerenciadorMessage = new GerenciadorMessage();
+        this.message = new Message();
     }
     
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         
-        String emailE = req.getParameter("emailEmissor");
-        String emailD = req.getParameter("emailDestinatario");
+        String emailE = request.getParameter("emailEmissor");
+        String emailD = request.getParameter("emailDestinatario");
         
-        List<Usuario> usu = gerusu.listar();
+        List<Usuario> usu = gerenciadorUsuario.listar();
         
         MessageUsuario mens2 = new MessageUsuario();
         
@@ -55,7 +47,7 @@ public class IrParaMensagemCommand implements Command{
             mens2.setNomeDestinatario(usu1.getNome());
         }
         
-        List<Message> mens = germen.listar();
+        List<Message> mens = gerenciadorMessage.listar();
         
         List<Mensagem> mensagem3 = null;
         
@@ -75,14 +67,13 @@ public class IrParaMensagemCommand implements Command{
             
         }
         
-        req.setAttribute("Mensagem2", mensagem2);
-        req.setAttribute("Mensagem3", mensagem3);
-        req.setAttribute("emailEmissor", emailE);
-        req.setAttribute("emailDestinatario", emailD);
+        request.setAttribute("Mensagem2", mensagem2);
+        request.setAttribute("Mensagem3", mensagem3);
+        request.setAttribute("emailEmissor", emailE);
+        request.setAttribute("emailDestinatario", emailD);
         
-        RequestDispatcher dispatcher = req.getRequestDispatcher("TelaMessagem.jsp");
-        
-        dispatcher.forward(req, res);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("TelaMessagem.jsp");
+        dispatcher.forward(request, response);
         
     }
     
